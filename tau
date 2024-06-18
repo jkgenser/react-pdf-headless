@@ -1,0 +1,1323 @@
+[1mdiff --git a/.yarn/install-state.gz b/.yarn/install-state.gz[m
+[1mdeleted file mode 100644[m
+[1mindex 1385c12..0000000[m
+Binary files a/.yarn/install-state.gz and /dev/null differ
+[1mdiff --git a/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/.ready b/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/.ready[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/README.md b/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/README.md[m
+[1mdeleted file mode 100644[m
+[1mindex b2f1930..0000000[m
+[1m--- a/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/README.md[m
+[1m+++ /dev/null[m
+[36m@@ -1,3 +0,0 @@[m
+[31m-# esbuild[m
+[31m-[m
+[31m-This is the Linux 64-bit binary for esbuild, a JavaScript bundler and minifier. See https://github.com/evanw/esbuild for details.[m
+[1mdiff --git a/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/bin/esbuild b/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/bin/esbuild[m
+[1mdeleted file mode 100755[m
+[1mindex 9fc82c4..0000000[m
+Binary files a/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/bin/esbuild and /dev/null differ
+[1mdiff --git a/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/package.json b/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/package.json[m
+[1mdeleted file mode 100644[m
+[1mindex 4140d1d..0000000[m
+[1m--- a/.yarn/unplugged/@esbuild-linux-x64-npm-0.20.2-54b0127370/node_modules/@esbuild/linux-x64/package.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,20 +0,0 @@[m
+[31m-{[m
+[31m-  "name": "@esbuild/linux-x64",[m
+[31m-  "version": "0.20.2",[m
+[31m-  "description": "The Linux 64-bit binary for esbuild, a JavaScript bundler.",[m
+[31m-  "repository": {[m
+[31m-    "type": "git",[m
+[31m-    "url": "git+https://github.com/evanw/esbuild.git"[m
+[31m-  },[m
+[31m-  "license": "MIT",[m
+[31m-  "preferUnplugged": true,[m
+[31m-  "engines": {[m
+[31m-    "node": ">=12"[m
+[31m-  },[m
+[31m-  "os": [[m
+[31m-    "linux"[m
+[31m-  ],[m
+[31m-  "cpu": [[m
+[31m-    "x64"[m
+[31m-  ][m
+[31m-}[m
+[1mdiff --git a/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/.ready b/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/.ready[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/README.md b/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/README.md[m
+[1mdeleted file mode 100644[m
+[1mindex cabe280..0000000[m
+[1m--- a/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/README.md[m
+[1m+++ /dev/null[m
+[36m@@ -1,3 +0,0 @@[m
+[31m-# `@rollup/rollup-linux-x64-gnu`[m
+[31m-[m
+[31m-This is the **x86_64-unknown-linux-gnu** binary for `rollup`[m
+[1mdiff --git a/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/package.json b/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/package.json[m
+[1mdeleted file mode 100644[m
+[1mindex 12d23a3..0000000[m
+[1m--- a/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/package.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,22 +0,0 @@[m
+[31m-{[m
+[31m-  "name": "@rollup/rollup-linux-x64-gnu",[m
+[31m-  "version": "4.18.0",[m
+[31m-  "os": [[m
+[31m-    "linux"[m
+[31m-  ],[m
+[31m-  "cpu": [[m
+[31m-    "x64"[m
+[31m-  ],[m
+[31m-  "files": [[m
+[31m-    "rollup.linux-x64-gnu.node"[m
+[31m-  ],[m
+[31m-  "description": "Native bindings for Rollup",[m
+[31m-  "author": "Lukas Taegert-Atkinson",[m
+[31m-  "homepage": "https://rollupjs.org/",[m
+[31m-  "license": "MIT",[m
+[31m-  "repository": "rollup/rollup",[m
+[31m-  "libc": [[m
+[31m-    "glibc"[m
+[31m-  ],[m
+[31m-  "main": "./rollup.linux-x64-gnu.node"[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/rollup.linux-x64-gnu.node b/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/rollup.linux-x64-gnu.node[m
+[1mdeleted file mode 100644[m
+[1mindex 4814784..0000000[m
+Binary files a/.yarn/unplugged/@rollup-rollup-linux-x64-gnu-npm-4.18.0-0aa51442a0/node_modules/@rollup/rollup-linux-x64-gnu/rollup.linux-x64-gnu.node and /dev/null differ
+[1mdiff --git a/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/.ready b/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/.ready[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/README.md b/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/README.md[m
+[1mdeleted file mode 100644[m
+[1mindex 7ada517..0000000[m
+[1m--- a/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/README.md[m
+[1m+++ /dev/null[m
+[36m@@ -1,3 +0,0 @@[m
+[31m-# `@swc/core-linux-x64-gnu`[m
+[31m-[m
+[31m-This is the **x86_64-unknown-linux-gnu** binary for `@swc/core`[m
+[1mdiff --git a/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/package.json b/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/package.json[m
+[1mdeleted file mode 100644[m
+[1mindex 7e48504..0000000[m
+[1m--- a/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/package.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,45 +0,0 @@[m
+[31m-{[m
+[31m-  "name": "@swc/core-linux-x64-gnu",[m
+[31m-  "version": "1.5.24",[m
+[31m-  "os": [[m
+[31m-    "linux"[m
+[31m-  ],[m
+[31m-  "cpu": [[m
+[31m-    "x64"[m
+[31m-  ],[m
+[31m-  "main": "swc.linux-x64-gnu.node",[m
+[31m-  "files": [[m
+[31m-    "swc.linux-x64-gnu.node",[m
+[31m-    "swc"[m
+[31m-  ],[m
+[31m-  "libc": [[m
+[31m-    "glibc"[m
+[31m-  ],[m
+[31m-  "description": "Super-fast alternative for babel",[m
+[31m-  "keywords": [[m
+[31m-    "swc",[m
+[31m-    "swcpack",[m
+[31m-    "babel",[m
+[31m-    "typescript",[m
+[31m-    "rust",[m
+[31m-    "webpack",[m
+[31m-    "tsc"[m
+[31m-  ],[m
+[31m-  "author": "강동윤 <kdy1997.dev@gmail.com>",[m
+[31m-  "homepage": "https://swc.rs",[m
+[31m-  "license": "Apache-2.0 AND MIT",[m
+[31m-  "engines": {[m
+[31m-    "node": ">=10"[m
+[31m-  },[m
+[31m-  "publishConfig": {[m
+[31m-    "registry": "https://registry.npmjs.org/",[m
+[31m-    "access": "public"[m
+[31m-  },[m
+[31m-  "repository": {[m
+[31m-    "type": "git",[m
+[31m-    "url": "git+https://github.com/swc-project/swc.git"[m
+[31m-  },[m
+[31m-  "bugs": {[m
+[31m-    "url": "https://github.com/swc-project/swc/issues"[m
+[31m-  }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node b/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node[m
+[1mdeleted file mode 100644[m
+[1mindex dca4a66..0000000[m
+Binary files a/.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.5.24-27ef4bd881/node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node and /dev/null differ
+[1mdiff --git a/.yarn/unplugged/@swc-core-virtual-7befa79001/node_modules/@swc/core/.ready b/.yarn/unplugged/@swc-core-virtual-7befa79001/node_modules/@swc/core/.ready[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/.yarn/unplugged/@swc-core-virtual-7befa79001/node_modules/@swc/core/Visitor.d.ts b/.yarn/unplugged/@swc-core-virtual-7befa79001/node_modules/@swc/core/Visitor.d.ts[m
+[1mdeleted file mode 100644[m
+[1mindex 256c2bc..0000000[m
+[1m--- a/.yarn/unplugged/@swc-core-virtual-7befa79001/node_modules/@swc/core/Visitor.d.ts[m
+[1m+++ /dev/null[m
+[36m@@ -1,218 +0,0 @@[m
+[31m-import { Accessibility, Argument, ArrayExpression, ArrayPattern, ArrowFunctionExpression, AssignmentExpression, AssignmentPattern, AssignmentPatternProperty, AssignmentProperty, AwaitExpression, BigIntLiteral, BinaryExpression, BindingIdentifier, BlockStatement, BooleanLiteral, BreakStatement, CallExpression, CatchClause, Class, ClassDeclaration, ClassExpression, ClassMember, ClassMethod, ClassProperty, ComputedPropName, ConditionalExpression, Constructor, ContinueStatement, DebuggerStatement, Declaration, Decorator, DefaultDecl, DoWhileStatement, EmptyStatement, ExportAllDeclaration, ExportDeclaration, ExportDefaultDeclaration, ExportDefaultExpression, ExportDefaultSpecifier, ExportNamedDeclaration, ExportNamespaceSpecifier, ExportSpecifier, ExprOrSpread, Expression, ExpressionStatement, Fn, ForInStatement, ForOfStatement, ForStatement, FunctionDeclaration, FunctionExpression, GetterProperty, Identifier, IfStatement, Import, ImportDeclaration, ImportDefaultSpecifier, ImportNamespaceSpecifier, ImportSpecifier, JSXAttrValue, JSXAttribute, JSXAttributeName, JSXAttributeOrSpread, JSXClosingElement, JSXClosingFragment, JSXElement, JSXElementChild, JSXElementName, JSXEmptyExpression, JSXExpressionContainer, JSXFragment, JSXMemberExpression, JSXNamespacedName, JSXObject, JSXOpeningElement, JSXOpeningFragment, JSXSpreadChild, JSXText, KeyValuePatternProperty, KeyValueProperty, LabeledStatement, MemberExpression, MetaProperty, MethodProperty, Module, ModuleDeclaration, ModuleExportName, ModuleItem, NamedExportSpecifier, NamedImportSpecifier, NewExpression, NullLiteral, NumericLiteral, ObjectExpression, ObjectPattern, ObjectPatternProperty, OptionalChainingCall, OptionalChainingExpression, Param, ParenthesisExpression, Pattern, PrivateMethod, PrivateName, PrivateProperty, Program, Property, PropertyName, RegExpLiteral, RestElement, ReturnStatement, Script, SequenceExpression, SetterProperty, SpreadElement, Statement, StaticBlock, StringLiteral, Super, SuperPropExpression, SwitchCase, SwitchStatement, TaggedTemplateExpression, TemplateLiteral, ThisExpression, ThrowStatement, TryStatement, TsAsExpression, TsCallSignatureDeclaration, TsConstAssertion, TsConstructSignatureDeclaration, TsEntityName, TsEnumDeclaration, TsEnumMember, TsEnumMemberId, TsExportAssignment, TsExpressionWithTypeArguments, TsExternalModuleReference, TsFnParameter, TsGetterSignature, TsImportEqualsDeclaration, TsIndexSignature, TsInstantiation, TsInterfaceBody, TsInterfaceDeclaration, TsMethodSignature, TsModuleBlock, TsModuleDeclaration, TsModuleName, TsModuleReference, TsNamespaceBody, TsNamespaceDeclaration, TsNamespaceExportDeclaration, TsNonNullExpression, TsParameterProperty, TsParameterPropertyParameter, TsPropertySignature, TsQualifiedName, TsSatisfiesExpression, TsSetterSignature, TsType, TsTypeAliasDeclaration, TsTypeAnnotation, TsTypeAssertion, TsTypeElement, TsTypeParameter, TsTypeParameterDeclaration, TsTypeParameterInstantiation, UnaryExpression, UpdateExpression, VariableDeclaration, VariableDeclarator, WhileStatement, WithStatement, YieldExpression } from "@swc/types";[m
+[31m-/**[m
+[31m- * @deprecated JavaScript API is deprecated. Please use Wasm plugin instead.[m
+[31m- */[m
+[31m-export declare class Visitor {[m
+[31m-    visitProgram(n: Program): Program;[m
+[31m-    visitModule(m: Module): Module;[m
+[31m-    visitScript(m: Script): Script;[m
+[31m-    visitModuleItems(items: ModuleItem[]): ModuleItem[];[m
+[31m-    visitModuleItem(n: ModuleItem): ModuleItem;[m
+[31m-    visitModuleDeclaration(n: ModuleDeclaration): ModuleDeclaration;[m
+[31m-    visitTsNamespaceExportDeclaration(n: TsNamespaceExportDeclaration): ModuleDeclaration;[m
+[31m-    visitTsExportAssignment(n: TsExportAssignment): TsExportAssignment;[m
+[31m-    visitTsImportEqualsDeclaration(n: TsImportEqualsDeclaration): ModuleDeclaration;[m
+[31m-    visitTsModuleReference(n: TsModuleReference): TsModuleReference;[m
+[31m-    visitTsExternalModuleReference(n: TsExternalModuleReference): TsExternalModuleReference;[m
+[31m-    visitExportAllDeclaration(n: ExportAllDeclaration): ModuleDeclaration;[m
+[31m-    visitExportDefaultExpression(n: ExportDefaultExpression): ModuleDeclaration;[m
+[31m-    visitExportNamedDeclaration(n: ExportNamedDeclaration): ModuleDeclaration;[m
+[31m-    visitExportSpecifiers(nodes: ExportSpecifier[]): ExportSpecifier[];[m
+[31m-    visitExportSpecifier(n: ExportSpecifier): ExportSpecifier;[m
+[31m-    visitNamedExportSpecifier(n: NamedExportSpecifier): ExportSpecifier;[m
+[31m-    visitModuleExportName(n: ModuleExportName): ModuleExportName;[m
+[31m-    visitExportNamespaceSpecifier(n: ExportNamespaceSpecifier): ExportSpecifier;[m
+[31m-    visitExportDefaultSpecifier(n: ExportDefaultSpecifier): ExportSpecifier;[m
+[31m-    visitOptionalStringLiteral(n: StringLiteral | undefined): StringLiteral | undefined;[m
+[31m-    visitExportDefaultDeclaration(n: ExportDefaultDeclaration): ModuleDeclaration;[m
+[31m-    visitDefaultDeclaration(n: DefaultDecl): DefaultDecl;[m
+[31m-    visitFunctionExpression(n: FunctionExpression): FunctionExpression;[m
+[31m-    visitClassExpression(n: ClassExpression): ClassExpression;[m
+[31m-    visitExportDeclaration(n: ExportDeclaration): ModuleDeclaration;[m
+[31m-    visitArrayExpression(e: ArrayExpression): Expression;[m
+[31m-    visitArrayElement(e: ExprOrSpread | undefined): ExprOrSpread | undefined;[m
+[31m-    visitExprOrSpread(e: ExprOrSpread): ExprOrSpread;[m
+[31m-    visitExprOrSpreads(nodes: ExprOrSpread[]): ExprOrSpread[];[m
+[31m-    visitSpreadElement(e: SpreadElement): SpreadElement;[m
+[31m-    visitOptionalExpression(e: Expression | undefined): Expression | undefined;[m
+[31m-    visitArrowFunctionExpression(e: ArrowFunctionExpression): Expression;[m
+[31m-    visitArrowBody(body: BlockStatement | Expression): BlockStatement | Expression;[m
+[31m-    visitBlockStatement(block: BlockStatement): BlockStatement;[m
+[31m-    visitStatements(stmts: Statement[]): Statement[];[m
+[31m-    visitStatement(stmt: Statement): Statement;[m
+[31m-    visitSwitchStatement(stmt: SwitchStatement): Statement;[m
+[31m-    visitSwitchCases(cases: SwitchCase[]): SwitchCase[];[m
+[31m-    visitSwitchCase(c: SwitchCase): SwitchCase;[m
+[31m-    visitIfStatement(stmt: IfStatement): Statement;[m
+[31m-    visitOptionalStatement(stmt: Statement | undefined): Statement | undefined;[m
+[31m-    visitBreakStatement(stmt: BreakStatement): Statement;[m
+[31m-    visitWhileStatement(stmt: WhileStatement): Statement;[m
+[31m-    visitTryStatement(stmt: TryStatement): Statement;[m
+[31m-    visitCatchClause(handler: CatchClause | undefined): CatchClause | undefined;[m
+[31m-    visitThrowStatement(stmt: ThrowStatement): Statement;[m
+[31m-    visitReturnStatement(stmt: ReturnStatement): Statement;[m
+[31m-    visitLabeledStatement(stmt: LabeledStatement): Statement;[m
+[31m-    visitForStatement(stmt: ForStatement): Statement;[m
+[31m-    visitForOfStatement(stmt: ForOfStatement): Statement;[m
+[31m-    visitForInStatement(stmt: ForInStatement): Statement;[m
+[31m-    visitEmptyStatement(stmt: EmptyStatement): EmptyStatement;[m
+[31m-    visitDoWhileStatement(stmt: DoWhileStatement): Statement;[m
+[31m-    visitDebuggerStatement(stmt: DebuggerStatement): Statement;[m
+[31m-    visitWithStatement(stmt: WithStatement): Statement;[m
+[31m-    visitDeclaration(decl: Declaration): Declaration;[m
+[31m-    visitVariableDeclaration(n: VariableDeclaration): VariableDeclaration;[m
+[31m-    visitVariableDeclarators(nodes: VariableDeclarator[]): VariableDeclarator[];[m
+[31m-    visitVariableDeclarator(n: VariableDeclarator): VariableDeclarator;[m
+[31m-    visitTsTypeAliasDeclaration(n: TsTypeAliasDeclaration): Declaration;[m
+[31m-    visitTsModuleDeclaration(n: TsModuleDeclaration): Declaration;[m
+[31m-    visitTsModuleName(n: TsModuleName): TsModuleName;[m
+[31m-    visitTsNamespaceBody(n: TsNamespaceBody): TsNamespaceBody | undefined;[m
+[31m-    visitTsNamespaceDeclaration(n: TsNamespaceDeclaration): TsModuleBlock | TsNamespaceDeclaration;[m
+[31m-    visitTsModuleBlock(n: TsModuleBlock): TsModuleBlock | TsNamespaceDeclaration;[m
+[31m-    visitTsInterfaceDeclaration(n: TsInterfaceDeclaration): TsInterfaceDeclaration;[m
+[31m-    visitTsInterfaceBody(n: TsInterfaceBody): TsInterfaceBody;[m
+[31m-    visitTsTypeElements(nodes: TsTypeElement[]): TsTypeElement[];[m
+[31m-    visitTsTypeElement(n: TsTypeElement): TsTypeElement;[m
+[31m-    visitTsCallSignatureDeclaration(n: TsCallSignatureDeclaration): TsCallSignatureDeclaration;[m
+[31m-    visitTsConstructSignatureDeclaration(n: TsConstructSignatureDeclaration): TsConstructSignatureDeclaration;[m
+[31m-    visitTsPropertySignature(n: TsPropertySignature): TsPropertySignature;[m
+[31m-    visitTsGetterSignature(n: TsGetterSignature): TsGetterSignature;[m
+[31m-    visitTsSetterSignature(n: TsSetterSignature): TsSetterSignature;[m
+[31m-    visitTsMethodSignature(n: TsMethodSignature): TsMethodSignature;[m
+[31m-    visitTsEnumDeclaration(n: TsEnumDeclaration): Declaration;[m
+[31m-    visitTsEnumMembers(nodes: TsEnumMember[]): TsEnumMember[];[m
+[31m-    visitTsEnumMember(n: TsEnumMember): TsEnumMember;[m
+[31m-    visitTsEnumMemberId(n: TsEnumMemberId): TsEnumMemberId;[m
+[31m-    visitFunctionDeclaration(decl: FunctionDeclaration): Declaration;[m
+[31m-    visitClassDeclaration(decl: ClassDeclaration): Declaration;[m
+[31m-    visitClassBody(members: ClassMember[]): ClassMember[];[m
+[31m-    visitClassMember(member: ClassMember): ClassMember;[m
+[31m-    visitTsIndexSignature(n: TsIndexSignature): TsIndexSignature;[m
+[31m-    visitTsFnParameters(params: TsFnParameter[]): TsFnParameter[];[m
+[31m-    visitTsFnParameter(n: TsFnParameter): TsFnParameter;[m
+[31m-    visitPrivateProperty(n: PrivateProperty): ClassMember;[m
+[31m-    visitPrivateMethod(n: PrivateMethod): ClassMember;[m
+[31m-    visitPrivateName(n: PrivateName): PrivateName;[m
+[31m-    visitConstructor(n: Constructor): ClassMember;[m
+[31m-    visitConstructorParameters(nodes: (Param | TsParameterProperty)[]): (Param | TsParameterProperty)[];[m
+[31m-    visitConstructorParameter(n: Param | TsParameterProperty): Param | TsParameterProperty;[m
+[31m-    visitStaticBlock(n: StaticBlock): StaticBlock;[m
+[31m-    visitTsParameterProperty(n: TsParameterProperty): TsParameterProperty | Param;[m
+[31m-    visitTsParameterPropertyParameter(n: TsParameterPropertyParameter): TsParameterPropertyParameter;[m
+[31m-    visitPropertyName(key: PropertyName): PropertyName;[m
+[31m-    visitAccessibility(n: Accessibility | undefined): Accessibility | undefined;[m
+[31m-    visitClassProperty(n: ClassProperty): ClassMember;[m
+[31m-    visitClassMethod(n: ClassMethod): ClassMember;[m
+[31m-    visitComputedPropertyKey(n: ComputedPropName): ComputedPropName;[m
+[31m-    visitClass<T extends Class>(n: T): T;[m
+[31m-    visitFunction<T extends Fn>(n: T): T;[m
+[31m-    visitTsExpressionsWithTypeArguments(nodes: TsExpressionWithTypeArguments[]): TsExpressionWithTypeArguments[];[m
+[31m-    visitTsExpressionWithTypeArguments(n: TsExpressionWithTypeArguments): TsExpressionWithTypeArguments;[m
+[31m-    visitTsTypeParameterInstantiation(n: TsTypeParameterInstantiation | undefined): TsTypeParameterInstantiation | undefined;[m
+[31m-    visitTsTypes(nodes: TsType[]): TsType[];[m
+[31m-    visitTsEntityName(n: TsEntityName): TsEntityName;[m
+[31m-    visitTsQualifiedName(n: TsQualifiedName): TsQualifiedName;[m
+[31m-    visitDecorators(nodes: Decorator[] | undefined): Decorator[] | undefined;[m
+[31m-    visitDecorator(n: Decorator): Decorator;[m
+[31m-    visitExpressionStatement(stmt: ExpressionStatement): Statement;[m
+[31m-    visitContinueStatement(stmt: ContinueStatement): Statement;[m
+[31m-    visitExpression(n: Expression): Expression;[m
+[31m-    visitOptionalChainingExpression(n: OptionalChainingExpression): Expression;[m
+[31m-    visitMemberExpressionOrOptionalChainingCall(n: MemberExpression | OptionalChainingCall): MemberExpression | OptionalChainingCall;[m
+[31m-    visitOptionalChainingCall(n: OptionalChainingCall): OptionalChainingCall;[m
+[31m-    visitAssignmentExpression(n: AssignmentExpression): Expression;[m
+[31m-    visitPatternOrExpression(n: Pattern | Expression): Pattern | Expression;[m
+[31m-    visitYieldExpression(n: YieldExpression): Expression;[m
+[31m-    visitUpdateExpression(n: UpdateExpression): Expression;[m
+[31m-    visitUnaryExpression(n: UnaryExpression): Expression;[m
+[31m-    visitTsTypeAssertion(n: TsTypeAssertion): Expression;[m
+[31m-    visitTsConstAssertion(n: TsConstAssertion): Expression;[m
+[31m-    visitTsInstantiation(n: TsInstantiation): TsInstantiation;[m
+[31m-    visitTsNonNullExpression(n: TsNonNullExpression): Expression;[m
+[31m-    visitTsAsExpression(n: TsAsExpression): Expression;[m
+[31m-    visitTsSatisfiesExpression(n: TsSatisfiesExpression): Expression;[m
+[31m-    visitThisExpression(n: ThisExpression): Expression;[m
+[31m-    visitTemplateLiteral(n: TemplateLiteral): Expression;[m
+[31m-    visitParameters(n: Param[]): Param[];[m
+[31m-    visitParameter(n: Param): Param;[m
+[31m-    visitTaggedTemplateExpression(n: TaggedTemplateExpression): Expression;[m
+[31m-    visitSequenceExpression(n: SequenceExpression): Expression;[m
+[31m-    visitRegExpLiteral(n: RegExpLiteral): Expression;[m
+[31m-    visitParenthesisExpression(n: ParenthesisExpression): Expression;[m
+[31m-    visitObjectExpression(n: ObjectExpression): Expression;[m
+[31m-    visitObjectProperties(nodes: (Property | SpreadElement)[]): (Property | SpreadElement)[];[m
+[31m-    visitObjectProperty(n: Property | SpreadElement): Property | SpreadElement;[m
+[31m-    visitProperty(n: Property): Property | SpreadElement;[m
+[31m-    visitSetterProperty(n: SetterProperty): Property | SpreadElement;[m
+[31m-    visitMethodProperty(n: MethodProperty): Property | SpreadElement;[m
+[31m-    visitKeyValueProperty(n: KeyValueProperty): Property | SpreadElement;[m
+[31m-    visitGetterProperty(n: GetterProperty): Property | SpreadElement;[m
+[31m-    visitAssignmentProperty(n: AssignmentProperty): Property | SpreadElement;[m
+[31m-    visitNullLiteral(n: NullLiteral): NullLiteral;[m
+[31m-    visitNewExpression(n: NewExpression): Expression;[m
+[31m-    visitTsTypeArguments(n: TsTypeParameterInstantiation | undefined): TsTypeParameterInstantiation | undefined;[m
+[31m-    visitArguments(nodes: Argument[]): Argument[];[m
+[31m-    visitArgument(n: Argument): Argument;[m
+[31m-    visitMetaProperty(n: MetaProperty): Expression;[m
+[31m-    visitMemberExpression(n: MemberExpression): MemberExpression;[m
+[31m-    visitSuperPropExpression(n: SuperPropExpression): Expression;[m
+[31m-    visitCallee(n: Expression | Super | Import): Expression | Super | Import;[m
+[31m-    visitJSXText(n: JSXText): JSXText;[m
+[31m-    visitJSXNamespacedName(n: JSXNamespacedName): JSXNamespacedName;[m
+[31m-    visitJSXMemberExpression(n: JSXMemberExpression): JSXMemberExpression;[m
+[31m-    visitJSXObject(n: JSXObject): JSXObject;[m
+[31m-    visitJSXFragment(n: JSXFragment): JSXFragment;[m
+[31m-    visitJSXClosingFragment(n: JSXClosingFragment): JSXClosingFragment;[m
+[31m-    visitJSXElementChildren(nodes: JSXElementChild[]): JSXElementChild[];[m
+[31m-    visitJSXElementChild(n: JSXElementChild): JSXElementChild;[m
+[31m-    visitJSXExpressionContainer(n: JSXExpressionContainer): JSXExpressionContainer;[m
+[31m-    visitJSXSpreadChild(n: JSXSpreadChild): JSXElementChild;[m
+[31m-    visitJSXOpeningFragment(n: JSXOpeningFragment): JSXOpeningFragment;[m
+[31m-    visitJSXEmptyExpression(n: JSXEmptyExpression): Expression;[m
+[31m-    visitJSXElement(n: JSXElement): JSXElement;[m
+[31m-    visitJSXClosingElement(n: JSXClosingElement | undefined): JSXClosingElement | undefined;[m
+[31m-    visitJSXElementName(n: JSXElementName): JSXElementName;[m
+[31m-    visitJSXOpeningElement(n: JSXOpeningElement): JSXOpeningElement;[m
+[31m-    visitJSXAttributes(attrs: JSXAttributeOrSpread[] | undefined): JSXAttributeOrSpread[] | undefined;[m
+[31m-    visitJSXAttributeOrSpread(n: JSXAttributeOrSpread): JSXAttributeOrSpread;[m
+[31m-    visitJSXAttributeOrSpreads(nodes: JSXAttributeOrSpread[]): JSXAttributeOrSpread[];[m
+[31m-    visitJSXAttribute(n: JSXAttribute): JSXAttributeOrSpread;[m
+[31m-    visitJSXAttributeValue(n: JSXAttrValue | undefined): JSXAttrValue | undefined;[m
+[31m-    visitJSXAttributeName(n: JSXAttributeName): JSXAttributeName;[m
+[31m-    visitConditionalExpression(n: ConditionalExpression): Expression;[m
+[31m-    visitCallExpression(n: CallExpression): Expression;[m
+[31m-    visitBooleanLiteral(n: BooleanLiteral): BooleanLiteral;[m
+[31m-    visitBinaryExpression(n: BinaryExpression): Expression;[m
+[31m-    visitAwaitExpression(n: AwaitExpression): Expression;[m
+[31m-    visitTsTypeParameterDeclaration(n: TsTypeParameterDeclaration | undefined): TsTypeParameterDeclaration | undefined;[m
+[31m-    visitTsTypeParameters(nodes: TsTypeParameter[]): TsTypeParameter[];[m
+[31m-    visitTsTypeParameter(n: TsTypeParameter): TsTypeParameter;[m
+[31m-    visitTsTypeAnnotation(a: TsTypeAnnotation | undefined): TsTypeAnnotation | undefined;[m
+[31m-    visitTsType(n: TsType): TsType;[m
+[31m-    visitPatterns(nodes: Pattern[]): Pattern[];[m
+[31m-    visitImportDeclaration(n: ImportDeclaration): ImportDeclaration;[m
+[31m-    visitImportSpecifiers(nodes: ImportSpecifier[]): ImportSpecifier[];[m
+[31m-    visitImportSpecifier(node: ImportSpecifier): ImportSpecifier;[m
+[31m-    visitNamedImportSpecifier(node: NamedImportSpecifier): NamedImportSpecifier;[m
+[31m-    visitImportNamespaceSpecifier(node: ImportNamespaceSpecifier): ImportNamespaceSpecifier;[m
+[31m-    visitImportDefaultSpecifier(node: ImportDefaultSpecifier): ImportSpecifier;[m
+[31m-    visitBindingIdentifier(i: BindingIdentifier): BindingIdentifier;[m
+[31m-    visitIdentifierReference(i: Identifier): Identifier;[m
+[31m-    visitLabelIdentifier(label: Identifier): Identifier;[m
+[31m-    visitIdentifier(n: Identifier): Identifier;[m
+[31m-    visitStringLiteral(n: StringLiteral): StringLiteral;[m
+[31m-    visitNumericLiteral(n: NumericLiteral): NumericLiteral;[m
+[31m-    visitBigIntLiteral(n: BigIntLiteral): BigIntLiteral;[m
+[31m-    visitPattern(n: Pattern): Pattern;[m
+[31m-    visitRestElement(n: RestElement): RestElement;[m
+[31m-    visitAssignmentPattern(n: AssignmentPattern): Pattern;[m
+[31m-    visitObjectPattern(n: ObjectPattern): Pattern;[m
+[31m-    visitObjectPatternProperties(nodes: ObjectPatternProperty[]): ObjectPatternProperty[];[m
+[31m-    visitObjectPatternProperty(n: ObjectPatternProperty): ObjectPatternProperty;[m
+[31m-    visitKeyValuePatternProperty(n: KeyValuePatternProperty): ObjectPatternProperty;[m
+[31m-    visitAssignmentPatternProperty(n: AssignmentPatternProperty): ObjectPatternProperty;[m
+[31m-    visitArrayPattern(n: ArrayPattern): Pattern;[m
+[31m-    visitArrayPatternElements(nodes: (Pattern | undefined)[]): (Pattern | undefined)[];[m
+[31m-    visitArrayPatternElement(n: Pattern | undefined): Pattern | undefined;[m
+[31m-}[m
+[31m-export default Visitor;[m
+[1mdiff --git a/.yarn/unplugged/@swc-core-virtual-7befa79001/node_modules/@swc/core/Visitor.js b/.yarn/unplugged/@swc-core-virtual-7befa79001/node_modules/@swc/core/Visitor.js[m
+[1mdeleted file mode 100644[m
+[1mindex 0d48977..0000000[m
+[1m--- a/.yarn/unplugged/@swc-core-virtual-7befa79001/node_modules/@swc/core/Visitor.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,1408 +0,0 @@[m
+[31m-"use strict";[m
+[31m-Object.defineProperty(exports, "__esModule", { value: true });[m
+[31m-exports.Visitor = void 0;[m
+[31m-/**[m
+[31m- * @deprecated JavaScript API is deprecated. Please use Wasm plugin instead.[m
+[31m- */[m
+[31m-class Visitor {[m
+[31m-    visitProgram(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "Module":[m
+[31m-                return this.visitModule(n);[m
+[31m-            case "Script":[m
+[31m-                return this.visitScript(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitModule(m) {[m
+[31m-        m.body = this.visitModuleItems(m.body);[m
+[31m-        return m;[m
+[31m-    }[m
+[31m-    visitScript(m) {[m
+[31m-        m.body = this.visitStatements(m.body);[m
+[31m-        return m;[m
+[31m-    }[m
+[31m-    visitModuleItems(items) {[m
+[31m-        return items.map(this.visitModuleItem.bind(this));[m
+[31m-    }[m
+[31m-    visitModuleItem(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "ExportDeclaration":[m
+[31m-            case "ExportDefaultDeclaration":[m
+[31m-            case "ExportNamedDeclaration":[m
+[31m-            case "ExportDefaultExpression":[m
+[31m-            case "ImportDeclaration":[m
+[31m-            case "ExportAllDeclaration":[m
+[31m-            case "TsImportEqualsDeclaration":[m
+[31m-            case "TsExportAssignment":[m
+[31m-            case "TsNamespaceExportDeclaration":[m
+[31m-                return this.visitModuleDeclaration(n);[m
+[31m-            default:[m
+[31m-                return this.visitStatement(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitModuleDeclaration(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "ExportDeclaration":[m
+[31m-                return this.visitExportDeclaration(n);[m
+[31m-            case "ExportDefaultDeclaration":[m
+[31m-                return this.visitExportDefaultDeclaration(n);[m
+[31m-            case "ExportNamedDeclaration":[m
+[31m-                return this.visitExportNamedDeclaration(n);[m
+[31m-            case "ExportDefaultExpression":[m
+[31m-                return this.visitExportDefaultExpression(n);[m
+[31m-            case "ImportDeclaration":[m
+[31m-                return this.visitImportDeclaration(n);[m
+[31m-            case "ExportAllDeclaration":[m
+[31m-                return this.visitExportAllDeclaration(n);[m
+[31m-            case "TsImportEqualsDeclaration":[m
+[31m-                return this.visitTsImportEqualsDeclaration(n);[m
+[31m-            case "TsExportAssignment":[m
+[31m-                return this.visitTsExportAssignment(n);[m
+[31m-            case "TsNamespaceExportDeclaration":[m
+[31m-                return this.visitTsNamespaceExportDeclaration(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitTsNamespaceExportDeclaration(n) {[m
+[31m-        n.id = this.visitBindingIdentifier(n.id);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsExportAssignment(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsImportEqualsDeclaration(n) {[m
+[31m-        n.id = this.visitBindingIdentifier(n.id);[m
+[31m-        n.moduleRef = this.visitTsModuleReference(n.moduleRef);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsModuleReference(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "Identifier":[m
+[31m-                return this.visitIdentifierReference(n);[m
+[31m-            case "TsExternalModuleReference":[m
+[31m-                return this.visitTsExternalModuleReference(n);[m
+[31m-            case "TsQualifiedName":[m
+[31m-                return this.visitTsQualifiedName(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitTsExternalModuleReference(n) {[m
+[31m-        n.expression = this.visitStringLiteral(n.expression);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitExportAllDeclaration(n) {[m
+[31m-        n.source = this.visitStringLiteral(n.source);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitExportDefaultExpression(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitExportNamedDeclaration(n) {[m
+[31m-        n.specifiers = this.visitExportSpecifiers(n.specifiers);[m
+[31m-        n.source = this.visitOptionalStringLiteral(n.source);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitExportSpecifiers(nodes) {[m
+[31m-        return nodes.map(this.visitExportSpecifier.bind(this));[m
+[31m-    }[m
+[31m-    visitExportSpecifier(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "ExportDefaultSpecifier":[m
+[31m-                return this.visitExportDefaultSpecifier(n);[m
+[31m-            case "ExportNamespaceSpecifier":[m
+[31m-                return this.visitExportNamespaceSpecifier(n);[m
+[31m-            case "ExportSpecifier":[m
+[31m-                return this.visitNamedExportSpecifier(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitNamedExportSpecifier(n) {[m
+[31m-        if (n.exported) {[m
+[31m-            n.exported = this.visitModuleExportName(n.exported);[m
+[31m-        }[m
+[31m-        n.orig = this.visitModuleExportName(n.orig);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitModuleExportName(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "Identifier":[m
+[31m-                return this.visitIdentifier(n);[m
+[31m-            case "StringLiteral":[m
+[31m-                return this.visitStringLiteral(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitExportNamespaceSpecifier(n) {[m
+[31m-        n.name = this.visitModuleExportName(n.name);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitExportDefaultSpecifier(n) {[m
+[31m-        n.exported = this.visitBindingIdentifier(n.exported);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitOptionalStringLiteral(n) {[m
+[31m-        if (n) {[m
+[31m-            return this.visitStringLiteral(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitExportDefaultDeclaration(n) {[m
+[31m-        n.decl = this.visitDefaultDeclaration(n.decl);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitDefaultDeclaration(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "ClassExpression":[m
+[31m-                return this.visitClassExpression(n);[m
+[31m-            case "FunctionExpression":[m
+[31m-                return this.visitFunctionExpression(n);[m
+[31m-            case "TsInterfaceDeclaration":[m
+[31m-                return this.visitTsInterfaceDeclaration(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitFunctionExpression(n) {[m
+[31m-        n = this.visitFunction(n);[m
+[31m-        if (n.identifier) {[m
+[31m-            n.identifier = this.visitBindingIdentifier(n.identifier);[m
+[31m-        }[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitClassExpression(n) {[m
+[31m-        n = this.visitClass(n);[m
+[31m-        if (n.identifier) {[m
+[31m-            n.identifier = this.visitBindingIdentifier(n.identifier);[m
+[31m-        }[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitExportDeclaration(n) {[m
+[31m-        n.declaration = this.visitDeclaration(n.declaration);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitArrayExpression(e) {[m
+[31m-        if (e.elements) {[m
+[31m-            e.elements = e.elements.map(this.visitArrayElement.bind(this));[m
+[31m-        }[m
+[31m-        return e;[m
+[31m-    }[m
+[31m-    visitArrayElement(e) {[m
+[31m-        if (e) {[m
+[31m-            return this.visitExprOrSpread(e);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitExprOrSpread(e) {[m
+[31m-        return Object.assign(Object.assign({}, e), { expression: this.visitExpression(e.expression) });[m
+[31m-    }[m
+[31m-    visitExprOrSpreads(nodes) {[m
+[31m-        return nodes.map(this.visitExprOrSpread.bind(this));[m
+[31m-    }[m
+[31m-    visitSpreadElement(e) {[m
+[31m-        e.arguments = this.visitExpression(e.arguments);[m
+[31m-        return e;[m
+[31m-    }[m
+[31m-    visitOptionalExpression(e) {[m
+[31m-        if (e) {[m
+[31m-            return this.visitExpression(e);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitArrowFunctionExpression(e) {[m
+[31m-        e.body = this.visitArrowBody(e.body);[m
+[31m-        e.params = this.visitPatterns(e.params);[m
+[31m-        e.returnType = this.visitTsTypeAnnotation(e.returnType);[m
+[31m-        e.typeParameters = this.visitTsTypeParameterDeclaration(e.typeParameters);[m
+[31m-        return e;[m
+[31m-    }[m
+[31m-    visitArrowBody(body) {[m
+[31m-        switch (body.type) {[m
+[31m-            case "BlockStatement":[m
+[31m-                return this.visitBlockStatement(body);[m
+[31m-            default:[m
+[31m-                return this.visitExpression(body);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitBlockStatement(block) {[m
+[31m-        block.stmts = this.visitStatements(block.stmts);[m
+[31m-        return block;[m
+[31m-    }[m
+[31m-    visitStatements(stmts) {[m
+[31m-        return stmts.map(this.visitStatement.bind(this));[m
+[31m-    }[m
+[31m-    visitStatement(stmt) {[m
+[31m-        switch (stmt.type) {[m
+[31m-            case "ClassDeclaration":[m
+[31m-            case "FunctionDeclaration":[m
+[31m-            case "TsEnumDeclaration":[m
+[31m-            case "TsInterfaceDeclaration":[m
+[31m-            case "TsModuleDeclaration":[m
+[31m-            case "TsTypeAliasDeclaration":[m
+[31m-            case "VariableDeclaration":[m
+[31m-                return this.visitDeclaration(stmt);[m
+[31m-            case "BreakStatement":[m
+[31m-                return this.visitBreakStatement(stmt);[m
+[31m-            case "BlockStatement":[m
+[31m-                return this.visitBlockStatement(stmt);[m
+[31m-            case "ContinueStatement":[m
+[31m-                return this.visitContinueStatement(stmt);[m
+[31m-            case "DebuggerStatement":[m
+[31m-                return this.visitDebuggerStatement(stmt);[m
+[31m-            case "DoWhileStatement":[m
+[31m-                return this.visitDoWhileStatement(stmt);[m
+[31m-            case "EmptyStatement":[m
+[31m-                return this.visitEmptyStatement(stmt);[m
+[31m-            case "ForInStatement":[m
+[31m-                return this.visitForInStatement(stmt);[m
+[31m-            case "ForOfStatement":[m
+[31m-                return this.visitForOfStatement(stmt);[m
+[31m-            case "ForStatement":[m
+[31m-                return this.visitForStatement(stmt);[m
+[31m-            case "IfStatement":[m
+[31m-                return this.visitIfStatement(stmt);[m
+[31m-            case "LabeledStatement":[m
+[31m-                return this.visitLabeledStatement(stmt);[m
+[31m-            case "ReturnStatement":[m
+[31m-                return this.visitReturnStatement(stmt);[m
+[31m-            case "SwitchStatement":[m
+[31m-                return this.visitSwitchStatement(stmt);[m
+[31m-            case "ThrowStatement":[m
+[31m-                return this.visitThrowStatement(stmt);[m
+[31m-            case "TryStatement":[m
+[31m-                return this.visitTryStatement(stmt);[m
+[31m-            case "WhileStatement":[m
+[31m-                return this.visitWhileStatement(stmt);[m
+[31m-            case "WithStatement":[m
+[31m-                return this.visitWithStatement(stmt);[m
+[31m-            case "ExpressionStatement":[m
+[31m-                return this.visitExpressionStatement(stmt);[m
+[31m-            default:[m
+[31m-                throw new Error(`Unknown statement type: ` + stmt.type);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitSwitchStatement(stmt) {[m
+[31m-        stmt.discriminant = this.visitExpression(stmt.discriminant);[m
+[31m-        stmt.cases = this.visitSwitchCases(stmt.cases);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitSwitchCases(cases) {[m
+[31m-        return cases.map(this.visitSwitchCase.bind(this));[m
+[31m-    }[m
+[31m-    visitSwitchCase(c) {[m
+[31m-        c.test = this.visitOptionalExpression(c.test);[m
+[31m-        c.consequent = this.visitStatements(c.consequent);[m
+[31m-        return c;[m
+[31m-    }[m
+[31m-    visitIfStatement(stmt) {[m
+[31m-        stmt.test = this.visitExpression(stmt.test);[m
+[31m-        stmt.consequent = this.visitStatement(stmt.consequent);[m
+[31m-        stmt.alternate = this.visitOptionalStatement(stmt.alternate);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitOptionalStatement(stmt) {[m
+[31m-        if (stmt) {[m
+[31m-            return this.visitStatement(stmt);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitBreakStatement(stmt) {[m
+[31m-        if (stmt.label) {[m
+[31m-            stmt.label = this.visitLabelIdentifier(stmt.label);[m
+[31m-        }[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitWhileStatement(stmt) {[m
+[31m-        stmt.test = this.visitExpression(stmt.test);[m
+[31m-        stmt.body = this.visitStatement(stmt.body);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitTryStatement(stmt) {[m
+[31m-        stmt.block = this.visitBlockStatement(stmt.block);[m
+[31m-        stmt.handler = this.visitCatchClause(stmt.handler);[m
+[31m-        if (stmt.finalizer) {[m
+[31m-            stmt.finalizer = this.visitBlockStatement(stmt.finalizer);[m
+[31m-        }[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitCatchClause(handler) {[m
+[31m-        if (handler) {[m
+[31m-            if (handler.param) {[m
+[31m-                handler.param = this.visitPattern(handler.param);[m
+[31m-            }[m
+[31m-            handler.body = this.visitBlockStatement(handler.body);[m
+[31m-        }[m
+[31m-        return handler;[m
+[31m-    }[m
+[31m-    visitThrowStatement(stmt) {[m
+[31m-        stmt.argument = this.visitExpression(stmt.argument);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitReturnStatement(stmt) {[m
+[31m-        if (stmt.argument) {[m
+[31m-            stmt.argument = this.visitExpression(stmt.argument);[m
+[31m-        }[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitLabeledStatement(stmt) {[m
+[31m-        stmt.label = this.visitLabelIdentifier(stmt.label);[m
+[31m-        stmt.body = this.visitStatement(stmt.body);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitForStatement(stmt) {[m
+[31m-        if (stmt.init) {[m
+[31m-            if (stmt.init.type === "VariableDeclaration") {[m
+[31m-                stmt.init = this.visitVariableDeclaration(stmt.init);[m
+[31m-            }[m
+[31m-            else {[m
+[31m-                stmt.init = this.visitOptionalExpression(stmt.init);[m
+[31m-            }[m
+[31m-        }[m
+[31m-        stmt.test = this.visitOptionalExpression(stmt.test);[m
+[31m-        stmt.update = this.visitOptionalExpression(stmt.update);[m
+[31m-        stmt.body = this.visitStatement(stmt.body);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitForOfStatement(stmt) {[m
+[31m-        if (stmt.left.type === "VariableDeclaration") {[m
+[31m-            stmt.left = this.visitVariableDeclaration(stmt.left);[m
+[31m-        }[m
+[31m-        else {[m
+[31m-            stmt.left = this.visitPattern(stmt.left);[m
+[31m-        }[m
+[31m-        stmt.right = this.visitExpression(stmt.right);[m
+[31m-        stmt.body = this.visitStatement(stmt.body);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitForInStatement(stmt) {[m
+[31m-        if (stmt.left.type === "VariableDeclaration") {[m
+[31m-            stmt.left = this.visitVariableDeclaration(stmt.left);[m
+[31m-        }[m
+[31m-        else {[m
+[31m-            stmt.left = this.visitPattern(stmt.left);[m
+[31m-        }[m
+[31m-        stmt.right = this.visitExpression(stmt.right);[m
+[31m-        stmt.body = this.visitStatement(stmt.body);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitEmptyStatement(stmt) {[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitDoWhileStatement(stmt) {[m
+[31m-        stmt.body = this.visitStatement(stmt.body);[m
+[31m-        stmt.test = this.visitExpression(stmt.test);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitDebuggerStatement(stmt) {[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitWithStatement(stmt) {[m
+[31m-        stmt.object = this.visitExpression(stmt.object);[m
+[31m-        stmt.body = this.visitStatement(stmt.body);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitDeclaration(decl) {[m
+[31m-        switch (decl.type) {[m
+[31m-            case "ClassDeclaration":[m
+[31m-                return this.visitClassDeclaration(decl);[m
+[31m-            case "FunctionDeclaration":[m
+[31m-                return this.visitFunctionDeclaration(decl);[m
+[31m-            case "TsEnumDeclaration":[m
+[31m-                return this.visitTsEnumDeclaration(decl);[m
+[31m-            case "TsInterfaceDeclaration":[m
+[31m-                return this.visitTsInterfaceDeclaration(decl);[m
+[31m-            case "TsModuleDeclaration":[m
+[31m-                return this.visitTsModuleDeclaration(decl);[m
+[31m-            case "TsTypeAliasDeclaration":[m
+[31m-                return this.visitTsTypeAliasDeclaration(decl);[m
+[31m-            case "VariableDeclaration":[m
+[31m-                return this.visitVariableDeclaration(decl);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitVariableDeclaration(n) {[m
+[31m-        n.declarations = this.visitVariableDeclarators(n.declarations);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitVariableDeclarators(nodes) {[m
+[31m-        return nodes.map(this.visitVariableDeclarator.bind(this));[m
+[31m-    }[m
+[31m-    visitVariableDeclarator(n) {[m
+[31m-        n.id = this.visitPattern(n.id);[m
+[31m-        n.init = this.visitOptionalExpression(n.init);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsTypeAliasDeclaration(n) {[m
+[31m-        n.id = this.visitBindingIdentifier(n.id);[m
+[31m-        n.typeAnnotation = this.visitTsType(n.typeAnnotation);[m
+[31m-        n.typeParams = this.visitTsTypeParameterDeclaration(n.typeParams);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsModuleDeclaration(n) {[m
+[31m-        n.id = this.visitTsModuleName(n.id);[m
+[31m-        if (n.body) {[m
+[31m-            n.body = this.visitTsNamespaceBody(n.body);[m
+[31m-        }[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsModuleName(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "Identifier":[m
+[31m-                return this.visitBindingIdentifier(n);[m
+[31m-            case "StringLiteral":[m
+[31m-                return this.visitStringLiteral(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitTsNamespaceBody(n) {[m
+[31m-        if (n) {[m
+[31m-            switch (n.type) {[m
+[31m-                case "TsModuleBlock":[m
+[31m-                    return this.visitTsModuleBlock(n);[m
+[31m-                case "TsNamespaceDeclaration":[m
+[31m-                    return this.visitTsNamespaceDeclaration(n);[m
+[31m-            }[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitTsNamespaceDeclaration(n) {[m
+[31m-        const body = this.visitTsNamespaceBody(n.body);[m
+[31m-        if (body) {[m
+[31m-            n.body = body;[m
+[31m-        }[m
+[31m-        n.id = this.visitBindingIdentifier(n.id);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsModuleBlock(n) {[m
+[31m-        n.body = this.visitModuleItems(n.body);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsInterfaceDeclaration(n) {[m
+[31m-        n.id = this.visitBindingIdentifier(n.id);[m
+[31m-        n.typeParams = this.visitTsTypeParameterDeclaration(n.typeParams);[m
+[31m-        n.extends = this.visitTsExpressionsWithTypeArguments(n.extends);[m
+[31m-        n.body = this.visitTsInterfaceBody(n.body);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsInterfaceBody(n) {[m
+[31m-        n.body = this.visitTsTypeElements(n.body);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsTypeElements(nodes) {[m
+[31m-        return nodes.map(this.visitTsTypeElement.bind(this));[m
+[31m-    }[m
+[31m-    visitTsTypeElement(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "TsCallSignatureDeclaration":[m
+[31m-                return this.visitTsCallSignatureDeclaration(n);[m
+[31m-            case "TsConstructSignatureDeclaration":[m
+[31m-                return this.visitTsConstructSignatureDeclaration(n);[m
+[31m-            case "TsPropertySignature":[m
+[31m-                return this.visitTsPropertySignature(n);[m
+[31m-            case "TsGetterSignature":[m
+[31m-                return this.visitTsGetterSignature(n);[m
+[31m-            case "TsSetterSignature":[m
+[31m-                return this.visitTsSetterSignature(n);[m
+[31m-            case "TsMethodSignature":[m
+[31m-                return this.visitTsMethodSignature(n);[m
+[31m-            case "TsIndexSignature":[m
+[31m-                return this.visitTsIndexSignature(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitTsCallSignatureDeclaration(n) {[m
+[31m-        n.params = this.visitTsFnParameters(n.params);[m
+[31m-        n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsConstructSignatureDeclaration(n) {[m
+[31m-        n.params = this.visitTsFnParameters(n.params);[m
+[31m-        n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsPropertySignature(n) {[m
+[31m-        n.params = this.visitTsFnParameters(n.params);[m
+[31m-        n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsGetterSignature(n) {[m
+[31m-        n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsSetterSignature(n) {[m
+[31m-        n.param = this.visitTsFnParameter(n.param);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsMethodSignature(n) {[m
+[31m-        n.params = this.visitTsFnParameters(n.params);[m
+[31m-        n.typeAnn = this.visitTsTypeAnnotation(n.typeAnn);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsEnumDeclaration(n) {[m
+[31m-        n.id = this.visitIdentifier(n.id);[m
+[31m-        n.members = this.visitTsEnumMembers(n.members);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsEnumMembers(nodes) {[m
+[31m-        return nodes.map(this.visitTsEnumMember.bind(this));[m
+[31m-    }[m
+[31m-    visitTsEnumMember(n) {[m
+[31m-        n.id = this.visitTsEnumMemberId(n.id);[m
+[31m-        n.init = this.visitOptionalExpression(n.init);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsEnumMemberId(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "Identifier":[m
+[31m-                return this.visitBindingIdentifier(n);[m
+[31m-            case "StringLiteral":[m
+[31m-                return this.visitStringLiteral(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitFunctionDeclaration(decl) {[m
+[31m-        decl.identifier = this.visitIdentifier(decl.identifier);[m
+[31m-        decl = this.visitFunction(decl);[m
+[31m-        return decl;[m
+[31m-    }[m
+[31m-    visitClassDeclaration(decl) {[m
+[31m-        decl = this.visitClass(decl);[m
+[31m-        decl.identifier = this.visitIdentifier(decl.identifier);[m
+[31m-        return decl;[m
+[31m-    }[m
+[31m-    visitClassBody(members) {[m
+[31m-        return members.map(this.visitClassMember.bind(this));[m
+[31m-    }[m
+[31m-    visitClassMember(member) {[m
+[31m-        switch (member.type) {[m
+[31m-            case "ClassMethod":[m
+[31m-                return this.visitClassMethod(member);[m
+[31m-            case "ClassProperty":[m
+[31m-                return this.visitClassProperty(member);[m
+[31m-            case "Constructor":[m
+[31m-                return this.visitConstructor(member);[m
+[31m-            case "PrivateMethod":[m
+[31m-                return this.visitPrivateMethod(member);[m
+[31m-            case "PrivateProperty":[m
+[31m-                return this.visitPrivateProperty(member);[m
+[31m-            case "TsIndexSignature":[m
+[31m-                return this.visitTsIndexSignature(member);[m
+[31m-            case "EmptyStatement":[m
+[31m-                return this.visitEmptyStatement(member);[m
+[31m-            case "StaticBlock":[m
+[31m-                return this.visitStaticBlock(member);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitTsIndexSignature(n) {[m
+[31m-        n.params = this.visitTsFnParameters(n.params);[m
+[31m-        if (n.typeAnnotation)[m
+[31m-            n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsFnParameters(params) {[m
+[31m-        return params.map(this.visitTsFnParameter.bind(this));[m
+[31m-    }[m
+[31m-    visitTsFnParameter(n) {[m
+[31m-        n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitPrivateProperty(n) {[m
+[31m-        n.decorators = this.visitDecorators(n.decorators);[m
+[31m-        n.key = this.visitPrivateName(n.key);[m
+[31m-        n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        n.value = this.visitOptionalExpression(n.value);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitPrivateMethod(n) {[m
+[31m-        n.accessibility = this.visitAccessibility(n.accessibility);[m
+[31m-        n.function = this.visitFunction(n.function);[m
+[31m-        n.key = this.visitPrivateName(n.key);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitPrivateName(n) {[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitConstructor(n) {[m
+[31m-        n.accessibility = this.visitAccessibility(n.accessibility);[m
+[31m-        n.key = this.visitPropertyName(n.key);[m
+[31m-        n.params = this.visitConstructorParameters(n.params);[m
+[31m-        if (n.body) {[m
+[31m-            n.body = this.visitBlockStatement(n.body);[m
+[31m-        }[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitConstructorParameters(nodes) {[m
+[31m-        return nodes.map(this.visitConstructorParameter.bind(this));[m
+[31m-    }[m
+[31m-    visitConstructorParameter(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "TsParameterProperty":[m
+[31m-                return this.visitTsParameterProperty(n);[m
+[31m-            default:[m
+[31m-                return this.visitParameter(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitStaticBlock(n) {[m
+[31m-        n.body = this.visitBlockStatement(n.body);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsParameterProperty(n) {[m
+[31m-        n.accessibility = this.visitAccessibility(n.accessibility);[m
+[31m-        n.decorators = this.visitDecorators(n.decorators);[m
+[31m-        n.param = this.visitTsParameterPropertyParameter(n.param);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsParameterPropertyParameter(n) {[m
+[31m-        n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitPropertyName(key) {[m
+[31m-        switch (key.type) {[m
+[31m-            case "Identifier":[m
+[31m-                return this.visitBindingIdentifier(key);[m
+[31m-            case "StringLiteral":[m
+[31m-                return this.visitStringLiteral(key);[m
+[31m-            case "NumericLiteral":[m
+[31m-                return this.visitNumericLiteral(key);[m
+[31m-            case "BigIntLiteral":[m
+[31m-                return this.visitBigIntLiteral(key);[m
+[31m-            default:[m
+[31m-                return this.visitComputedPropertyKey(key);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitAccessibility(n) {[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitClassProperty(n) {[m
+[31m-        n.accessibility = this.visitAccessibility(n.accessibility);[m
+[31m-        n.decorators = this.visitDecorators(n.decorators);[m
+[31m-        n.key = this.visitPropertyName(n.key);[m
+[31m-        n.typeAnnotation = this.visitTsTypeAnnotation(n.typeAnnotation);[m
+[31m-        n.value = this.visitOptionalExpression(n.value);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitClassMethod(n) {[m
+[31m-        n.accessibility = this.visitAccessibility(n.accessibility);[m
+[31m-        n.function = this.visitFunction(n.function);[m
+[31m-        n.key = this.visitPropertyName(n.key);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitComputedPropertyKey(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitClass(n) {[m
+[31m-        n.decorators = this.visitDecorators(n.decorators);[m
+[31m-        n.superClass = this.visitOptionalExpression(n.superClass);[m
+[31m-        n.superTypeParams = this.visitTsTypeParameterInstantiation(n.superTypeParams);[m
+[31m-        if (n.implements) {[m
+[31m-            n.implements = this.visitTsExpressionsWithTypeArguments(n.implements);[m
+[31m-        }[m
+[31m-        n.body = this.visitClassBody(n.body);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitFunction(n) {[m
+[31m-        n.decorators = this.visitDecorators(n.decorators);[m
+[31m-        n.params = this.visitParameters(n.params);[m
+[31m-        if (n.body) {[m
+[31m-            n.body = this.visitBlockStatement(n.body);[m
+[31m-        }[m
+[31m-        n.returnType = this.visitTsTypeAnnotation(n.returnType);[m
+[31m-        n.typeParameters = this.visitTsTypeParameterDeclaration(n.typeParameters);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsExpressionsWithTypeArguments(nodes) {[m
+[31m-        return nodes.map(this.visitTsExpressionWithTypeArguments.bind(this));[m
+[31m-    }[m
+[31m-    visitTsExpressionWithTypeArguments(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        n.typeArguments = this.visitTsTypeParameterInstantiation(n.typeArguments);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsTypeParameterInstantiation(n) {[m
+[31m-        if (n) {[m
+[31m-            n.params = this.visitTsTypes(n.params);[m
+[31m-        }[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsTypes(nodes) {[m
+[31m-        return nodes.map(this.visitTsType.bind(this));[m
+[31m-    }[m
+[31m-    visitTsEntityName(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "Identifier":[m
+[31m-                return this.visitBindingIdentifier(n);[m
+[31m-            case "TsQualifiedName":[m
+[31m-                return this.visitTsQualifiedName(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitTsQualifiedName(n) {[m
+[31m-        n.left = this.visitTsEntityName(n.left);[m
+[31m-        n.right = this.visitIdentifier(n.right);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitDecorators(nodes) {[m
+[31m-        if (nodes) {[m
+[31m-            return nodes.map(this.visitDecorator.bind(this));[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitDecorator(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitExpressionStatement(stmt) {[m
+[31m-        stmt.expression = this.visitExpression(stmt.expression);[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitContinueStatement(stmt) {[m
+[31m-        if (stmt.label) {[m
+[31m-            stmt.label = this.visitLabelIdentifier(stmt.label);[m
+[31m-        }[m
+[31m-        return stmt;[m
+[31m-    }[m
+[31m-    visitExpression(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "ArrayExpression":[m
+[31m-                return this.visitArrayExpression(n);[m
+[31m-            case "ArrowFunctionExpression":[m
+[31m-                return this.visitArrowFunctionExpression(n);[m
+[31m-            case "AssignmentExpression":[m
+[31m-                return this.visitAssignmentExpression(n);[m
+[31m-            case "AwaitExpression":[m
+[31m-                return this.visitAwaitExpression(n);[m
+[31m-            case "BigIntLiteral":[m
+[31m-                return this.visitBigIntLiteral(n);[m
+[31m-            case "BinaryExpression":[m
+[31m-                return this.visitBinaryExpression(n);[m
+[31m-            case "BooleanLiteral":[m
+[31m-                return this.visitBooleanLiteral(n);[m
+[31m-            case "CallExpression":[m
+[31m-                return this.visitCallExpression(n);[m
+[31m-            case "ClassExpression":[m
+[31m-                return this.visitClassExpression(n);[m
+[31m-            case "ConditionalExpression":[m
+[31m-                return this.visitConditionalExpression(n);[m
+[31m-            case "FunctionExpression":[m
+[31m-                return this.visitFunctionExpression(n);[m
+[31m-            case "Identifier":[m
+[31m-                return this.visitIdentifierReference(n);[m
+[31m-            case "JSXElement":[m
+[31m-                return this.visitJSXElement(n);[m
+[31m-            case "JSXEmptyExpression":[m
+[31m-                return this.visitJSXEmptyExpression(n);[m
+[31m-            case "JSXFragment":[m
+[31m-                return this.visitJSXFragment(n);[m
+[31m-            case "JSXMemberExpression":[m
+[31m-                return this.visitJSXMemberExpression(n);[m
+[31m-            case "JSXNamespacedName":[m
+[31m-                return this.visitJSXNamespacedName(n);[m
+[31m-            case "JSXText":[m
+[31m-                return this.visitJSXText(n);[m
+[31m-            case "MemberExpression":[m
+[31m-                return this.visitMemberExpression(n);[m
+[31m-            case "SuperPropExpression":[m
+[31m-                return this.visitSuperPropExpression(n);[m
+[31m-            case "MetaProperty":[m
+[31m-                return this.visitMetaProperty(n);[m
+[31m-            case "NewExpression":[m
+[31m-                return this.visitNewExpression(n);[m
+[31m-            case "NullLiteral":[m
+[31m-                return this.visitNullLiteral(n);[m
+[31m-            case "NumericLiteral":[m
+[31m-                return this.visitNumericLiteral(n);[m
+[31m-            case "ObjectExpression":[m
+[31m-                return this.visitObjectExpression(n);[m
+[31m-            case "ParenthesisExpression":[m
+[31m-                return this.visitParenthesisExpression(n);[m
+[31m-            case "PrivateName":[m
+[31m-                return this.visitPrivateName(n);[m
+[31m-            case "RegExpLiteral":[m
+[31m-                return this.visitRegExpLiteral(n);[m
+[31m-            case "SequenceExpression":[m
+[31m-                return this.visitSequenceExpression(n);[m
+[31m-            case "StringLiteral":[m
+[31m-                return this.visitStringLiteral(n);[m
+[31m-            case "TaggedTemplateExpression":[m
+[31m-                return this.visitTaggedTemplateExpression(n);[m
+[31m-            case "TemplateLiteral":[m
+[31m-                return this.visitTemplateLiteral(n);[m
+[31m-            case "ThisExpression":[m
+[31m-                return this.visitThisExpression(n);[m
+[31m-            case "TsAsExpression":[m
+[31m-                return this.visitTsAsExpression(n);[m
+[31m-            case "TsSatisfiesExpression":[m
+[31m-                return this.visitTsSatisfiesExpression(n);[m
+[31m-            case "TsNonNullExpression":[m
+[31m-                return this.visitTsNonNullExpression(n);[m
+[31m-            case "TsTypeAssertion":[m
+[31m-                return this.visitTsTypeAssertion(n);[m
+[31m-            case "TsConstAssertion":[m
+[31m-                return this.visitTsConstAssertion(n);[m
+[31m-            case "TsInstantiation":[m
+[31m-                return this.visitTsInstantiation(n);[m
+[31m-            case "UnaryExpression":[m
+[31m-                return this.visitUnaryExpression(n);[m
+[31m-            case "UpdateExpression":[m
+[31m-                return this.visitUpdateExpression(n);[m
+[31m-            case "YieldExpression":[m
+[31m-                return this.visitYieldExpression(n);[m
+[31m-            case "OptionalChainingExpression":[m
+[31m-                return this.visitOptionalChainingExpression(n);[m
+[31m-            case "Invalid":[m
+[31m-                return n;[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitOptionalChainingExpression(n) {[m
+[31m-        n.base = this.visitMemberExpressionOrOptionalChainingCall(n.base);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitMemberExpressionOrOptionalChainingCall(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "MemberExpression":[m
+[31m-                return this.visitMemberExpression(n);[m
+[31m-            case "CallExpression":[m
+[31m-                return this.visitOptionalChainingCall(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitOptionalChainingCall(n) {[m
+[31m-        n.callee = this.visitExpression(n.callee);[m
+[31m-        n.arguments = this.visitExprOrSpreads(n.arguments);[m
+[31m-        if (n.typeArguments)[m
+[31m-            n.typeArguments = this.visitTsTypeParameterInstantiation(n.typeArguments);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitAssignmentExpression(n) {[m
+[31m-        n.left = this.visitPatternOrExpression(n.left);[m
+[31m-        n.right = this.visitExpression(n.right);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitPatternOrExpression(n) {[m
+[31m-        switch (n.type) {[m
+[31m-            case "ObjectPattern":[m
+[31m-            case "ArrayPattern":[m
+[31m-            case "Identifier":[m
+[31m-            case "AssignmentPattern":[m
+[31m-            case "RestElement":[m
+[31m-                return this.visitPattern(n);[m
+[31m-            default:[m
+[31m-                return this.visitExpression(n);[m
+[31m-        }[m
+[31m-    }[m
+[31m-    visitYieldExpression(n) {[m
+[31m-        n.argument = this.visitOptionalExpression(n.argument);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitUpdateExpression(n) {[m
+[31m-        n.argument = this.visitExpression(n.argument);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitUnaryExpression(n) {[m
+[31m-        n.argument = this.visitExpression(n.argument);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsTypeAssertion(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        n.typeAnnotation = this.visitTsType(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsConstAssertion(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsInstantiation(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsNonNullExpression(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsAsExpression(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        n.typeAnnotation = this.visitTsType(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTsSatisfiesExpression(n) {[m
+[31m-        n.expression = this.visitExpression(n.expression);[m
+[31m-        n.typeAnnotation = this.visitTsType(n.typeAnnotation);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitThisExpression(n) {[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTemplateLiteral(n) {[m
+[31m-        n.expressions = n.expressions.map(this.visitExpression.bind(this));[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitParameters(n) {[m
+[31m-        return n.map(this.visitParameter.bind(this));[m
+[31m-    }[m
+[31m-    visitParameter(n) {[m
+[31m-        n.pat = this.visitPattern(n.pat);[m
+[31m-        return n;[m
+[31m-    }[m
+[31m-    visitTaggedTemplateExpression(n) {[m
+[31m-        n.tag = this.visitExpression(n.
