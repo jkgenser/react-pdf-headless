@@ -2,6 +2,9 @@
   "name": "react-pdf-headless",
   "version": "0.1.0",
   "type": "module",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
