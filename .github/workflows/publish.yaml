@@ -42,7 +42,7 @@ jobs:
         run: corepack enable
 
       - name: Install dependencies
-        run: yarn --immutables
+        run: yarn --immutable
 
       - name: build types
         run: yarn run tsc --project tsconfig.build.json
