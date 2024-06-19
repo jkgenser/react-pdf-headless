@@ -13,7 +13,7 @@
   },
   "main": "./dist/index.js",
   "source": "./src/index.ts",
-  "types": "./src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@tanstack/react-virtual": "^3.5.0",
     "react": "^18.3.1",

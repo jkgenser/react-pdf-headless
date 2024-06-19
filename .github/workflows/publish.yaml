@@ -42,13 +42,13 @@ jobs:
         run: corepack enable
 
       - name: Install dependencies
-        run: yarn --immutable
-
-      - name: build types
-        run: yarn run tsc ./src/index.ts
+        run: yarn --immutables
 
       - name: build index.js
         run: yarn run build
+
+      - name: build types
+        run: yarn run tsc --project tsconfig.build.json
 
       - name: Generate archive
         run: yarn pack --filename ./src/package.tgz

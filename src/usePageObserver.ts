@@ -2,7 +2,7 @@
 // this way we can accurately track whenever the page is changed
 // by the most amount of visibility
 
-import React, { MutableRefObject, useEffect, useMemo, useState } from "react";
+import { MutableRefObject, useEffect, useMemo, useState } from "react";
 
 const THRESHOLD = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
 
