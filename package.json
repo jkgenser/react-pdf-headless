@@ -1,6 +1,6 @@
 {
   "name": "react-pdf-headless",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "files": [
     "src", "dist"
@@ -11,6 +11,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "main": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@tanstack/react-virtual": "^3.5.0",
     "react": "^18.3.1",
