@@ -36,6 +36,8 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
+      - name: Install Yarn
+        run: npm install --global yarn@4.2.2
 
       - name: Install dependencies
         run: yarn --immutable
