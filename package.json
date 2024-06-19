@@ -1,6 +1,6 @@
 {
   "name": "react-pdf-headless",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "type": "module",
   "files": [
     "src", "dist"
