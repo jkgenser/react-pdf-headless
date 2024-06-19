@@ -55,9 +55,7 @@ const Page = ({
       <div
         id="page-inner-box"
         style={{
-          // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          border: "1px solid lightgray",
-          borderRadius: "4px",
+          boxShadow: "2px 2px 8px 0 rgba(0, 0, 0, 0.1)",
           width: `${innerBoxWidth}px`,
           padding: "0px",
           margin: "5px",
