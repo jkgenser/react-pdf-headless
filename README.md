@@ -1,30 +1,23 @@
-# React + TypeScript + Vite
+# react-pdf-headless
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`react-pdf-headless` is a React component for efficiently rendering and navigating PDF documents. There is some styling that is applied in order for the basic functionality to work, but styling can be overridden by passing in a class override.
 
-Currently, two official plugins are available:
+It leverages virtualization to handle large documents smoothly and provides APIs for client-side interactions such as jumping to specific pages or highlighted areas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+npm install react-pdf-headless
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## API Methods
+The setReaderAPI prop allows access to the following methods:
+
+jumpToPage(pageIndex: number)
+Scrolls to the specified page index.
+
+jumpToOffset(offset: number)
+Scrolls to the specified vertical offset.
+
+jumpToHighlightArea(area: HighlightArea)
+Scrolls to the specified highlight area within the document.
