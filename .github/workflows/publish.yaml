@@ -33,11 +33,11 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Use specific Yarn version
-        run: corepack prepare yarn@4.2.2 --activate          
-
       - name: Enable Corepack
         run: corepack enable
+
+      - name: Use specific Yarn version
+        run: corepack prepare yarn@4.2.2 --activate          
 
       - name: Install dependencies
         run: yarn --immutable
