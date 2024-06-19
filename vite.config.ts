@@ -11,5 +11,5 @@ export default defineConfig({
     },
   },
   plugins: [react()],
-  publicDir: false
+  // publicDir: false
 });

@@ -12,6 +12,7 @@ import { getOffsetForHighlight } from "./util";
 
 const EXTRA_HEIGHT = 10;
 const RESERVE_WIDTH = 50;
+const DEFAULT_HEIGHT = 600;
 
 const determineScale = (parentElement: HTMLElement, width: number): number => {
   const scaleWidth = (parentElement.clientWidth - RESERVE_WIDTH) / width;
@@ -30,7 +31,9 @@ const Reader = ({
 }: ReaderProps) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
-  const [viewports, setPageViewports] = useState<Array<PageViewport>>([]);
+  const [viewports, setPageViewports] = useState<Array<PageViewport> | null>(
+    null
+  );
   const [pdf, setPdf] = useState<PDFDocumentProxy | null>(null);
   const [scale, setScale] = useState<number | undefined>(initialScale);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
@@ -40,12 +43,12 @@ const Reader = ({
     setNumPages(newPdf.numPages);
 
     // user defined callback
-    onDocumentLoad && onDocumentLoad()
+    onDocumentLoad && onDocumentLoad();
   };
 
   const estimateSize = useCallback(
     (index: number) => {
-      if (!viewports) return 0;
+      if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
       return viewports[index].height + EXTRA_HEIGHT;
     },
     [viewports]
@@ -75,7 +78,6 @@ const Reader = ({
             scale: scale as number,
             rotation,
           });
-          console.log({ viewport, scale, rotation });
           return viewport;
         })
       );
@@ -109,7 +111,7 @@ const Reader = ({
   useEffect(() => {
     if (!currentPage) return;
     onPageChange && pdf && onPageChange({ currentPage, doc: pdf });
-  }, [currentPage, pdf, onPageChange]);
+  }, [currentPage]);
 
   useEffect(() => {
     if (!setReaderAPI) return;
@@ -134,7 +136,6 @@ const Reader = ({
         "start"
       )[0];
       const itemHeight = estimateSize(area.pageIndex);
-      console.log("itemHeight", itemHeight);
       const offset = getOffsetForHighlight({
         ...area,
         rotation,
@@ -160,7 +161,7 @@ const Reader = ({
     virtualizer,
     estimateSize,
   });
-  const isScrollingFast = Math.abs(normalizedVelocity) > 1;
+  const isScrollingFast = Math.abs(normalizedVelocity) > 1.5;
   const shouldRender = !isScrollingFast;
 
   return (

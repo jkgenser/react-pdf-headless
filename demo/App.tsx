@@ -58,6 +58,14 @@ function App() {
     );
   };
 
+  const handlePageNumChange = (e:any) => {
+    if (e.target.value===''){
+      setPageNum(null);
+      return
+    }
+    setPageNum(e.target.value)
+  }
+
   return (
     <div style={{ display: "flex" }}>
       <div
@@ -66,6 +74,7 @@ function App() {
           flexDirection: "column",
         }}
       >
+      <input type="number" value={!pageNum ? '' : pageNum} onChange={handlePageNumChange}/>
         <div>Page: {pageNum}</div>
         <div>
           scale
