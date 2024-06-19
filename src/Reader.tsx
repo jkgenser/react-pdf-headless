@@ -23,6 +23,7 @@ const Reader = ({
   initialScale,
   rotation = 0,
   onPageChange,
+  onDocumentLoad,
   setReaderAPI,
   renderPage,
   classes,
@@ -37,6 +38,9 @@ const Reader = ({
   const onDocumentLoadSuccess = async (newPdf: PDFDocumentProxy) => {
     setPdf(newPdf);
     setNumPages(newPdf.numPages);
+
+    // user defined callback
+    onDocumentLoad && onDocumentLoad()
   };
 
   const estimateSize = useCallback(
