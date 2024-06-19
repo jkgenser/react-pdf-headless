@@ -44,6 +44,12 @@ jobs:
       - name: Install dependencies
         run: yarn --immutable
 
+      - name: build types
+        run: yarn run tsc ./src/index.ts
+
+      - name: build index.js
+        name: yarn run build
+
       - name: Generate archive
         run: yarn pack --filename ./src/package.tgz
 
