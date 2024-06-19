@@ -40,7 +40,7 @@ jobs:
         run: yarn --immutable
 
       - name: Generate archive
-        run: yarn pack
+        run: yarn pack --filename package.tgz
 
       - name: Publish with latest tag
         if: github.event.release.prelease == false
@@ -49,9 +49,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish with next tag
-        if: github.event.release.prelease == true
-        run: npm publish package.tgz --tag next --provenance
-        working-directory: src
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Publish with next tag
+      #   if: github.event.release.prelease == true
+      #   run: npm publish package.tgz --tag next --provenance
+      #   working-directory: src
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
