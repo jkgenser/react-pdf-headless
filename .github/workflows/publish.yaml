@@ -33,11 +33,13 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Set up .yarn/releases directory
+        run: |
+          mkdir -p .yarn/releases
+          curl -o .yarn/releases/yarn-4.2.2.cjs https://repo.yarnpkg.com/4.2.2/packages/yarnpkg-cli/bin/yarn.js
+
       - name: Enable Corepack
         run: corepack enable
-
-      - name: Install Yarn
-        run: npm install --global yarn@4.2.2
 
       - name: Install dependencies
         run: yarn --immutable
