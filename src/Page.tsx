@@ -32,6 +32,11 @@ const Page = ({
 
   const renderPageLayer = renderPage || defaultPageRenderer;
 
+  const innerBoxWidth =
+    viewports && viewports[virtualItem.index]
+      ? viewports[virtualItem.index].width + EXTRA_WIDTH
+      : 0;
+
   return (
     <div
       ref={pageRef}
@@ -53,7 +58,7 @@ const Page = ({
           // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           border: "1px solid lightgray",
           borderRadius: "4px",
-          width: `${viewports[virtualItem.index].width + EXTRA_WIDTH}px`,
+          width: `${innerBoxWidth}px`,
           padding: "0px",
           margin: "5px",
           backgroundColor: "white",
