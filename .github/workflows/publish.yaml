@@ -44,9 +44,6 @@ jobs:
       - name: Install dependencies
         run: yarn --immutables
 
-      - name: build index.js
-        run: yarn run build
-
       - name: build types
         run: yarn run tsc --project tsconfig.build.json
 

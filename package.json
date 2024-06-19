@@ -1,9 +1,9 @@
 {
   "name": "react-pdf-headless",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "files": [
-    "src"
+    "src", "dist"
   ],
   "scripts": {
     "dev": "vite",
