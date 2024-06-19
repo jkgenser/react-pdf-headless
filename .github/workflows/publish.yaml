@@ -45,7 +45,7 @@ jobs:
         run: yarn --immutable
 
       - name: Generate archive
-        run: yarn pack --filename package.tgz
+        run: yarn pack --filename ./src/package.tgz
 
       - name: Publish with latest tag
         if: github.event.release.prelease == false
