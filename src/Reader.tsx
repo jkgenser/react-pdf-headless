@@ -75,7 +75,6 @@ const Reader = ({
             scale: scale as number,
             rotation,
           });
-          console.log({ viewport, scale, rotation });
           return viewport;
         })
       );
@@ -109,7 +108,7 @@ const Reader = ({
   useEffect(() => {
     if (!currentPage) return;
     onPageChange && pdf && onPageChange({ currentPage, doc: pdf });
-  }, [currentPage, pdf, onPageChange]);
+  }, [currentPage]);
 
   useEffect(() => {
     if (!setReaderAPI) return;
@@ -134,7 +133,6 @@ const Reader = ({
         "start"
       )[0];
       const itemHeight = estimateSize(area.pageIndex);
-      console.log("itemHeight", itemHeight);
       const offset = getOffsetForHighlight({
         ...area,
         rotation,
