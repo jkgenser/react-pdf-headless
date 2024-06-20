@@ -130,6 +130,7 @@ const Reader = ({
             scale: scale as number,
             rotation,
           });
+          console.log({ viewport });
           return viewport;
         })
       );
