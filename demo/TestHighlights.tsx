@@ -1,6 +1,7 @@
 import { highlightData } from "./highlightData";
-import { RenderPageProps } from "./types";
+import { RenderPageProps } from "../src/types";
 import { transformHighlightProps } from "./util";
+import React from "react";
 
 const Highlight = ({
   top,
