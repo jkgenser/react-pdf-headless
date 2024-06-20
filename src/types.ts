@@ -31,7 +31,7 @@ export interface ReaderAPI {
   jumpToOffset: (offset: number) => void;
   increaseZoom: () => void;
   decreaseZoom: () => void;
-  zoomDefault: () => void;
+  zoomFitWidth: () => void;
   rotateClockwise: () => void;
   rotateCounterClockwise: () => void;
   scale: number | undefined;

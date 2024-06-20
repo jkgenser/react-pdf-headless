@@ -42,7 +42,7 @@ const Reader = ({
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
 
-  const { increaseZoom, decreaseZoom, zoomDefault } = useZoom({
+  const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
     scale,
     defaultScale,
     setScale,
@@ -104,10 +104,10 @@ const Reader = ({
 
   useEffect(() => {
     if (!pdf) return;
-    if (initialScale) {
-      setScale(initialScale);
-      return;
-    }
+    // if (initialScale) {
+    //   setScale(initialScale);
+    //   return;
+    // }
     const fetchPageAndSetScale = async ({
       initialScale,
     }: {
@@ -117,6 +117,7 @@ const Reader = ({
       const firstViewPort = firstPage.getViewport({ scale: 1, rotation });
       const newScale = determineScale(parentRef.current!, firstViewPort.width);
       if (!initialScale) setScale(newScale);
+      if (initialScale) setScale(initialScale);
       setDefaultScale(newScale);
     };
 
@@ -174,7 +175,7 @@ const Reader = ({
       jumpToOffset,
       increaseZoom,
       decreaseZoom,
-      zoomDefault,
+      zoomFitWidth,
       rotateClockwise,
       rotateCounterClockwise,
       scale,

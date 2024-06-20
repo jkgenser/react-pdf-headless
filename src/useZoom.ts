@@ -25,12 +25,12 @@ const useZoom = ({
     setScale(ZOOM_LEVELS[prevIndex]);
   };
 
-  const zoomDefault = () => {
+  const zoomFitWidth = () => {
     if (!defaultScale) return;
     setScale(defaultScale);
   };
 
-  return { increaseZoom, decreaseZoom, zoomDefault };
+  return { increaseZoom, decreaseZoom, zoomFitWidth };
 };
 
 export default useZoom;

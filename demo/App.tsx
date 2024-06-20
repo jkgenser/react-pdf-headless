@@ -148,7 +148,7 @@ function App() {
           </button>
           <button
             onClick={() => {
-              readerAPI?.zoomDefault();
+              readerAPI?.zoomFitWidth();
             }}
           >
             zoom default
