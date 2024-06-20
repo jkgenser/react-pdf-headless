@@ -111,7 +111,7 @@ const Reader = ({
     };
 
     fetchPageAndSetScale();
-  }, [pdf, initialScale, rotation]);
+  }, [pdf, initialScale, initialRotation]);
 
   useEffect(() => {
     virtualizer.measure();
