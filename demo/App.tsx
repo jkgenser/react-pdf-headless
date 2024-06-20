@@ -62,6 +62,18 @@ function App() {
     setPageNum(e.target.value);
   };
 
+  // Virtualizer has set up the dimension
+  const onViewportsMeasured = () => {
+    console.log("measured");
+    debugger;
+  };
+
+  // PDF is ready
+  const onDocumentLoaded = () => {
+    console.log("pdf ready");
+    debugger;
+  };
+
   return (
     <div style={{ display: "flex" }}>
       <div
@@ -185,6 +197,8 @@ function App() {
         <Reader
           file={file}
           onPageChange={onPageChange}
+          onDocumentLoad={onDocumentLoaded}
+          onViewportsMeasured={onViewportsMeasured}
           initialScale={scale || undefined}
           initialRotation={0}
           setReaderAPI={(api: ReaderAPI) => setReaderAPI(api)}

@@ -20,6 +20,7 @@ export interface ReaderProps {
   initialRotation?: number;
   onPageChange?: (e: PageChangeEvent) => void;
   onDocumentLoad?: () => void;
+  onViewportsMeasured?: () => void;
   setReaderAPI?: (readerAPI: ReaderAPI) => void;
   renderPage?: RenderPage;
   classes?: Classes;
