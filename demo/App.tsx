@@ -165,7 +165,7 @@ function App() {
           >
             zoom default
           </button>
-          <div>{readerAPI?.scale}</div>
+          <div>{readerAPI?.scale?.toString().substring(0, 3)}</div>
         </div>
         <div style={{ display: "flex" }}>
           <button

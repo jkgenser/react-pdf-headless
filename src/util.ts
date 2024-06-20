@@ -69,7 +69,6 @@ export const getOffsetForHighlight = ({
   itemHeight: number;
   startOffset: number;
 }) => {
-  const bottomOffset = startOffset + itemHeight;
   const topP = top * itemHeight * 0.01;
   const leftP = left * itemHeight * 0.01;
   const heightP = height * itemHeight * 0.01;
@@ -96,18 +95,6 @@ export const getOffsetForHighlight = ({
     default:
       extraOffset = (top * itemHeight) / 100;
   }
-
-  console.log({
-    top,
-    left,
-    height,
-    width,
-    startOffset,
-    extraOffset,
-    rotation,
-    itemHeight,
-    bottomOffset,
-  });
 
   return startOffset + extraOffset;
 };

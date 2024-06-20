@@ -158,11 +158,11 @@ const Reader = ({
     fetchPageAndSetScale({ initialScale });
   }, [pdf, initialScale, initialRotation]);
 
-  useEffect(() => {
-    if (!viewports) return;
-    virtualizer.measure();
-    onViewportsMeasured && onViewportsMeasured();
-  }, [viewports]);
+  // useEffect(() => {
+  //   if (!viewports) return;
+  //   virtualizer.measure();
+  //   onViewportsMeasured && onViewportsMeasured();
+  // }, [viewports]);
 
   useEffect(() => {
     if (!currentPage) return;
@@ -171,6 +171,9 @@ const Reader = ({
 
   useEffect(() => {
     if (!setReaderAPI) return;
+    if (!viewports) return;
+    virtualizer.measure();
+    onViewportsMeasured && onViewportsMeasured();
 
     const jumpToPage = (pageIndex: number) => {
       virtualizer.scrollToIndex(pageIndex, {
