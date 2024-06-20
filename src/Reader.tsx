@@ -35,7 +35,7 @@ const Reader = ({
   initialRotation = 0,
   onPageChange,
   onDocumentLoad,
-  onViewportsReady,
+  onViewportsMeasured,
   setReaderAPI,
   renderPage,
   classes,
@@ -161,6 +161,7 @@ const Reader = ({
   useEffect(() => {
     if (!viewports) return;
     virtualizer.measure();
+    onViewportsMeasured && onViewportsMeasured();
   }, [viewports]);
 
   useEffect(() => {
