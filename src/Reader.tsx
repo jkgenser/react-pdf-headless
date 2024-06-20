@@ -203,7 +203,12 @@ const Reader = ({
       });
 
       console.log("running jump");
-      console.log({ startOffset, itemHeight, pageIndex: area.pageIndex });
+      console.log({
+        startOffset,
+        itemHeight,
+        pageIndex: area.pageIndex,
+        viewports,
+      });
       virtualizer.scrollToOffset(offset, {
         align: "start",
         behavior: "smooth",
