@@ -38,10 +38,15 @@ const Reader = ({
   );
   const [pdf, setPdf] = useState<PDFDocumentProxy | null>(null);
   const [scale, setScale] = useState<number | undefined>(initialScale);
+  const [defaultScale, setDefaultScale] = useState<number | null>(null);
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
 
-  const { increaseZoom, decreaseZoom } = useZoom({ scale, setScale });
+  const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
+    scale,
+    defaultScale,
+    setScale,
+  });
   const { rotateClockwise, rotateCounterClockwise } = useRotation({
     rotation,
     setRotation,
@@ -99,18 +104,24 @@ const Reader = ({
 
   useEffect(() => {
     if (!pdf) return;
-    if (initialScale) {
-      setScale(initialScale);
-      return;
-    }
-    const fetchPageAndSetScale = async () => {
+    // if (initialScale) {
+    //   setScale(initialScale);
+    //   return;
+    // }
+    const fetchPageAndSetScale = async ({
+      initialScale,
+    }: {
+      initialScale: number | undefined;
+    }) => {
       const firstPage = await pdf.getPage(1);
       const firstViewPort = firstPage.getViewport({ scale: 1, rotation });
       const newScale = determineScale(parentRef.current!, firstViewPort.width);
-      setScale(newScale);
+      if (!initialScale) setScale(newScale);
+      if (initialScale) setScale(initialScale);
+      setDefaultScale(newScale);
     };
 
-    fetchPageAndSetScale();
+    fetchPageAndSetScale({ initialScale });
   }, [pdf, initialScale, initialRotation]);
 
   useEffect(() => {
@@ -164,6 +175,7 @@ const Reader = ({
       jumpToOffset,
       increaseZoom,
       decreaseZoom,
+      zoomFitWidth,
       rotateClockwise,
       rotateCounterClockwise,
       scale,
