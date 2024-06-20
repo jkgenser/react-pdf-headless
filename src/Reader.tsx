@@ -9,6 +9,8 @@ import Page from "./Page";
 import usePageObserver from "./usePageObserver";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
 import { getOffsetForHighlight } from "./util";
+import useZoom from "./useZoom";
+import useRotation from "./useRotation";
 
 const EXTRA_HEIGHT = 10;
 const RESERVE_WIDTH = 50;
@@ -22,7 +24,7 @@ const determineScale = (parentElement: HTMLElement, width: number): number => {
 const Reader = ({
   file,
   initialScale,
-  rotation = 0,
+  initialRotation = 0,
   onPageChange,
   onDocumentLoad,
   setReaderAPI,
@@ -36,7 +38,14 @@ const Reader = ({
   );
   const [pdf, setPdf] = useState<PDFDocumentProxy | null>(null);
   const [scale, setScale] = useState<number | undefined>(initialScale);
+  const [rotation, setRotation] = useState<number>(initialRotation);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
+
+  const { increaseZoom, decreaseZoom } = useZoom({ scale, setScale });
+  const { rotateClockwise, rotateCounterClockwise } = useRotation({
+    rotation,
+    setRotation,
+  });
 
   const onDocumentLoadSuccess = async (newPdf: PDFDocumentProxy) => {
     setPdf(newPdf);
@@ -102,7 +111,7 @@ const Reader = ({
     };
 
     fetchPageAndSetScale();
-  }, [pdf, initialScale, rotation]);
+  }, [pdf, initialScale, initialRotation]);
 
   useEffect(() => {
     virtualizer.measure();
@@ -153,6 +162,12 @@ const Reader = ({
       jumpToPage,
       jumpToHighlightArea,
       jumpToOffset,
+      increaseZoom,
+      decreaseZoom,
+      rotateClockwise,
+      rotateCounterClockwise,
+      scale,
+      rotation,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports]);

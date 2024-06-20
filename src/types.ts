@@ -17,7 +17,7 @@ export interface Classes {
 export interface ReaderProps {
   file: string;
   initialScale?: number;
-  rotation?: number;
+  initialRotation?: number;
   onPageChange?: (e: PageChangeEvent) => void;
   onDocumentLoad?: () => void;
   setReaderAPI?: (readerAPI: ReaderAPI) => void;
@@ -29,6 +29,12 @@ export interface ReaderAPI {
   jumpToPage: (pageIndex: number) => void;
   jumpToHighlightArea: (area: HighlightArea) => void;
   jumpToOffset: (offset: number) => void;
+  increaseZoom: () => void;
+  decreaseZoom: () => void;
+  rotateClockwise: () => void;
+  rotateCounterClockwise: () => void;
+  scale: number | undefined;
+  rotation: number;
 }
 
 // height, left, top, width are 0-100% values
