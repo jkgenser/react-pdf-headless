@@ -166,6 +166,8 @@ const Reader = ({
       decreaseZoom,
       rotateClockwise,
       rotateCounterClockwise,
+      scale,
+      rotation,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports]);

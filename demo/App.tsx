@@ -146,6 +146,7 @@ function App() {
           >
             zoom in
           </button>
+          <div>{readerAPI?.scale}</div>
         </div>
         <div style={{ display: "flex" }}>
           <button
@@ -162,6 +163,7 @@ function App() {
           >
             rotate clock
           </button>
+          <div>{readerAPI?.rotation}</div>
         </div>
       </div>
       <div

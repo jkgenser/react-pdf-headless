@@ -33,6 +33,8 @@ export interface ReaderAPI {
   decreaseZoom: () => void;
   rotateClockwise: () => void;
   rotateCounterClockwise: () => void;
+  scale: number | undefined;
+  rotation: number;
 }
 
 // height, left, top, width are 0-100% values
