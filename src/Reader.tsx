@@ -172,6 +172,7 @@ const Reader = ({
   useEffect(() => {
     if (!setReaderAPI) return;
     if (!viewports) return;
+    if (scale === undefined) return;
     virtualizer.measure();
     onViewportsMeasured && onViewportsMeasured();
 
@@ -221,7 +222,7 @@ const Reader = ({
       rotation,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewports]);
+  }, [viewports, scale]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
