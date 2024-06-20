@@ -5,7 +5,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 
 import { pdfjs } from "react-pdf";
 import { Reader } from "../src/index";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { PageChangeEvent, ReaderAPI, RenderPageProps } from "../src/types";
 import { Page } from "react-pdf";
 import TestHighlightsLayer from "./TestHighlights";
@@ -21,6 +21,7 @@ function App() {
   const [readerAPI, setReaderAPI] = useState<ReaderAPI | null>(null);
   const [offset, setOffset] = useState<number | null>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const initialHighlight = useRef(false);
 
   const onPageChange = (e: PageChangeEvent) => {
     setPageNum(e.currentPage);
@@ -77,9 +78,10 @@ function App() {
   };
 
   useEffect(() => {
-    if (!isLoaded) return;
+    if (!readerAPI || initialHighlight.current) return;
     readerAPI?.jumpToHighlightArea(highlightData[0]);
-  }, [isLoaded]);
+    initialHighlight.current = true;
+  }, [readerAPI]);
 
   return (
     <div style={{ display: "flex" }}>
@@ -97,14 +99,14 @@ function App() {
             onChange={handlePageNumChange}
           />
         </div>
-        <div>
+        {/* <div>
           initial scale
           <input
             type="number"
             value={scale !== null ? scale : ""}
             onChange={handleScaleChange}
           />
-        </div>
+        </div> */}
         <div>
           File
           <select value={file} onChange={handleFileChange}>
@@ -206,7 +208,7 @@ function App() {
           onPageChange={onPageChange}
           onDocumentLoad={onDocumentLoaded}
           onViewportsMeasured={onViewportsMeasured}
-          initialScale={scale || undefined}
+          // initialScale={scale || undefined}
           initialRotation={0}
           setReaderAPI={(api: ReaderAPI) => setReaderAPI(api)}
           renderPage={renderPage}

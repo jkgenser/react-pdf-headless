@@ -121,16 +121,15 @@ const Reader = ({
 
   useEffect(() => {
     const calculateViewports = async () => {
-      if (!pdf) return;
+      if (!pdf || scale === undefined) return;
 
       const viewports = await Promise.all(
         Array.from({ length: pdf.numPages }, async (_, index) => {
           const page = await pdf.getPage(index + 1);
           const viewport = page.getViewport({
-            scale: scale as number,
+            scale: scale,
             rotation,
           });
-          console.log({ viewport });
           return viewport;
         })
       );
@@ -203,13 +202,6 @@ const Reader = ({
         startOffset: startOffset - 5, // accounts for padding on top
       });
 
-      console.log("running jump");
-      console.log({
-        startOffset,
-        itemHeight,
-        pageIndex: area.pageIndex,
-        viewports,
-      });
       virtualizer.scrollToOffset(offset, {
         align: "start",
         behavior: "smooth",
