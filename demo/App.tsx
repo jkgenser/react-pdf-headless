@@ -58,13 +58,13 @@ function App() {
     );
   };
 
-  const handlePageNumChange = (e:any) => {
-    if (e.target.value===''){
+  const handlePageNumChange = (e: any) => {
+    if (e.target.value === "") {
       setPageNum(null);
-      return
+      return;
     }
-    setPageNum(e.target.value)
-  }
+    setPageNum(e.target.value);
+  };
 
   return (
     <div style={{ display: "flex" }}>
@@ -74,8 +74,14 @@ function App() {
           flexDirection: "column",
         }}
       >
-      <input type="number" value={!pageNum ? '' : pageNum} onChange={handlePageNumChange}/>
-        <div>Page: {pageNum}</div>
+        <div style={{ display: "flex" }}>
+          <div>Page:</div>
+          <input
+            type="number"
+            value={!pageNum ? "" : pageNum}
+            onChange={handlePageNumChange}
+          />
+        </div>
         <div>
           scale
           <input
@@ -103,20 +109,23 @@ function App() {
             <option value="rai.pdf">rai.pdf</option>
           </select>
         </div>
-        <button
-          onClick={() => {
-            readerAPI &&
-              wantPage !== null &&
-              readerAPI.jumpToPage(wantPage - 1);
-          }}
-        >
-          jump to page
-        </button>
-        <input
-          type="number"
-          value={wantPage !== null ? wantPage : ""}
-          onChange={handleWantPageChange}
-        />
+        <div style={{ display: "flex" }}>
+          <button
+            onClick={() => {
+              readerAPI &&
+                wantPage !== null &&
+                readerAPI.jumpToPage(wantPage - 1);
+            }}
+          >
+            jump to page
+          </button>
+          <input
+            type="number"
+            value={wantPage !== null ? wantPage : ""}
+            onChange={handleWantPageChange}
+          />
+        </div>
+
         <button
           onClick={() => {
             readerAPI && readerAPI.jumpToHighlightArea(highlightData[0]);
@@ -124,22 +133,24 @@ function App() {
         >
           jump to highlight
         </button>
-        <input
-          type="number"
-          value={offset !== null ? offset : ""}
-          onChange={handleOffsetChange}
-        />
-        <button
-          onClick={() => {
-            readerAPI && offset !== null && readerAPI.jumpToOffset(offset);
-          }}
-        >
-          jump to offset
-        </button>
+        <div style={{ display: "flex" }}>
+          <button
+            onClick={() => {
+              readerAPI && offset !== null && readerAPI.jumpToOffset(offset);
+            }}
+          >
+            jump to offset
+          </button>
+          <input
+            type="number"
+            value={offset !== null ? offset : ""}
+            onChange={handleOffsetChange}
+          />
+        </div>
       </div>
       <div
         style={{
-          width: "800px",
+          width: "700px",
           height: "800px",
           borderColor: "gray",
           borderWidth: "1px",
