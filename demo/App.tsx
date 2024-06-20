@@ -6,7 +6,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import { pdfjs } from "react-pdf";
 import { Reader } from "../src/index";
 import React, { ChangeEvent, useState } from "react";
-import { PageChangeEvent, ReaderAPI, RenderPageProps } from "./types";
+import { PageChangeEvent, ReaderAPI, RenderPageProps } from "../src/types";
 import { Page } from "react-pdf";
 import TestHighlightsLayer from "./TestHighlights";
 import { highlightData } from "./highlightData";
@@ -83,7 +83,7 @@ function App() {
           />
         </div>
         <div>
-          scale
+          initial scale
           <input
             type="number"
             value={scale !== null ? scale : ""}
@@ -146,6 +146,22 @@ function App() {
         >
           jump to highlight
         </button>
+        <div style={{ display: "flex" }}>
+          <button
+            onClick={() => {
+              readerAPI && readerAPI.increaseZoom();
+            }}
+          >
+            zoom in
+          </button>
+          <button
+            onClick={() => {
+              readerAPI && readerAPI.decreaseZoom();
+            }}
+          >
+            zoom out
+          </button>
+        </div>
       </div>
       <div
         style={{
