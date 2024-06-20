@@ -29,6 +29,8 @@ export interface ReaderAPI {
   jumpToPage: (pageIndex: number) => void;
   jumpToHighlightArea: (area: HighlightArea) => void;
   jumpToOffset: (offset: number) => void;
+  increaseZoom: () => void;
+  decreaseZoom: () => void;
 }
 
 // height, left, top, width are 0-100% values

@@ -9,6 +9,7 @@ import Page from "./Page";
 import usePageObserver from "./usePageObserver";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
 import { getOffsetForHighlight } from "./util";
+import useZoom from "./useZoom";
 
 const EXTRA_HEIGHT = 10;
 const RESERVE_WIDTH = 50;
@@ -37,6 +38,7 @@ const Reader = ({
   const [pdf, setPdf] = useState<PDFDocumentProxy | null>(null);
   const [scale, setScale] = useState<number | undefined>(initialScale);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
+  const { increaseZoom, decreaseZoom } = useZoom({ scale, setScale });
 
   const onDocumentLoadSuccess = async (newPdf: PDFDocumentProxy) => {
     setPdf(newPdf);
@@ -153,6 +155,8 @@ const Reader = ({
       jumpToPage,
       jumpToHighlightArea,
       jumpToOffset,
+      increaseZoom,
+      decreaseZoom,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports]);

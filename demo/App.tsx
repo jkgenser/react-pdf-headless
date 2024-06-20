@@ -125,14 +125,6 @@ function App() {
             onChange={handleWantPageChange}
           />
         </div>
-
-        <button
-          onClick={() => {
-            readerAPI && readerAPI.jumpToHighlightArea(highlightData[0]);
-          }}
-        >
-          jump to highlight
-        </button>
         <div style={{ display: "flex" }}>
           <button
             onClick={() => {
@@ -147,6 +139,13 @@ function App() {
             onChange={handleOffsetChange}
           />
         </div>
+        <button
+          onClick={() => {
+            readerAPI && readerAPI.jumpToHighlightArea(highlightData[0]);
+          }}
+        >
+          jump to highlight
+        </button>
       </div>
       <div
         style={{
