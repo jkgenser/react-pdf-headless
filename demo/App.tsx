@@ -5,7 +5,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 
 import { pdfjs } from "react-pdf";
 import { Reader } from "../src/index";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { PageChangeEvent, ReaderAPI, RenderPageProps } from "../src/types";
 import { Page } from "react-pdf";
 import TestHighlightsLayer from "./TestHighlights";
@@ -20,6 +20,7 @@ function App() {
   const [wantPage, setWantPage] = useState<number | null>(null);
   const [readerAPI, setReaderAPI] = useState<ReaderAPI | null>(null);
   const [offset, setOffset] = useState<number | null>(null);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const onPageChange = (e: PageChangeEvent) => {
     setPageNum(e.currentPage);
@@ -65,14 +66,20 @@ function App() {
   // Virtualizer has set up the dimension
   const onViewportsMeasured = () => {
     console.log("measured");
-    debugger;
+    setIsLoaded(true);
+    // debugger;
   };
 
   // PDF is ready
   const onDocumentLoaded = () => {
     console.log("pdf ready");
-    debugger;
+    // debugger;
   };
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    readerAPI?.jumpToHighlightArea(highlightData[0]);
+  }, [isLoaded]);
 
   return (
     <div style={{ display: "flex" }}>
