@@ -39,6 +39,7 @@ const Reader = ({
   setReaderAPI,
   renderPage,
   classes,
+  reactPDFDocumentProps,
 }: ReaderProps) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
   // const scrollingRef = useRef<number | null>(null);
@@ -241,7 +242,11 @@ const Reader = ({
         width: "100%",
       }}
     >
-      <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document
+        {...reactPDFDocumentProps}
+        file={file}
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
         <div
           id="pages-container"
           style={{

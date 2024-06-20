@@ -13,6 +13,10 @@ import { highlightData } from "./highlightData";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
+const LoadingComponent = () => {
+  return <div>Overidden Loading</div>;
+};
+
 function App() {
   const [pageNum, setPageNum] = useState<number | null>(null);
   const [scale, setScale] = useState<number | null>(0.75);
@@ -212,6 +216,7 @@ function App() {
           initialRotation={0}
           setReaderAPI={(api: ReaderAPI) => setReaderAPI(api)}
           renderPage={renderPage}
+          reactPDFDocumentProps={{ loading: LoadingComponent }}
         />
       </div>
     </div>

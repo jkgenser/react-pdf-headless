@@ -1,6 +1,7 @@
 import { VirtualItem } from "@tanstack/react-virtual";
 import { PDFDocumentProxy } from "pdfjs-dist/types/src/display/api";
 import { PageViewport } from "pdfjs-dist//types/src/display/display_utils";
+import { DocumentProps } from "react-pdf";
 
 export interface PageChangeEvent {
   currentPage: number;
@@ -24,6 +25,7 @@ export interface ReaderProps {
   setReaderAPI?: (readerAPI: ReaderAPI) => void;
   renderPage?: RenderPage;
   classes?: Classes;
+  reactPDFDocumentProps?: DocumentProps;
 }
 
 export interface ReaderAPI {
