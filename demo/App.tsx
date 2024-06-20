@@ -16,7 +16,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 function App() {
   const [pageNum, setPageNum] = useState<number | null>(null);
   const [scale, setScale] = useState<number | null>(0.75);
-  const [rotation, setRotation] = useState<number>(0);
   const [file, setFile] = useState<string>("pdf-open-parameters.pdf");
   const [wantPage, setWantPage] = useState<number | null>(null);
   const [readerAPI, setReaderAPI] = useState<ReaderAPI | null>(null);
@@ -29,9 +28,6 @@ function App() {
   const handleScaleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
     setScale(isNaN(value) ? null : value);
-  };
-  const handleRotationChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setRotation(parseInt(e.target.value, 10));
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -91,15 +87,6 @@ function App() {
           />
         </div>
         <div>
-          Rotation
-          <select value={rotation} onChange={handleRotationChange}>
-            <option value={0}>0</option>
-            <option value={90}>90</option>
-            <option value={180}>180</option>
-            <option value={270}>270</option>
-          </select>
-        </div>
-        <div>
           File
           <select value={file} onChange={handleFileChange}>
             <option value="pdf-open-parameters.pdf">
@@ -149,17 +136,33 @@ function App() {
         <div style={{ display: "flex" }}>
           <button
             onClick={() => {
+              readerAPI && readerAPI.decreaseZoom();
+            }}
+          >
+            zoom out
+          </button>
+          <button
+            onClick={() => {
               readerAPI && readerAPI.increaseZoom();
             }}
           >
             zoom in
           </button>
+        </div>
+        <div style={{ display: "flex" }}>
           <button
             onClick={() => {
-              readerAPI && readerAPI.decreaseZoom();
+              readerAPI && readerAPI.rotateCounterClockwise();
             }}
           >
-            zoom out
+            rotate counter clock
+          </button>
+          <button
+            onClick={() => {
+              readerAPI && readerAPI.rotateClockwise();
+            }}
+          >
+            rotate clock
           </button>
         </div>
       </div>
@@ -176,7 +179,7 @@ function App() {
           file={file}
           onPageChange={onPageChange}
           initialScale={scale || undefined}
-          rotation={rotation || 0}
+          initialRotation={0}
           setReaderAPI={(api: ReaderAPI) => setReaderAPI(api)}
           renderPage={renderPage}
         />
