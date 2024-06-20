@@ -99,9 +99,7 @@ function App() {
         <div style={{ display: "flex" }}>
           <button
             onClick={() => {
-              readerAPI &&
-                wantPage !== null &&
-                readerAPI.jumpToPage(wantPage - 1);
+              wantPage !== null && readerAPI?.jumpToPage(wantPage - 1);
             }}
           >
             jump to page
@@ -115,7 +113,7 @@ function App() {
         <div style={{ display: "flex" }}>
           <button
             onClick={() => {
-              readerAPI && offset !== null && readerAPI.jumpToOffset(offset);
+              offset !== null && readerAPI?.jumpToOffset(offset);
             }}
           >
             jump to offset
@@ -128,7 +126,7 @@ function App() {
         </div>
         <button
           onClick={() => {
-            readerAPI && readerAPI.jumpToHighlightArea(highlightData[0]);
+            readerAPI?.jumpToHighlightArea(highlightData[0]);
           }}
         >
           jump to highlight
@@ -136,14 +134,14 @@ function App() {
         <div style={{ display: "flex" }}>
           <button
             onClick={() => {
-              readerAPI && readerAPI.decreaseZoom();
+              readerAPI?.decreaseZoom();
             }}
           >
             zoom out
           </button>
           <button
             onClick={() => {
-              readerAPI && readerAPI.increaseZoom();
+              readerAPI?.increaseZoom();
             }}
           >
             zoom in
@@ -152,14 +150,14 @@ function App() {
         <div style={{ display: "flex" }}>
           <button
             onClick={() => {
-              readerAPI && readerAPI.rotateCounterClockwise();
+              readerAPI?.rotateCounterClockwise();
             }}
           >
             rotate counter clock
           </button>
           <button
             onClick={() => {
-              readerAPI && readerAPI.rotateClockwise();
+              readerAPI?.rotateClockwise();
             }}
           >
             rotate clock
