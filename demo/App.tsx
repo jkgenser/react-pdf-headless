@@ -62,6 +62,10 @@ function App() {
     setPageNum(e.target.value);
   };
 
+  const onViewportsMeasured = () => {
+    console.log("measured");
+  };
+
   return (
     <div style={{ display: "flex" }}>
       <div
@@ -189,6 +193,7 @@ function App() {
           initialRotation={0}
           setReaderAPI={(api: ReaderAPI) => setReaderAPI(api)}
           renderPage={renderPage}
+          onViewportsMeasured={onViewportsMeasured}
         />
       </div>
     </div>
