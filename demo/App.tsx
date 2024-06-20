@@ -146,6 +146,13 @@ function App() {
           >
             zoom in
           </button>
+          <button
+            onClick={() => {
+              readerAPI?.zoomDefault();
+            }}
+          >
+            zoom default
+          </button>
           <div>{readerAPI?.scale}</div>
         </div>
         <div style={{ display: "flex" }}>

@@ -3,9 +3,11 @@ const ZOOM_LEVELS = [
 ].map((level) => level / 100);
 const useZoom = ({
   scale,
+  defaultScale,
   setScale,
 }: {
   scale: number | undefined;
+  defaultScale: number | null;
   setScale: (newScale: number) => void;
 }) => {
   const increaseZoom = () => {
@@ -23,7 +25,12 @@ const useZoom = ({
     setScale(ZOOM_LEVELS[prevIndex]);
   };
 
-  return { increaseZoom, decreaseZoom };
+  const zoomDefault = () => {
+    if (!defaultScale) return;
+    setScale(defaultScale);
+  };
+
+  return { increaseZoom, decreaseZoom, zoomDefault };
 };
 
 export default useZoom;
