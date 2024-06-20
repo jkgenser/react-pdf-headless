@@ -202,6 +202,8 @@ const Reader = ({
         startOffset: startOffset - 5, // accounts for padding on top
       });
 
+      console.log("running jump");
+      console.log({ startOffset, itemHeight, pageIndex: area.pageIndex });
       virtualizer.scrollToOffset(offset, {
         align: "start",
         behavior: "smooth",
