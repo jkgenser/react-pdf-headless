@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Document } from "react-pdf";
 import {
-  VirtualizerOptions,
+  // VirtualizerOptions,
   useVirtualizer,
-  elementScroll,
+  // elementScroll,
 } from "@tanstack/react-virtual";
 import { HighlightArea, ReaderProps } from "./types";
 import { PDFDocumentProxy } from "pdfjs-dist/types/src/display/api";
@@ -25,9 +25,9 @@ const determineScale = (parentElement: HTMLElement, width: number): number => {
   return scaleWidth;
 };
 
-const easeInOutQuint = (t: number) => {
-  return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
-};
+// const easeInOutQuint = (t: number) => {
+//   return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+// };
 
 const Reader = ({
   file,
@@ -41,7 +41,7 @@ const Reader = ({
   classes,
 }: ReaderProps) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
-  const scrollingRef = useRef<number | null>(null);
+  // const scrollingRef = useRef<number | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
   const [viewports, setPageViewports] = useState<Array<PageViewport> | null>(
     null
