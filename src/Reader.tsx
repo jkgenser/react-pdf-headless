@@ -48,12 +48,14 @@ const Reader = ({
   const [defaultScale, setDefaultScale] = useState<number | null>(null);
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
+  const [isSystemScrolling, setIsSystemScrolling] = useState<boolean>(false);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
-      const duration = 300;
+      const duration = 400;
       const start = parentRef.current?.scrollTop || 0;
       const startTime = (scrollingRef.current = Date.now());
+      setIsSystemScrolling(true);
 
       const run = () => {
         if (scrollingRef.current !== startTime) return;
@@ -64,11 +66,10 @@ const Reader = ({
 
         if (elapsed < duration) {
           elementScroll(interpolated, canSmooth, instance);
-          // elementScrollWithLogging(interpolated, canSmooth, instance);
           requestAnimationFrame(run);
         } else {
           elementScroll(interpolated, canSmooth, instance);
-          // elementScrollWithLogging(interpolated, canSmooth, instance);
+          setIsSystemScrolling(false);
         }
       };
 
@@ -221,7 +222,7 @@ const Reader = ({
     virtualizer,
     estimateSize,
   });
-  const isScrollingFast = Math.abs(normalizedVelocity) > 0.7;
+  const isScrollingFast = Math.abs(normalizedVelocity) > 1 || isSystemScrolling;
   const shouldRender = !isScrollingFast;
 
   return (
