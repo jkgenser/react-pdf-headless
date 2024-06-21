@@ -159,12 +159,6 @@ const Reader = ({
     fetchPageAndSetScale({ initialScale });
   }, [pdf, initialScale, initialRotation]);
 
-  // useEffect(() => {
-  //   if (!viewports) return;
-  //   virtualizer.measure();
-  //   onViewportsMeasured && onViewportsMeasured();
-  // }, [viewports]);
-
   useEffect(() => {
     if (!currentPage) return;
     onPageChange && pdf && onPageChange({ currentPage, doc: pdf });
