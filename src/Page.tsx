@@ -62,7 +62,8 @@ const Page = ({
           backgroundColor: "white",
           display: "flex",
           justifyContent: "center",
-          height: "fit-content",
+          height: `${shouldRender ? "fit-content" : `${virtualItem.size}px`}`,
+          minHeight: `${virtualItem.size - 100}px`,
         }}
         className={classes?.pageInnerBox}
       >
