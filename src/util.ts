@@ -103,5 +103,11 @@ export const getOffsetForHighlight = ({
 };
 
 export const easeInOutQuint = (t: number) => {
+  console.log("causing ease");
   return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+};
+
+export const easeInOutQuad = (t: number) => {
+  console.log("causing ease");
+  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 };

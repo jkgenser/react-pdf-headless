@@ -51,9 +51,8 @@ const Reader = ({
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
-      if (!parentRef.current) return;
-      const duration = 250;
-      const start = parentRef.current?.scrollTop;
+      const duration = 300;
+      const start = parentRef.current?.scrollTop || 0;
       const startTime = (scrollingRef.current = Date.now());
 
       const run = () => {
@@ -65,9 +64,11 @@ const Reader = ({
 
         if (elapsed < duration) {
           elementScroll(interpolated, canSmooth, instance);
+          // elementScrollWithLogging(interpolated, canSmooth, instance);
           requestAnimationFrame(run);
         } else {
           elementScroll(interpolated, canSmooth, instance);
+          // elementScrollWithLogging(interpolated, canSmooth, instance);
         }
       };
 
@@ -196,7 +197,7 @@ const Reader = ({
 
       virtualizer.scrollToOffset(offset, {
         align: "start",
-        behavior: "smooth",
+        // behavior: "smooth",
       });
     };
 
