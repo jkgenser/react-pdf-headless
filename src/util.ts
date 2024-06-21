@@ -96,5 +96,8 @@ export const getOffsetForHighlight = ({
       extraOffset = (top * itemHeight) / 100;
   }
 
+  console.log("jumping-highlight");
+  console.log({ itemHeight, startOffset, extraOffset });
+
   return startOffset + extraOffset;
 };

@@ -63,6 +63,7 @@ const Page = ({
           display: "flex",
           justifyContent: "center",
           height: "fit-content",
+          minHeight: `${virtualItem.size - 100}px`,
         }}
         className={classes?.pageInnerBox}
       >

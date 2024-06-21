@@ -3,7 +3,8 @@
   "version": "0.5.0",
   "type": "module",
   "files": [
-    "src", "dist"
+    "src",
+    "dist"
   ],
   "scripts": {
     "dev": "vite",

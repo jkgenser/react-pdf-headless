@@ -171,7 +171,6 @@ const Reader = ({
   }, [currentPage]);
 
   useEffect(() => {
-    if (!setReaderAPI) return;
     if (!viewports) return;
     if (scale === undefined) return;
     virtualizer.measure();
@@ -210,18 +209,19 @@ const Reader = ({
       });
     };
 
-    setReaderAPI({
-      jumpToPage,
-      jumpToHighlightArea,
-      jumpToOffset,
-      increaseZoom,
-      decreaseZoom,
-      zoomFitWidth,
-      rotateClockwise,
-      rotateCounterClockwise,
-      scale,
-      rotation,
-    });
+    setReaderAPI &&
+      setReaderAPI({
+        jumpToPage,
+        jumpToHighlightArea,
+        jumpToOffset,
+        increaseZoom,
+        decreaseZoom,
+        zoomFitWidth,
+        rotateClockwise,
+        rotateCounterClockwise,
+        scale,
+        rotation,
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports, scale]);
 
