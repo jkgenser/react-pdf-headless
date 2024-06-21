@@ -70,14 +70,14 @@ function App() {
 
   // Virtualizer has set up the dimension
   const onViewportsMeasured = () => {
-    console.log("measured");
+    // console.log("measured");
     setIsLoaded(true);
     // debugger;
   };
 
   // PDF is ready
   const onDocumentLoaded = () => {
-    console.log("pdf ready");
+    // console.log("pdf ready");
     // debugger;
   };
 
@@ -150,7 +150,7 @@ function App() {
           />
         </div>
         <button
-          onClick={() => {
+          onMouseDown={() => {
             readerAPI?.jumpToHighlightArea(highlightData[0]);
           }}
         >
