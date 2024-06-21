@@ -221,7 +221,7 @@ const Reader = ({
     virtualizer,
     estimateSize,
   });
-  const isScrollingFast = Math.abs(normalizedVelocity) > 1.5;
+  const isScrollingFast = Math.abs(normalizedVelocity) > 0.7;
   const shouldRender = !isScrollingFast;
 
   return (
