@@ -171,7 +171,7 @@ const Reader = ({
     const jumpToPage = (pageIndex: number) => {
       virtualizer.scrollToIndex(pageIndex, {
         align: "start",
-        behavior: "smooth",
+        // behavior: "smooth",
       });
     };
 
