@@ -48,14 +48,14 @@ const Reader = ({
   const [defaultScale, setDefaultScale] = useState<number | null>(null);
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
-  const [isSystemScrolling, setIsSystemScrolling] = useState<boolean>(false);
+  // const [isSystemScrolling, setIsSystemScrolling] = useState<boolean>(false);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
       const duration = 400;
       const start = parentRef.current?.scrollTop || 0;
       const startTime = (scrollingRef.current = Date.now());
-      setIsSystemScrolling(true);
+      // setIsSystemScrolling(true);
 
       const run = () => {
         if (scrollingRef.current !== startTime) return;
@@ -69,7 +69,7 @@ const Reader = ({
           requestAnimationFrame(run);
         } else {
           elementScroll(interpolated, canSmooth, instance);
-          setIsSystemScrolling(false);
+          // setIsSystemScrolling(false);
         }
       };
 
@@ -176,7 +176,6 @@ const Reader = ({
     };
 
     const jumpToOffset = (offset: number) => {
-      console.log("scrolling to highlight");
       virtualizer.scrollToOffset(offset, {
         align: "start",
         behavior: "smooth",
@@ -195,6 +194,8 @@ const Reader = ({
         itemHeight: itemHeight - 10, // accounts for padding top and bottom
         startOffset: startOffset - 5, // accounts for padding on top
       });
+
+      console.log({ itemHeight });
 
       virtualizer.scrollToOffset(offset, {
         align: "start",
@@ -222,9 +223,8 @@ const Reader = ({
     virtualizer,
     estimateSize,
   });
-  const isScrollingFast =
-    Math.abs(normalizedVelocity) > 1 ||
-    (isSystemScrolling && Math.abs(normalizedVelocity) > 1);
+
+  const isScrollingFast = Math.abs(normalizedVelocity) > 1;
   const shouldRender = !isScrollingFast;
 
   return (
