@@ -197,8 +197,6 @@ const Reader = ({
         startOffset: startOffset - 5, // accounts for padding on top
       });
 
-      console.log({ itemHeight });
-
       virtualizer.scrollToOffset(offset, {
         align: "start",
         // behavior: "smooth",
