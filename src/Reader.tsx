@@ -224,7 +224,7 @@ const Reader = ({
   });
   const isScrollingFast =
     Math.abs(normalizedVelocity) > 1 ||
-    (isSystemScrolling && Math.abs(normalizedVelocity) > 1.5);
+    (isSystemScrolling && Math.abs(normalizedVelocity) > 1);
   const shouldRender = !isScrollingFast;
 
   return (
