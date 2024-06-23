@@ -103,6 +103,10 @@ export const easeInOutQuint = (t: number) => {
   return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
 };
 
+export const easeOutQuint = (t: number) => {
+  return 1 - Math.pow(1 - t, 5);
+};
+
 export const easeInOutQuad = (t: number) => {
   return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 };

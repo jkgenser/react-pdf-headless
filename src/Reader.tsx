@@ -12,7 +12,7 @@ import { PageViewport } from "pdfjs-dist//types/src/display/display_utils";
 import Page from "./Page";
 import usePageObserver from "./usePageObserver";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
-import { easeInOutQuint, getOffsetForHighlight } from "./util";
+import { easeOutQuint, getOffsetForHighlight } from "./util";
 import useZoom from "./useZoom";
 import useRotation from "./useRotation";
 
@@ -48,20 +48,20 @@ const Reader = ({
   const [defaultScale, setDefaultScale] = useState<number | null>(null);
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
-  const [isSystemScrolling, setIsSystemScrolling] = useState<boolean>(false);
+  const [viewportsReady, setViewportsReady] = useState<boolean>(false);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
       const duration = 400;
       const start = parentRef.current?.scrollTop || 0;
       const startTime = (scrollingRef.current = Date.now());
-      setIsSystemScrolling(true);
+      // setIsSystemScrolling(true);
 
       const run = () => {
         if (scrollingRef.current !== startTime) return;
         const now = Date.now();
         const elapsed = now - startTime;
-        const progress = easeInOutQuint(Math.min(elapsed / duration, 1));
+        const progress = easeOutQuint(Math.min(elapsed / duration, 1));
         const interpolated = start + (offset - start) * progress;
 
         if (elapsed < duration) {
@@ -69,7 +69,7 @@ const Reader = ({
           requestAnimationFrame(run);
         } else {
           elementScroll(interpolated, canSmooth, instance);
-          setIsSystemScrolling(false);
+          // setIsSystemScrolling(false);
         }
       };
 
@@ -134,8 +134,10 @@ const Reader = ({
       );
 
       setPageViewports(viewports);
+      setViewportsReady(true);
     };
 
+    setViewportsReady(false);
     calculateViewports();
   }, [pdf, scale, rotation]);
 
@@ -163,7 +165,7 @@ const Reader = ({
   }, [currentPage]);
 
   useEffect(() => {
-    if (!viewports) return;
+    if (!viewports || !viewportsReady) return;
     if (scale === undefined) return;
     virtualizer.measure();
     onViewportsMeasured && onViewportsMeasured();
@@ -176,7 +178,6 @@ const Reader = ({
     };
 
     const jumpToOffset = (offset: number) => {
-      console.log("scrolling to highlight");
       virtualizer.scrollToOffset(offset, {
         align: "start",
         behavior: "smooth",
@@ -216,15 +217,14 @@ const Reader = ({
         rotation,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewports, scale]);
+  }, [viewports, scale, viewportsReady]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
     estimateSize,
   });
-  const isScrollingFast =
-    Math.abs(normalizedVelocity) > 1 ||
-    (isSystemScrolling && Math.abs(normalizedVelocity) > 1);
+
+  const isScrollingFast = Math.abs(normalizedVelocity) > 1;
   const shouldRender = !isScrollingFast;
 
   return (
