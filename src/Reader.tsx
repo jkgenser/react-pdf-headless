@@ -12,7 +12,7 @@ import { PageViewport } from "pdfjs-dist//types/src/display/display_utils";
 import Page from "./Page";
 import usePageObserver from "./usePageObserver";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
-import { easeInOutQuint, getOffsetForHighlight } from "./util";
+import { easeOutQuint, getOffsetForHighlight } from "./util";
 import useZoom from "./useZoom";
 import useRotation from "./useRotation";
 
@@ -48,7 +48,7 @@ const Reader = ({
   const [defaultScale, setDefaultScale] = useState<number | null>(null);
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
-  // const [isSystemScrolling, setIsSystemScrolling] = useState<boolean>(false);
+  const [viewportsReady, setViewportsReady] = useState<boolean>(false);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
@@ -61,7 +61,7 @@ const Reader = ({
         if (scrollingRef.current !== startTime) return;
         const now = Date.now();
         const elapsed = now - startTime;
-        const progress = easeInOutQuint(Math.min(elapsed / duration, 1));
+        const progress = easeOutQuint(Math.min(elapsed / duration, 1));
         const interpolated = start + (offset - start) * progress;
 
         if (elapsed < duration) {
@@ -134,8 +134,10 @@ const Reader = ({
       );
 
       setPageViewports(viewports);
+      setViewportsReady(true);
     };
 
+    setViewportsReady(false);
     calculateViewports();
   }, [pdf, scale, rotation]);
 
@@ -163,7 +165,7 @@ const Reader = ({
   }, [currentPage]);
 
   useEffect(() => {
-    if (!viewports) return;
+    if (!viewports || !viewportsReady) return;
     if (scale === undefined) return;
     virtualizer.measure();
     onViewportsMeasured && onViewportsMeasured();
@@ -217,7 +219,7 @@ const Reader = ({
         rotation,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewports, scale]);
+  }, [viewports, scale, viewportsReady]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
