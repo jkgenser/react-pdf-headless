@@ -20,7 +20,7 @@ const LoadingComponent = () => {
 function App() {
   const [pageNum, setPageNum] = useState<number | null>(null);
   const [scale, setScale] = useState<number | null>(0.75);
-  const [file, setFile] = useState<string>("hr2.pdf");
+  const [file, setFile] = useState<string>("pdf-open-parameters.pdf");
   const [wantPage, setWantPage] = useState<number | null>(null);
   const [readerAPI, setReaderAPI] = useState<ReaderAPI | null>(null);
   const [offset, setOffset] = useState<number | null>(null);
