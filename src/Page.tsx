@@ -13,6 +13,7 @@ const Page = ({
   shouldRender,
   renderPage,
   classes,
+  rotationAdjustment
 }: ReaderPageProps) => {
   const pageRef = useRef<HTMLDivElement | null>(null);
 
@@ -80,6 +81,7 @@ const Page = ({
               pageIndex: virtualItem.index,
               scale,
               rotate: rotation,
+              rotationAdjustment
             })}
           </div>
         )}

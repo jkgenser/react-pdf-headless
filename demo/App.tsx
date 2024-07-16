@@ -70,9 +70,7 @@ function App() {
 
   // Virtualizer has set up the dimension
   const onViewportsMeasured = () => {
-    // console.log("measured");
     setIsLoaded(true);
-    // debugger;
   };
 
   // PDF is ready

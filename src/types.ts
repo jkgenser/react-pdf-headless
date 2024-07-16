@@ -54,6 +54,7 @@ export interface RenderPageProps {
   pageIndex: number;
   scale: number;
   rotate: number;
+  rotationAdjustment: number
 }
 
 export type RenderPage = (props: RenderPageProps) => React.ReactNode;
@@ -67,4 +68,5 @@ export interface ReaderPageProps {
   shouldRender: boolean;
   renderPage?: RenderPage;
   classes?: Classes;
+  rotationAdjustment: number
 }

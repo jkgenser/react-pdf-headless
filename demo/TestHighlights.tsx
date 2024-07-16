@@ -34,10 +34,11 @@ const TestHighlightsLayer = (props: RenderPageProps) => {
   const pageHighlights = highlightData.filter(
     (highlight) => highlight.pageIndex === props.pageIndex
   );
+  // console.log(props)
   return (
     <div className="text-highlights-layer">
       {pageHighlights.map((highlight, index) => (
-        <Highlight key={index} {...highlight} rotation={props.rotate} />
+        <Highlight key={index} {...highlight} rotation={props.rotate - props.rotationAdjustment} />
       ))}
     </div>
   );
