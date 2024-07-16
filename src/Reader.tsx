@@ -167,7 +167,7 @@ const Reader = ({
     }) => {
       const firstPage = await pdf.getPage(1);
       const firstPageDefaultRotation = firstPage.rotate || 0
-      const firstViewPort = firstPage.getViewport({ scale: 1, rotation: rotation });
+      const firstViewPort = firstPage.getViewport({ scale: 1, rotation: firstPageDefaultRotation });
       const newScale = determineScale(parentRef.current!, firstViewPort.width);
       if (!initialScale) setScale(newScale);
       if (initialScale) setScale(initialScale);
