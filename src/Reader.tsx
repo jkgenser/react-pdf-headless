@@ -149,7 +149,6 @@ const Reader = ({
           return page.rotate || 0; // Default to 0 if no rotation metadata
         })
       );
-      console.log({ rotations })
       setDefaultRotations(rotations);
       setPageViewports(viewports);
       setViewportsReady(true);
