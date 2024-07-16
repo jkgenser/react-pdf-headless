@@ -47,6 +47,8 @@ const Reader = ({
   const [scale, setScale] = useState<number | undefined>(initialScale);
   const [defaultScale, setDefaultScale] = useState<number | null>(null);
   const [rotation, setRotation] = useState<number>(initialRotation);
+  const [defaultRotations, setDefaultRotations] = useState<number[] | null>();
+
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
 
@@ -96,6 +98,12 @@ const Reader = ({
     onDocumentLoad && onDocumentLoad();
   };
 
+  const getRotationAdjustment = useCallback((index: number) => {
+    const defaultRotation = (defaultRotations && defaultRotations[index]) || 0;
+
+    return defaultRotation
+  }, [defaultRotations]);
+
   const estimateSize = useCallback(
     (index: number) => {
       if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
@@ -125,14 +133,24 @@ const Reader = ({
       const viewports = await Promise.all(
         Array.from({ length: pdf.numPages }, async (_, index) => {
           const page = await pdf.getPage(index + 1);
+          const deltaRotate = page.rotate || 0
           const viewport = page.getViewport({
             scale: scale,
-            rotation,
+            rotation: rotation + deltaRotate
+            // rotation,
           });
           return viewport;
         })
       );
 
+      const rotations = await Promise.all(
+        Array.from({ length: pdf.numPages }, async (_, index) => {
+          const page = await pdf.getPage(index + 1);
+          return page.rotate || 0; // Default to 0 if no rotation metadata
+        })
+      );
+      console.log({ rotations })
+      setDefaultRotations(rotations);
       setPageViewports(viewports);
       setViewportsReady(true);
     };
@@ -149,7 +167,8 @@ const Reader = ({
       initialScale: number | undefined;
     }) => {
       const firstPage = await pdf.getPage(1);
-      const firstViewPort = firstPage.getViewport({ scale: 1, rotation });
+      const firstPageDefaultRotation = firstPage.rotate || 0
+      const firstViewPort = firstPage.getViewport({ scale: 1, rotation: rotation });
       const newScale = determineScale(parentRef.current!, firstViewPort.width);
       if (!initialScale) setScale(newScale);
       if (initialScale) setScale(initialScale);
@@ -260,7 +279,8 @@ const Reader = ({
                   virtualItem={virtualItem}
                   viewports={viewports}
                   scale={scale}
-                  rotation={rotation}
+                  rotationAdjustment={getRotationAdjustment(virtualItem.index)}
+                  rotation={rotation + getRotationAdjustment(virtualItem.index)}
                   pageObserver={pageObserver}
                   shouldRender={shouldRender}
                   renderPage={renderPage}
