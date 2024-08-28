@@ -215,6 +215,7 @@ function App() {
           setReaderAPI={(api: ReaderAPI) => setReaderAPI(api)}
           renderPage={renderPage}
           reactPDFDocumentProps={{ loading: LoadingComponent }}
+          virtualizerOptions={{ overscan: 1 }}
         />
       </div>
     </div>

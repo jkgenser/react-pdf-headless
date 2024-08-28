@@ -1,20 +1,20 @@
-import { useState, useRef, useEffect, useCallback } from "react";
-import { Document } from "react-pdf";
 import {
   VirtualizerOptions,
-  useVirtualizer,
   elementScroll,
+  useVirtualizer,
 } from "@tanstack/react-virtual";
-import { HighlightArea, ReaderProps } from "./types";
-import { PDFDocumentProxy } from "pdfjs-dist/types/src/display/api";
 import { PageViewport } from "pdfjs-dist//types/src/display/display_utils";
+import { PDFDocumentProxy } from "pdfjs-dist/types/src/display/api";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Document } from "react-pdf";
+import { HighlightArea, ReaderProps } from "./types";
 
 import Page from "./Page";
 import usePageObserver from "./usePageObserver";
-import useVirtualizerVelocity from "./useVirtualizerVelocity";
-import { easeOutQuint, getOffsetForHighlight } from "./util";
-import useZoom from "./useZoom";
 import useRotation from "./useRotation";
+import useVirtualizerVelocity from "./useVirtualizerVelocity";
+import useZoom from "./useZoom";
+import { easeOutQuint, getOffsetForHighlight } from "./util";
 
 const EXTRA_HEIGHT = 10;
 const RESERVE_WIDTH = 50;
@@ -36,6 +36,7 @@ const Reader = ({
   renderPage,
   classes,
   reactPDFDocumentProps,
+  virtualizerOptions = { overscan: 0 },
 }: ReaderProps) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
   const scrollingRef = useRef<number | null>(null);
@@ -98,11 +99,15 @@ const Reader = ({
     onDocumentLoad && onDocumentLoad();
   };
 
-  const getRotationAdjustment = useCallback((index: number) => {
-    const defaultRotation = (defaultRotations && defaultRotations[index]) || 0;
+  const getRotationAdjustment = useCallback(
+    (index: number) => {
+      const defaultRotation =
+        (defaultRotations && defaultRotations[index]) || 0;
 
-    return defaultRotation
-  }, [defaultRotations]);
+      return defaultRotation;
+    },
+    [defaultRotations]
+  );
 
   const estimateSize = useCallback(
     (index: number) => {
@@ -116,7 +121,7 @@ const Reader = ({
     count: numPages || 0,
     getScrollElement: () => parentRef.current,
     estimateSize: estimateSize,
-    overscan: 0,
+    overscan: virtualizerOptions?.overscan ?? 0,
     scrollToFn,
   });
 
@@ -133,10 +138,10 @@ const Reader = ({
       const viewports = await Promise.all(
         Array.from({ length: pdf.numPages }, async (_, index) => {
           const page = await pdf.getPage(index + 1);
-          const deltaRotate = page.rotate || 0
+          const deltaRotate = page.rotate || 0;
           const viewport = page.getViewport({
             scale: scale,
-            rotation: rotation + deltaRotate
+            rotation: rotation + deltaRotate,
             // rotation,
           });
           return viewport;
@@ -166,8 +171,11 @@ const Reader = ({
       initialScale: number | undefined;
     }) => {
       const firstPage = await pdf.getPage(1);
-      const firstPageDefaultRotation = firstPage.rotate || 0
-      const firstViewPort = firstPage.getViewport({ scale: 1, rotation: firstPageDefaultRotation });
+      const firstPageDefaultRotation = firstPage.rotate || 0;
+      const firstViewPort = firstPage.getViewport({
+        scale: 1,
+        rotation: firstPageDefaultRotation,
+      });
       const newScale = determineScale(parentRef.current!, firstViewPort.width);
       if (!initialScale) setScale(newScale);
       if (initialScale) setScale(initialScale);

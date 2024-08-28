@@ -15,6 +15,10 @@ export interface Classes {
   pageWrapper?: string;
 }
 
+export interface VirtualizerOptions {
+  overscan?: number;
+}
+
 export interface ReaderProps {
   file: string;
   initialScale?: number;
@@ -26,6 +30,7 @@ export interface ReaderProps {
   renderPage?: RenderPage;
   classes?: Classes;
   reactPDFDocumentProps?: DocumentProps;
+  virtualizerOptions?: VirtualizerOptions;
 }
 
 export interface ReaderAPI {
@@ -54,7 +59,7 @@ export interface RenderPageProps {
   pageIndex: number;
   scale: number;
   rotate: number;
-  rotationAdjustment: number
+  rotationAdjustment: number;
 }
 
 export type RenderPage = (props: RenderPageProps) => React.ReactNode;
@@ -68,5 +73,5 @@ export interface ReaderPageProps {
   shouldRender: boolean;
   renderPage?: RenderPage;
   classes?: Classes;
-  rotationAdjustment: number
+  rotationAdjustment: number;
 }
