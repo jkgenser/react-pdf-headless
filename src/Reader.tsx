@@ -16,9 +16,9 @@ import useVirtualizerVelocity from "./useVirtualizerVelocity";
 import useZoom from "./useZoom";
 import { easeOutQuint, getOffsetForHighlight } from "./util";
 
-const EXTRA_HEIGHT = 10;
-const RESERVE_WIDTH = 50;
-const DEFAULT_HEIGHT = 600;
+export const EXTRA_HEIGHT = 10;
+export const RESERVE_WIDTH = 50;
+export const DEFAULT_HEIGHT = 600;
 
 const determineScale = (parentElement: HTMLElement, width: number): number => {
   const scaleWidth = (parentElement.clientWidth - RESERVE_WIDTH) / width;
@@ -42,7 +42,7 @@ const Reader = ({
   const scrollingRef = useRef<number | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
   const [viewports, setPageViewports] = useState<Array<PageViewport> | null>(
-    null
+    null,
   );
   const [pdf, setPdf] = useState<PDFDocumentProxy | null>(null);
   const [scale, setScale] = useState<number | undefined>(initialScale);
@@ -78,7 +78,7 @@ const Reader = ({
 
       requestAnimationFrame(run);
     },
-    [parentRef]
+    [parentRef],
   );
 
   const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
@@ -106,7 +106,7 @@ const Reader = ({
 
       return defaultRotation;
     },
-    [defaultRotations]
+    [defaultRotations],
   );
 
   const estimateSize = useCallback(
@@ -114,7 +114,7 @@ const Reader = ({
       if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
       return viewports[index].height + EXTRA_HEIGHT;
     },
-    [viewports]
+    [viewports],
   );
 
   const virtualizer = useVirtualizer({
@@ -145,14 +145,14 @@ const Reader = ({
             // rotation,
           });
           return viewport;
-        })
+        }),
       );
 
       const rotations = await Promise.all(
         Array.from({ length: pdf.numPages }, async (_, index) => {
           const page = await pdf.getPage(index + 1);
           return page.rotate || 0; // Default to 0 if no rotation metadata
-        })
+        }),
       );
       setDefaultRotations(rotations);
       setPageViewports(viewports);
@@ -213,7 +213,7 @@ const Reader = ({
     const jumpToHighlightArea = (area: HighlightArea) => {
       const startOffset = virtualizer.getOffsetForIndex(
         area.pageIndex,
-        "start"
+        "start",
       )[0];
       const itemHeight = estimateSize(area.pageIndex);
       const offset = getOffsetForHighlight({
