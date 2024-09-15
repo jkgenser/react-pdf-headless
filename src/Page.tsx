@@ -1,6 +1,7 @@
 import { Page as ReactPdfPage } from "react-pdf";
 import { useEffect, useRef } from "react";
 import { ReaderPageProps, RenderPage, RenderPageProps } from "./types";
+import { EXTRA_HEIGHT } from "./Reader";
 
 const EXTRA_WIDTH = 5;
 
@@ -13,7 +14,7 @@ const Page = ({
   shouldRender,
   renderPage,
   classes,
-  rotationAdjustment
+  rotationAdjustment,
 }: ReaderPageProps) => {
   const pageRef = useRef<HTMLDivElement | null>(null);
 
@@ -63,8 +64,9 @@ const Page = ({
           backgroundColor: "white",
           display: "flex",
           justifyContent: "center",
-          height: `${shouldRender ? "fit-content" : `${virtualItem.size}px`}`,
-          minHeight: `${virtualItem.size - 100}px`,
+          // height: `${shouldRender ? "fit-content" : `${virtualItem.size}px`}`,
+          height: `${`${virtualItem.size - EXTRA_HEIGHT}px`}`,
+          // minHeight: `${virtualItem.size - 100}px`,
         }}
         className={classes?.pageInnerBox}
       >
@@ -81,7 +83,7 @@ const Page = ({
               pageIndex: virtualItem.index,
               scale,
               rotate: rotation,
-              rotationAdjustment
+              rotationAdjustment,
             })}
           </div>
         )}
