@@ -24,7 +24,7 @@ export interface ReaderProps {
   initialScale?: number;
   initialRotation?: number;
   onPageChange?: (e: PageChangeEvent) => void;
-  onDocumentLoad?: () => void;
+  onDocumentLoad?: (pdf: PDFDocumentProxy) => void;
   onViewportsMeasured?: () => void;
   setReaderAPI?: (readerAPI: ReaderAPI) => void;
   renderPage?: RenderPage;

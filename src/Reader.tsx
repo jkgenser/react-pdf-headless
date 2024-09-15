@@ -96,7 +96,7 @@ const Reader = ({
     setNumPages(newPdf.numPages);
 
     // user defined callback
-    onDocumentLoad && onDocumentLoad();
+    onDocumentLoad && onDocumentLoad(newPdf);
   };
 
   const getRotationAdjustment = useCallback(

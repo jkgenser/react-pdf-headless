@@ -74,7 +74,9 @@ function App() {
   };
 
   // PDF is ready
-  const onDocumentLoaded = () => {
+  const onDocumentLoaded = (pdf) => {
+    console.log(pdf.numPages);
+
     // console.log("pdf ready");
     // debugger;
   };
