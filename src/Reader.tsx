@@ -108,7 +108,7 @@ const Reader = ({
     [defaultRotations],
   );
 
-  // this is passed to the virtualizer to get the height of every element
+  // EXTRA_HEIGHT is passed to the virtualizer to get the height of every element
   // we add some additional extra height to every element so that the pages
   // are not rendered directly on top of each other
   const estimateSize = useCallback(
