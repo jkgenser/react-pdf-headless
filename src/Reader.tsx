@@ -16,7 +16,8 @@ import useVirtualizerVelocity from "./useVirtualizerVelocity";
 import useZoom from "./useZoom";
 import { easeOutQuint, getOffsetForHighlight } from "./util";
 
-export const EXTRA_HEIGHT = 10;
+export const VIRTUAL_ITEM_GAP = 10;
+export const EXTRA_HEIGHT = 0;
 export const RESERVE_WIDTH = 50;
 export const DEFAULT_HEIGHT = 600;
 
@@ -81,16 +82,6 @@ const Reader = ({
     [parentRef],
   );
 
-  const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
-    scale,
-    defaultScale,
-    setScale,
-  });
-  const { rotateClockwise, rotateCounterClockwise } = useRotation({
-    rotation,
-    setRotation,
-  });
-
   const onDocumentLoadSuccess = async (newPdf: PDFDocumentProxy) => {
     setPdf(newPdf);
     setNumPages(newPdf.numPages);
@@ -109,6 +100,9 @@ const Reader = ({
     [defaultRotations],
   );
 
+  // this is passed to the virtualizer to get the height of every element
+  // we add some additional extra height to every element so that the pages
+  // are not rendered directly on top of each other
   const estimateSize = useCallback(
     (index: number) => {
       if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
@@ -123,12 +117,24 @@ const Reader = ({
     estimateSize: estimateSize,
     overscan: virtualizerOptions?.overscan ?? 0,
     scrollToFn,
+    gap: VIRTUAL_ITEM_GAP,
   });
 
   const { pageObserver } = usePageObserver({
     parentRef,
     setCurrentPage,
     numPages,
+  });
+
+  const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
+    scale,
+    defaultScale,
+    setScale,
+    virtualizer,
+  });
+  const { rotateClockwise, rotateCounterClockwise } = useRotation({
+    rotation,
+    setRotation,
   });
 
   useEffect(() => {
@@ -139,7 +145,7 @@ const Reader = ({
         Array.from({ length: pdf.numPages }, async (_, index) => {
           const page = await pdf.getPage(index + 1);
           // sometimes there is information about the default rotation of the document
-          // stored in page.roate. we need to always add that additional rotaton offset
+          // stored in page.rotate. we need to always add that additional rotaton offset
           const deltaRotate = page.rotate || 0;
           const viewport = page.getViewport({
             scale: scale,
