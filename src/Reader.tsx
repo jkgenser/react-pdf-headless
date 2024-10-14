@@ -138,11 +138,12 @@ const Reader = ({
       const viewports = await Promise.all(
         Array.from({ length: pdf.numPages }, async (_, index) => {
           const page = await pdf.getPage(index + 1);
+          // sometimes there is information about the default rotation of the document
+          // stored in page.roate. we need to always add that additional rotaton offset
           const deltaRotate = page.rotate || 0;
           const viewport = page.getViewport({
             scale: scale,
             rotation: rotation + deltaRotate,
-            // rotation,
           });
           return viewport;
         }),
