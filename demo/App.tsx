@@ -1,13 +1,12 @@
 import "./App.css";
 
-import "react-pdf/dist/Page/TextLayer.css";
 import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
 
-import { pdfjs } from "react-pdf";
-import { Reader } from "../src/index";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { Page, pdfjs } from "react-pdf";
+import { Reader } from "../src/index";
 import { PageChangeEvent, ReaderAPI, RenderPageProps } from "../src/types";
-import { Page } from "react-pdf";
 import TestHighlightsLayer from "./TestHighlights";
 import { highlightData } from "./highlightData";
 

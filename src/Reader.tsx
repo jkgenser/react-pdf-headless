@@ -61,6 +61,14 @@ const Reader = ({
       const startTime = (scrollingRef.current = Date.now());
       // setIsSystemScrolling(true);
 
+      // if we are in auto scroll mode, then immediately scroll
+      // to the offset and not display any animation. For example if scroll
+      // immediately to a rescaled offset if zoom/scale has just been changed
+      if (canSmooth.behavior === "auto") {
+        elementScroll(offset, canSmooth, instance);
+        return;
+      }
+
       const run = () => {
         if (scrollingRef.current !== startTime) return;
         const now = Date.now();
@@ -206,7 +214,7 @@ const Reader = ({
     const jumpToPage = (pageIndex: number) => {
       virtualizer.scrollToIndex(pageIndex, {
         align: "start",
-        // behavior: "smooth",
+        behavior: "smooth",
       });
     };
 
