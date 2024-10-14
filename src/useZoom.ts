@@ -4,6 +4,35 @@ import { VIRTUAL_ITEM_GAP } from "./Reader";
 const ZOOM_LEVELS = [
   50, 70, 80, 90, 100, 110, 120, 130, 150, 170, 200, 300, 400,
 ].map((level) => level / 100);
+
+export const calculateNewOffset = (
+  virtualizer: Virtualizer<HTMLDivElement, Element>,
+  currentScale: number,
+  nextScale: number,
+): number | null => {
+  if (!currentScale || !virtualizer) return null;
+
+  const offsetScaleFactor = nextScale / currentScale;
+
+  // Calculate the offset from the current virtual item start
+  const currentVirtualItem = virtualizer.getVirtualItemForOffset(
+    virtualizer.scrollOffset,
+  );
+
+  // Subtract off gaps from the current total offset
+  const currentOffsetWithoutGap =
+    virtualizer.scrollOffset - currentVirtualItem.index * VIRTUAL_ITEM_GAP;
+
+  // Apply the scaling factor to the offset without the gap
+  const newScaledOffsetWithoutGap = currentOffsetWithoutGap * offsetScaleFactor;
+
+  // Add back the gap after scaling
+  const newScaledOffsetWithGap =
+    newScaledOffsetWithoutGap + currentVirtualItem.index * VIRTUAL_ITEM_GAP;
+
+  // Return the newly calculated offset
+  return newScaledOffsetWithGap;
+};
 const useZoom = ({
   scale,
   defaultScale,
@@ -21,25 +50,12 @@ const useZoom = ({
     const nextIndex =
       currentIndex + 1 < ZOOM_LEVELS.length ? currentIndex + 1 : currentIndex;
     const nextScale = ZOOM_LEVELS[nextIndex];
-    const offsetScaleFactor = nextScale / scale;
+
     setScale(ZOOM_LEVELS[nextIndex]);
 
-    // calculate our offset from item start
-    const currentVirtualItem = virtualizer.getVirtualItemForOffset(
-      virtualizer.scrollOffset,
-    );
-
-    // subtract off gaps from the current total offset
-    const currentOffsetWithoutGap =
-      virtualizer.scrollOffset - currentVirtualItem.index * VIRTUAL_ITEM_GAP;
-
-    // apply scaling factor to the offset amount without gap
-    const newScaledOffsetWithoutGap =
-      currentOffsetWithoutGap * offsetScaleFactor;
-
-    // add back the gap amount
     const newScaledOffsetWithGap =
-      newScaledOffsetWithoutGap + currentVirtualItem.index * VIRTUAL_ITEM_GAP;
+      calculateNewOffset(virtualizer, scale, nextScale) ||
+      virtualizer.scrollOffset;
 
     virtualizer.scrollToOffset(newScaledOffsetWithGap, {
       align: "start",
@@ -51,7 +67,17 @@ const useZoom = ({
     if (!scale) return;
     const currentIndex = ZOOM_LEVELS.findIndex((level) => level >= scale);
     const prevIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : 0;
+    const nextScale = ZOOM_LEVELS[prevIndex];
     setScale(ZOOM_LEVELS[prevIndex]);
+
+    const newScaledOffsetWithGap =
+      calculateNewOffset(virtualizer, scale, nextScale) ||
+      virtualizer.scrollOffset;
+
+    virtualizer.scrollToOffset(newScaledOffsetWithGap, {
+      align: "start",
+      behavior: "auto",
+    });
   };
 
   const zoomFitWidth = () => {
@@ -63,8 +89,3 @@ const useZoom = ({
 };
 
 export default useZoom;
-
-// from current offset, determine what percentage of item we are rendered down
-// form the current item index
-// then calculate the new target offset by summing the gap heights
-// and page heights for the new page start
