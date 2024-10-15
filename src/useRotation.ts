@@ -1,5 +1,3 @@
-import { Virtualizer } from "@tanstack/react-virtual";
-
 const useRotation = ({
   rotation,
   setRotation,

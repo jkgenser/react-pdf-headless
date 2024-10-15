@@ -52,7 +52,6 @@ const Reader = ({
   const [defaultRotations, setDefaultRotations] = useState<number[] | null>();
 
   const [currentPage, setCurrentPage] = useState<number | null>(null);
-  const [isRotating, setIsRotating] = useState<boolean>(false);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
   const [targetScrollIndex, setTargetScrollIndex] = useState<number | null>(
     null,
