@@ -52,6 +52,7 @@ const Reader = ({
   const [defaultRotations, setDefaultRotations] = useState<number[] | null>();
 
   const [currentPage, setCurrentPage] = useState<number | null>(null);
+  const [isRotating, setIsRotating] = useState<boolean>(false);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
   const [targetScrollIndex, setTargetScrollIndex] = useState<number | null>(
     null,
@@ -151,6 +152,7 @@ const Reader = ({
     currentPage,
   });
 
+  const prevRotationRef = useRef(rotation);
   useEffect(() => {
     const calculateViewports = async () => {
       if (!pdf || scale === undefined) return;
@@ -264,12 +266,10 @@ const Reader = ({
         rotation,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewports, scale, viewportsReady]);
+  }, [viewports, scale, viewportsReady, currentPage, rotation]);
 
   useEffect(() => {
     if (targetScrollIndex === null || !viewportsReady) return;
-
-    console.log("scrolling to target index...", targetScrollIndex);
     virtualizer.scrollToIndex(targetScrollIndex, {
       align: "start",
       behavior: "auto",
