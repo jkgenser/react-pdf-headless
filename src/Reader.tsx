@@ -16,7 +16,8 @@ import useVirtualizerVelocity from "./useVirtualizerVelocity";
 import useZoom from "./useZoom";
 import { easeOutQuint, getOffsetForHighlight } from "./util";
 
-export const EXTRA_HEIGHT = 10;
+export const VIRTUAL_ITEM_GAP = 10;
+export const EXTRA_HEIGHT = 0;
 export const RESERVE_WIDTH = 50;
 export const DEFAULT_HEIGHT = 600;
 
@@ -51,7 +52,11 @@ const Reader = ({
   const [defaultRotations, setDefaultRotations] = useState<number[] | null>();
 
   const [currentPage, setCurrentPage] = useState<number | null>(null);
+  const [isRotating, setIsRotating] = useState<boolean>(false);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
+  const [targetScrollIndex, setTargetScrollIndex] = useState<number | null>(
+    null,
+  );
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
@@ -59,6 +64,14 @@ const Reader = ({
       const start = parentRef.current?.scrollTop || 0;
       const startTime = (scrollingRef.current = Date.now());
       // setIsSystemScrolling(true);
+
+      // if we are in auto scroll mode, then immediately scroll
+      // to the offset and not display any animation. For example if scroll
+      // immediately to a rescaled offset if zoom/scale has just been changed
+      if (canSmooth.behavior === "auto") {
+        elementScroll(offset, canSmooth, instance);
+        return;
+      }
 
       const run = () => {
         if (scrollingRef.current !== startTime) return;
@@ -81,16 +94,6 @@ const Reader = ({
     [parentRef],
   );
 
-  const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
-    scale,
-    defaultScale,
-    setScale,
-  });
-  const { rotateClockwise, rotateCounterClockwise } = useRotation({
-    rotation,
-    setRotation,
-  });
-
   const onDocumentLoadSuccess = async (newPdf: PDFDocumentProxy) => {
     setPdf(newPdf);
     setNumPages(newPdf.numPages);
@@ -109,6 +112,9 @@ const Reader = ({
     [defaultRotations],
   );
 
+  // EXTRA_HEIGHT is passed to the virtualizer to get the height of every element
+  // we add some additional extra height to every element so that the pages
+  // are not rendered directly on top of each other
   const estimateSize = useCallback(
     (index: number) => {
       if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
@@ -123,12 +129,26 @@ const Reader = ({
     estimateSize: estimateSize,
     overscan: virtualizerOptions?.overscan ?? 0,
     scrollToFn,
+    gap: VIRTUAL_ITEM_GAP,
   });
 
   const { pageObserver } = usePageObserver({
     parentRef,
     setCurrentPage,
     numPages,
+  });
+
+  const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
+    scale,
+    defaultScale,
+    setScale,
+    virtualizer,
+  });
+  const { rotateClockwise, rotateCounterClockwise } = useRotation({
+    rotation,
+    setRotation,
+    setTargetScrollIndex,
+    currentPage,
   });
 
   useEffect(() => {
@@ -138,11 +158,12 @@ const Reader = ({
       const viewports = await Promise.all(
         Array.from({ length: pdf.numPages }, async (_, index) => {
           const page = await pdf.getPage(index + 1);
+          // sometimes there is information about the default rotation of the document
+          // stored in page.rotate. we need to always add that additional rotaton offset
           const deltaRotate = page.rotate || 0;
           const viewport = page.getViewport({
             scale: scale,
             rotation: rotation + deltaRotate,
-            // rotation,
           });
           return viewport;
         }),
@@ -199,7 +220,7 @@ const Reader = ({
     const jumpToPage = (pageIndex: number) => {
       virtualizer.scrollToIndex(pageIndex, {
         align: "start",
-        // behavior: "smooth",
+        behavior: "smooth",
       });
     };
 
@@ -243,7 +264,16 @@ const Reader = ({
         rotation,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewports, scale, viewportsReady]);
+  }, [viewports, scale, viewportsReady, currentPage, rotation]);
+
+  useEffect(() => {
+    if (targetScrollIndex === null || !viewportsReady) return;
+    virtualizer.scrollToIndex(targetScrollIndex, {
+      align: "start",
+      behavior: "auto",
+    });
+    setTargetScrollIndex(null);
+  }, [targetScrollIndex, viewportsReady]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
