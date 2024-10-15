@@ -147,12 +147,10 @@ const Reader = ({
   const { rotateClockwise, rotateCounterClockwise } = useRotation({
     rotation,
     setRotation,
-    virtualizer,
     setTargetScrollIndex,
     currentPage,
   });
 
-  const prevRotationRef = useRef(rotation);
   useEffect(() => {
     const calculateViewports = async () => {
       if (!pdf || scale === undefined) return;

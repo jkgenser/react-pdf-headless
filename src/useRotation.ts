@@ -3,13 +3,11 @@ import { Virtualizer } from "@tanstack/react-virtual";
 const useRotation = ({
   rotation,
   setRotation,
-  virtualizer,
   setTargetScrollIndex,
   currentPage,
 }: {
   rotation: number;
   setRotation: (newRotation: number) => void;
-  virtualizer: Virtualizer<HTMLDivElement, Element>;
   setTargetScrollIndex: (scrollOffset: number) => void;
   currentPage: number | null;
 }) => {
