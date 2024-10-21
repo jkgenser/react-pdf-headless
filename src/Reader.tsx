@@ -53,9 +53,7 @@ const Reader = ({
 
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
-  const [targetScrollIndex, setTargetScrollIndex] = useState<number | null>(
-    null,
-  );
+  const [_, setTargetScrollIndex] = useState<number | null>(null);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
