@@ -265,14 +265,16 @@ const Reader = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports, scale, viewportsReady, currentPage, rotation]);
 
-  useEffect(() => {
-    if (targetScrollIndex === null || !viewportsReady) return;
-    virtualizer.scrollToIndex(targetScrollIndex, {
-      align: "start",
-      behavior: "auto",
-    });
-    setTargetScrollIndex(null);
-  }, [targetScrollIndex, viewportsReady]);
+  // TODO: This interacts poorly in the case that we change documents
+  // and then immediately zoom
+  // useEffect(() => {
+  //   if (targetScrollIndex === null || !viewportsReady) return;
+  //   virtualizer.scrollToIndex(targetScrollIndex, {
+  //     align: "start",
+  //     behavior: "auto",
+  //   });
+  //   setTargetScrollIndex(null);
+  // }, [targetScrollIndex, viewportsReady]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
