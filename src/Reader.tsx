@@ -275,17 +275,17 @@ const Reader = ({
 
   // scale changes >> recalc viewports >> viewports ready >> zoom
 
-  useEffect(() => {
-    // calculate target zoom offset before viewports have be
-    if (
-      (!viewportsReady && zoomState.nextScale !== null) ||
-      zoomState.currentScale !== null
-    ) {
-    }
-    if (zoomState.nextScale === null && zoomState.currentScale === null) {
-      return;
-    }
-  }, [zoomState, viewportsReady]);
+  // useEffect(() => {
+  //   // calculate target zoom offset before viewports have be
+  //   if (
+  //     (!viewportsReady && zoomState.nextScale !== null) ||
+  //     zoomState.currentScale !== null
+  //   ) {
+  //   }
+  //   if (zoomState.nextScale === null && zoomState.currentScale === null) {
+  //     return;
+  //   }
+  // }, [zoomState, viewportsReady]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
