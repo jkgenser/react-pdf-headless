@@ -59,7 +59,7 @@ const Reader = ({
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
   const [_, setTargetScrollIndex] = useState<number | null>(null);
-  const [zoomState, setZoomState] = useState<ZoomState>({
+  const [__, setZoomState] = useState<ZoomState>({
     currentScale: null,
     nextScale: null,
   });
