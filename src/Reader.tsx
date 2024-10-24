@@ -224,11 +224,23 @@ const Reader = ({
     virtualizer.measure();
     onViewportsMeasured && onViewportsMeasured();
 
-    const jumpToPage = (pageIndex: number) => {
-      virtualizer.scrollToIndex(pageIndex, {
+    const jumpToPage = (
+      pageIndex: number,
+      options?: {
+        align?: "start" | "center" | "end" | "auto";
+        behavior?: "auto" | "smooth";
+      },
+    ) => {
+      // Define default options
+      const defaultOptions = {
         align: "start",
         behavior: "smooth",
-      });
+      };
+
+      // Merge default options with any provided options
+      const finalOptions = { ...defaultOptions, ...options };
+      // @ts-ignore
+      virtualizer.scrollToIndex(pageIndex, finalOptions);
     };
 
     const jumpToOffset = (offset: number) => {

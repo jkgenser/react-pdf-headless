@@ -34,7 +34,13 @@ export interface ReaderProps {
 }
 
 export interface ReaderAPI {
-  jumpToPage: (pageIndex: number) => void;
+  jumpToPage: (
+    pageIndex: number,
+    options?: {
+      align?: "start" | "center" | "end" | "auto";
+      behavior?: "auto" | "smooth";
+    },
+  ) => void;
   jumpToHighlightArea: (area: HighlightArea) => void;
   jumpToOffset: (offset: number) => void;
   increaseZoom: () => void;
