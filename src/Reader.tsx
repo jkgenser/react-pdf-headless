@@ -63,7 +63,7 @@ const Reader = ({
     currentScale: null,
     nextScale: null,
   });
-  const [scrollOffset, setTargetScrollOffset] = useState<number | null>(null);
+  // const [scrollOffset, setTargetScrollOffset] = useState<number | null>(null);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
