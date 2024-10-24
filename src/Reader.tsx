@@ -26,6 +26,11 @@ const determineScale = (parentElement: HTMLElement, width: number): number => {
   return scaleWidth;
 };
 
+export interface ZoomState {
+  currentScale: number | null;
+  nextScale: number | null;
+}
+
 const Reader = ({
   file,
   initialScale,
@@ -54,13 +59,17 @@ const Reader = ({
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
   const [_, setTargetScrollIndex] = useState<number | null>(null);
+  const [__, setZoomState] = useState<ZoomState>({
+    currentScale: null,
+    nextScale: null,
+  });
+  // const [scrollOffset, setTargetScrollOffset] = useState<number | null>(null);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
       const duration = 400;
       const start = parentRef.current?.scrollTop || 0;
       const startTime = (scrollingRef.current = Date.now());
-      // setIsSystemScrolling(true);
 
       // if we are in auto scroll mode, then immediately scroll
       // to the offset and not display any animation. For example if scroll
@@ -70,6 +79,7 @@ const Reader = ({
         return;
       }
 
+      // if we are in smooth mode then we scroll auto using our ease out schedule
       const run = () => {
         if (scrollingRef.current !== startTime) return;
         const now = Date.now();
@@ -78,11 +88,10 @@ const Reader = ({
         const interpolated = start + (offset - start) * progress;
 
         if (elapsed < duration) {
-          elementScroll(interpolated, canSmooth, instance);
+          elementScroll(interpolated, { behavior: "auto" }, instance);
           requestAnimationFrame(run);
         } else {
-          elementScroll(interpolated, canSmooth, instance);
-          // setIsSystemScrolling(false);
+          elementScroll(interpolated, { behavior: "auto" }, instance);
         }
       };
 
@@ -139,8 +148,9 @@ const Reader = ({
     scale,
     defaultScale,
     setScale,
-    virtualizer,
+    setZoomState,
   });
+
   const { rotateClockwise, rotateCounterClockwise } = useRotation({
     rotation,
     setRotation,
@@ -243,7 +253,7 @@ const Reader = ({
 
       virtualizer.scrollToOffset(offset, {
         align: "start",
-        // behavior: "smooth",
+        behavior: "smooth",
       });
     };
 
@@ -261,18 +271,21 @@ const Reader = ({
         rotation,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewports, scale, viewportsReady, currentPage, rotation]);
+  }, [viewports, scale, viewportsReady]);
 
-  // TODO: This interacts poorly in the case that we change documents
-  // and then immediately zoom
+  // scale changes >> recalc viewports >> viewports ready >> zoom
+
   // useEffect(() => {
-  //   if (targetScrollIndex === null || !viewportsReady) return;
-  //   virtualizer.scrollToIndex(targetScrollIndex, {
-  //     align: "start",
-  //     behavior: "auto",
-  //   });
-  //   setTargetScrollIndex(null);
-  // }, [targetScrollIndex, viewportsReady]);
+  //   // calculate target zoom offset before viewports have be
+  //   if (
+  //     (!viewportsReady && zoomState.nextScale !== null) ||
+  //     zoomState.currentScale !== null
+  //   ) {
+  //   }
+  //   if (zoomState.nextScale === null && zoomState.currentScale === null) {
+  //     return;
+  //   }
+  // }, [zoomState, viewportsReady]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
