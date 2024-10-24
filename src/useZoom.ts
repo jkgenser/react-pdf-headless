@@ -1,11 +1,11 @@
 import { Virtualizer } from "@tanstack/react-virtual";
-import { VIRTUAL_ITEM_GAP } from "./Reader";
+import { VIRTUAL_ITEM_GAP, ZoomState } from "./Reader";
 
 const ZOOM_LEVELS = [
   50, 70, 80, 90, 100, 110, 120, 130, 150, 170, 200, 300, 400,
 ].map((level) => level / 100);
 
-export const calculateNewOffset = (
+export const calculateAfterZoomOffset = (
   virtualizer: Virtualizer<HTMLDivElement, Element>,
   currentScale: number,
   nextScale: number,
@@ -37,12 +37,12 @@ const useZoom = ({
   scale,
   defaultScale,
   setScale,
-  virtualizer,
+  setZoomState,
 }: {
   scale: number | undefined;
   defaultScale: number | null;
   setScale: (newScale: number) => void;
-  virtualizer: Virtualizer<HTMLDivElement, Element>;
+  setZoomState: (zoomState: ZoomState) => void;
 }) => {
   const increaseZoom = () => {
     if (!scale) return;
@@ -51,15 +51,10 @@ const useZoom = ({
       currentIndex + 1 < ZOOM_LEVELS.length ? currentIndex + 1 : currentIndex;
     const nextScale = ZOOM_LEVELS[nextIndex];
 
-    setScale(ZOOM_LEVELS[nextIndex]);
-
-    const newScaledOffsetWithGap =
-      calculateNewOffset(virtualizer, scale, nextScale) ||
-      virtualizer.scrollOffset;
-
-    virtualizer.scrollToOffset(newScaledOffsetWithGap, {
-      align: "start",
-      behavior: "auto",
+    setScale(nextScale);
+    setZoomState({
+      currentScale: scale,
+      nextScale: nextScale,
     });
   };
 
@@ -68,15 +63,10 @@ const useZoom = ({
     const currentIndex = ZOOM_LEVELS.findIndex((level) => level >= scale);
     const prevIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : 0;
     const nextScale = ZOOM_LEVELS[prevIndex];
-    setScale(ZOOM_LEVELS[prevIndex]);
-
-    const newScaledOffsetWithGap =
-      calculateNewOffset(virtualizer, scale, nextScale) ||
-      virtualizer.scrollOffset;
-
-    virtualizer.scrollToOffset(newScaledOffsetWithGap, {
-      align: "start",
-      behavior: "auto",
+    setScale(nextScale);
+    setZoomState({
+      currentScale: scale,
+      nextScale: nextScale,
     });
   };
 
