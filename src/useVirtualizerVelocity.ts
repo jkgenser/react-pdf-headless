@@ -18,6 +18,10 @@ const useVirtualizerVelocity = ({
       // Get the current scroll offset
       const currentScrollOffset = virtualizer.scrollOffset;
 
+      if (currentScrollOffset == null) {
+        return;
+      }
+
       // Calculate the difference (velocity)
       const newVelocity = currentScrollOffset - lastScrollOffset;
 
