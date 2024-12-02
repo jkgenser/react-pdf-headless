@@ -251,10 +251,13 @@ const Reader = ({
     };
 
     const jumpToHighlightArea = (area: HighlightArea) => {
-      const startOffset = virtualizer.getOffsetForIndex(
+      const startOffset = virtualizer.getOffsetForIndex?.(
         area.pageIndex,
         "start",
-      )[0];
+      )?.[0];
+
+      if (startOffset == null) return;
+
       const itemHeight = estimateSize(area.pageIndex);
       const offset = getOffsetForHighlight({
         ...area,

@@ -10,7 +10,9 @@ export const calculateAfterZoomOffset = (
   currentScale: number,
   nextScale: number,
 ): number | null => {
-  if (!currentScale || !virtualizer) return null;
+  if (!currentScale || !virtualizer || virtualizer.scrollOffset == null) {
+    return null;
+  }
 
   const offsetScaleFactor = nextScale / currentScale;
 
@@ -18,6 +20,8 @@ export const calculateAfterZoomOffset = (
   const currentVirtualItem = virtualizer.getVirtualItemForOffset(
     virtualizer.scrollOffset,
   );
+
+  if (!currentVirtualItem) return null;
 
   // Subtract off gaps from the current total offset
   const currentOffsetWithoutGap =
