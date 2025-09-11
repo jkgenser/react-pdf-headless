@@ -127,7 +127,7 @@ const Reader = ({
   const estimateSize = useCallback(
     (index: number) => {
       if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
-      return viewports[index].height + EXTRA_HEIGHT;
+      return Math.round(viewports[index].height) + EXTRA_HEIGHT;
     },
     [viewports],
   );
