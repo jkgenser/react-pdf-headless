@@ -5,38 +5,6 @@ const ZOOM_LEVELS = [
   50, 70, 80, 90, 100, 110, 120, 130, 150, 170, 200, 300, 400,
 ].map((level) => level / 100);
 
-export const calculateAfterZoomOffset = (
-  virtualizer: Virtualizer<HTMLDivElement, Element>,
-  currentScale: number,
-  nextScale: number,
-): number | null => {
-  if (!currentScale || !virtualizer || virtualizer.scrollOffset == null) {
-    return null;
-  }
-
-  const offsetScaleFactor = nextScale / currentScale;
-
-  // Calculate the offset from the current virtual item start
-  const currentVirtualItem = virtualizer.getVirtualItemForOffset(
-    virtualizer.scrollOffset,
-  );
-
-  if (!currentVirtualItem) return null;
-
-  // Subtract off gaps from the current total offset
-  const currentOffsetWithoutGap =
-    virtualizer.scrollOffset - currentVirtualItem.index * VIRTUAL_ITEM_GAP;
-
-  // Apply the scaling factor to the offset without the gap
-  const newScaledOffsetWithoutGap = currentOffsetWithoutGap * offsetScaleFactor;
-
-  // Add back the gap after scaling
-  const newScaledOffsetWithGap =
-    newScaledOffsetWithoutGap + currentVirtualItem.index * VIRTUAL_ITEM_GAP;
-
-  // Return the newly calculated offset
-  return newScaledOffsetWithGap;
-};
 const useZoom = ({
   scale,
   defaultScale,

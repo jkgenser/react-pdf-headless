@@ -13,7 +13,7 @@ import Page from "./Page";
 import usePageObserver from "./usePageObserver";
 import useRotation from "./useRotation";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
-import useZoom, { calculateAfterZoomOffset } from "./useZoom";
+import useZoom from "./useZoom";
 import { easeOutQuint, getOffsetForHighlight } from "./util";
 
 export const VIRTUAL_ITEM_GAP = 10;
@@ -63,9 +63,10 @@ const Reader = ({
     currentScale: null,
     nextScale: null,
   });
-  const [targetScrollOffset, setTargetScrollOffset] = useState<number | null>(
-    null,
-  );
+  const [zoomAnchor, setZoomAnchor] = useState<{
+    pageIndex: number;
+    relativeOffset: number;
+  } | null>(null);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
@@ -162,12 +163,17 @@ const Reader = ({
 
   useEffect(() => {
     if (zoomState.currentScale && zoomState.nextScale) {
-      const newOffset = calculateAfterZoomOffset(
-        virtualizer,
-        zoomState.currentScale,
-        zoomState.nextScale,
-      );
-      setTargetScrollOffset(newOffset);
+      if (!parentRef.current) return;
+
+      const viewportCenter =
+        virtualizer.scrollOffset + parentRef.current.clientHeight / 2;
+      const anchorItem = virtualizer.getVirtualItemForOffset(viewportCenter);
+
+      if (anchorItem) {
+        const offsetInItem = viewportCenter - anchorItem.start;
+        const relativeOffset = offsetInItem / anchorItem.size;
+        setZoomAnchor({ pageIndex: anchorItem.index, relativeOffset });
+      }
     }
   }, [zoomState, virtualizer]);
 
@@ -236,12 +242,25 @@ const Reader = ({
     if (scale === undefined) return;
     virtualizer.measure();
 
-    if (targetScrollOffset !== null) {
-      virtualizer.scrollToOffset(targetScrollOffset, {
-        align: "start",
-        behavior: "auto",
-      });
-      setTargetScrollOffset(null);
+    if (zoomAnchor && parentRef.current) {
+      const itemStart = virtualizer.getOffsetForIndex?.(
+        zoomAnchor.pageIndex,
+        "start",
+      )?.[0];
+
+      if (itemStart !== undefined) {
+        const itemSize = estimateSize(zoomAnchor.pageIndex);
+        const newAbsoluteAnchorPosition =
+          itemStart + itemSize * zoomAnchor.relativeOffset;
+        const newScrollTop =
+          newAbsoluteAnchorPosition - parentRef.current.clientHeight / 2;
+
+        virtualizer.scrollToOffset(newScrollTop, {
+          align: "start",
+          behavior: "auto",
+        });
+      }
+      setZoomAnchor(null);
       setZoomState({ currentScale: null, nextScale: null });
     }
 
