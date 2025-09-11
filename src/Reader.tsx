@@ -13,7 +13,7 @@ import Page from "./Page";
 import usePageObserver from "./usePageObserver";
 import useRotation from "./useRotation";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
-import useZoom from "./useZoom";
+import useZoom, { calculateAfterZoomOffset } from "./useZoom";
 import { easeOutQuint, getOffsetForHighlight } from "./util";
 
 export const VIRTUAL_ITEM_GAP = 10;
@@ -59,11 +59,13 @@ const Reader = ({
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
   const [_, setTargetScrollIndex] = useState<number | null>(null);
-  const [__, setZoomState] = useState<ZoomState>({
+  const [zoomState, setZoomState] = useState<ZoomState>({
     currentScale: null,
     nextScale: null,
   });
-  // const [scrollOffset, setTargetScrollOffset] = useState<number | null>(null);
+  const [targetScrollOffset, setTargetScrollOffset] = useState<number | null>(
+    null,
+  );
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
@@ -159,6 +161,17 @@ const Reader = ({
   });
 
   useEffect(() => {
+    if (zoomState.currentScale && zoomState.nextScale) {
+      const newOffset = calculateAfterZoomOffset(
+        virtualizer,
+        zoomState.currentScale,
+        zoomState.nextScale,
+      );
+      setTargetScrollOffset(newOffset);
+    }
+  }, [zoomState, virtualizer]);
+
+  useEffect(() => {
     const calculateViewports = async () => {
       if (!pdf || scale === undefined) return;
 
@@ -222,6 +235,16 @@ const Reader = ({
     if (!viewports || !viewportsReady) return;
     if (scale === undefined) return;
     virtualizer.measure();
+
+    if (targetScrollOffset !== null) {
+      virtualizer.scrollToOffset(targetScrollOffset, {
+        align: "start",
+        behavior: "auto",
+      });
+      setTargetScrollOffset(null);
+      setZoomState({ currentScale: null, nextScale: null });
+    }
+
     onViewportsMeasured && onViewportsMeasured();
 
     const jumpToPage = (
