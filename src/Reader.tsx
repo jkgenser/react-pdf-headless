@@ -313,6 +313,7 @@ const Reader = ({
         scrollAnchor.index,
         "start",
       )?.[0];
+      console.log({ scale, viewportsReady });
 
       if (startOffset != null) {
         const itemHeight = estimateSize(scrollAnchor.index);
@@ -320,6 +321,12 @@ const Reader = ({
           itemHeight: itemHeight,
           percentage: scrollAnchor.percentageOffsetY,
           startOffset: startOffset,
+        });
+        console.log({
+          itemHeight,
+          percentageY: scrollAnchor.percentageOffsetY,
+          startOffset,
+          offset,
         });
 
         virtualizer.scrollToOffset(offset, {
