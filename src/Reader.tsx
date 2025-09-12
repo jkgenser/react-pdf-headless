@@ -153,6 +153,30 @@ const Reader = ({
     currentPage,
   });
 
+  const getVirtualItemAndOffsetAt = useCallback(
+    (viewportTop?: number) => {
+      if (!parentRef.current) {
+        return null;
+      }
+
+      // Default to the center of the viewport if no specific point is provided
+      const viewportPoint = viewportTop ?? parentRef.current.clientHeight / 2;
+      const scrollOffset = parentRef.current.scrollTop + viewportPoint;
+
+      const virtualItem = virtualizer.getVirtualItemForOffset(scrollOffset);
+
+      if (!virtualItem) {
+        return null;
+      }
+
+      const offsetInItem = scrollOffset - virtualItem.start;
+      const percentageOffset = (offsetInItem / virtualItem.size) * 100;
+
+      return { index: virtualItem.index, percentageOffset };
+    },
+    [virtualizer],
+  );
+
   useEffect(() => {
     const calculateViewports = async () => {
       if (!pdf || scale === undefined) return;
