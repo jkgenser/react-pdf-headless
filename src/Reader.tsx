@@ -320,6 +320,26 @@ const Reader = ({
           align: "center",
           behavior: "auto",
         });
+
+        if (parentRef.current) {
+          const pageViewport = viewports[scrollAnchor.index];
+          if (pageViewport) {
+            const pageInnerBoxWidth = pageViewport.width + EXTRA_WIDTH;
+            const containerWidth = parentRef.current.clientWidth;
+
+            const offsetX =
+              pageInnerBoxWidth * (scrollAnchor.percentageOffsetX / 100);
+
+            const pageLeftOffsetInContainer =
+              (containerWidth - pageInnerBoxWidth) / 2;
+
+            const targetAbsoluteX = pageLeftOffsetInContainer + offsetX;
+
+            const newScrollLeft = targetAbsoluteX - containerWidth / 2;
+
+            parentRef.current.scrollLeft = newScrollLeft;
+          }
+        }
       }
       setScrollAnchor(null);
     }
