@@ -314,12 +314,21 @@ const Reader = ({
         "start",
       )?.[0];
 
+      console.log({ ...scrollAnchor });
       if (startOffset != null) {
         const itemHeight = estimateSize(scrollAnchor.index);
         const offset = getOffsetForIndexAndPercentage({
           itemHeight: itemHeight,
           percentage: scrollAnchor.percentageOffsetY,
           startOffset: startOffset,
+        });
+        const offsetExtra = itemHeight * scrollAnchor.percentageOffsetY * 0.01;
+        console.log({
+          startOffset,
+          itemHeight,
+          percentage: scrollAnchor.percentageOffsetY,
+          offsetExtra,
+          offsetFinal: offset,
         });
 
         virtualizer.scrollToOffset(offset, {
