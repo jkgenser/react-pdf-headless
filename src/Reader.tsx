@@ -153,6 +153,8 @@ const Reader = ({
     currentPage,
   });
 
+  // viewportTop is the pixel offset from the top of the VISIBLE part of the reader
+  // if we pass 0 then it is saying "which page is at the very top of what I can currently see on my screen"
   const getVirtualItemAndOffsetAt = useCallback(
     (viewportTop?: number) => {
       if (!parentRef.current) {
@@ -170,9 +172,9 @@ const Reader = ({
       }
 
       const offsetInItem = scrollOffset - virtualItem.start;
-      const percentageOffset = (offsetInItem / virtualItem.size) * 100;
+      const percentageOffsetY = (offsetInItem / virtualItem.size) * 100;
 
-      return { index: virtualItem.index, percentageOffset };
+      return { index: virtualItem.index, percentageOffsetY };
     },
     [virtualizer],
   );
