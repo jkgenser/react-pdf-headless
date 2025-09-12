@@ -2,7 +2,7 @@ import { Page as ReactPdfPage } from "react-pdf";
 import { useEffect, useRef } from "react";
 import { ReaderPageProps, RenderPage, RenderPageProps } from "./types";
 
-const EXTRA_WIDTH = 5;
+export const EXTRA_WIDTH = 5;
 
 const Page = ({
   virtualItem,

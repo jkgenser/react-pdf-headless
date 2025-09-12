@@ -9,7 +9,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Document } from "react-pdf";
 import { HighlightArea, ReaderProps } from "./types";
 
-import Page from "./Page";
+import Page, { EXTRA_WIDTH } from "./Page";
 import usePageObserver from "./usePageObserver";
 import useRotation from "./useRotation";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
@@ -62,6 +62,7 @@ const Reader = ({
   const [scrollAnchor, setScrollAnchor] = useState<{
     index: number;
     percentageOffsetY: number;
+    percentageOffsetX: number;
   } | null>(null);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
@@ -169,14 +170,14 @@ const Reader = ({
   // viewportTop is the pixel offset from the top of the VISIBLE part of the reader
   // if we pass 0 then it is saying "which page is at the very top of what I can currently see on my screen"
   const getVirtualItemAndOffsetAt = useCallback(
-    (viewportTop?: number) => {
-      if (!parentRef.current) {
+    (point?: { top?: number; left?: number }) => {
+      if (!parentRef.current || !viewports) {
         return null;
       }
 
       // Default to the center of the viewport if no specific point is provided
-      const viewportPoint = viewportTop ?? parentRef.current.clientHeight / 2;
-      const scrollOffset = parentRef.current.scrollTop + viewportPoint;
+      const viewportTop = point?.top ?? parentRef.current.clientHeight / 2;
+      const scrollOffset = parentRef.current.scrollTop + viewportTop;
 
       const virtualItem = virtualizer.getVirtualItemForOffset(scrollOffset);
 
@@ -187,9 +188,28 @@ const Reader = ({
       const offsetInItem = scrollOffset - virtualItem.start;
       const percentageOffsetY = (offsetInItem / virtualItem.size) * 100;
 
-      return { index: virtualItem.index, percentageOffsetY };
+      const viewportLeft = point?.left ?? parentRef.current.clientWidth / 2;
+      const pageViewport = viewports[virtualItem.index];
+
+      if (!pageViewport) {
+        return null;
+      }
+
+      const pageInnerBoxWidth = pageViewport.width + EXTRA_WIDTH;
+      const containerWidth = parentRef.current.clientWidth;
+
+      const pageLeftOffsetInContainer =
+        (containerWidth - pageInnerBoxWidth) / 2;
+
+      const absoluteX = parentRef.current.scrollLeft + viewportLeft;
+
+      const offsetX = absoluteX - pageLeftOffsetInContainer;
+
+      const percentageOffsetX = (offsetX / pageInnerBoxWidth) * 100;
+
+      return { index: virtualItem.index, percentageOffsetY, percentageOffsetX };
     },
-    [virtualizer],
+    [virtualizer, viewports],
   );
 
   const increaseZoom = () => {
