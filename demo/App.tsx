@@ -27,8 +27,8 @@ function App() {
   const [zoomMode, setZoomMode] = useState<ZoomMode>("default");
   const [pageNum, setPageNum] = useState<number | null>(null);
   const [scale, setScale] = useState<number | null>(0.75);
-  const [file, setFile] = useState<string>("pdf-open-parameters.pdf");
-  const [wantPage, setWantPage] = useState<number | null>(null);
+  const [file, setFile] = useState<string>("rai.pdf");
+  const [wantPage, setWantPage] = useState<number | null>();
   const [readerAPI, setReaderAPI] = useState<ReaderAPI | null>(null);
   const [offset, setOffset] = useState<number | null>(null);
   const [virtualItemAndOffset, setVirtualItemAndOffset] =

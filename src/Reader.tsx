@@ -323,10 +323,11 @@ const Reader = ({
           startOffset: startOffset,
         });
         console.log({
+          itemStartOffset: startOffset,
           itemHeight,
           percentageY: scrollAnchor.percentageOffsetY,
-          startOffset,
-          offset,
+          offsetExtra: itemHeight * scrollAnchor.percentageOffsetY * 0.01,
+          offsetFinal: offset,
         });
 
         virtualizer.scrollToOffset(offset, {
