@@ -1,4 +1,5 @@
 import {
+  Virtualizer,
   VirtualizerOptions,
   elementScroll,
   useVirtualizer,
@@ -27,6 +28,18 @@ export const DEFAULT_HEIGHT = 600;
 const determineScale = (parentElement: HTMLElement, width: number): number => {
   const scaleWidth = (parentElement.clientWidth - RESERVE_WIDTH) / width;
   return scaleWidth;
+};
+
+const getOffsetForIndexEager = (
+  index: number,
+  virtualizer: Virtualizer<any, any>,
+  estimateSize: (i: number) => number,
+) => {
+  let offset = virtualizer.options.paddingStart;
+  for (let i = 0; i < index; i++) {
+    offset += estimateSize(i) + virtualizer.options.gap;
+  }
+  return offset;
 };
 
 export interface ZoomState {
@@ -313,11 +326,11 @@ const Reader = ({
       //   scrollAnchor.index,
       //   "start",
       // )?.[0];
-      let offset = virtualizer.options.paddingStart;
-      for (let i = 0; i < scrollAnchor.index; i++) {
-        offset += estimateSize(i) + virtualizer.options.gap;
-      }
-      const startOffset = offset;
+      const startOffset = getOffsetForIndexEager(
+        scrollAnchor.index,
+        virtualizer,
+        estimateSize,
+      );
 
       console.log({ ...scrollAnchor });
       if (startOffset != null) {
