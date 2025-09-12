@@ -17,7 +17,6 @@ import useZoom from "./useZoom";
 import { easeOutQuint, getOffsetForHighlight } from "./util";
 
 export const VIRTUAL_ITEM_GAP = 10;
-export const EXTRA_HEIGHT = 0;
 export const RESERVE_WIDTH = 50;
 export const DEFAULT_HEIGHT = 600;
 
@@ -63,7 +62,6 @@ const Reader = ({
     currentScale: null,
     nextScale: null,
   });
-  // const [scrollOffset, setTargetScrollOffset] = useState<number | null>(null);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
@@ -118,13 +116,10 @@ const Reader = ({
     [defaultRotations],
   );
 
-  // EXTRA_HEIGHT is passed to the virtualizer to get the height of every element
-  // we add some additional extra height to every element so that the pages
-  // are not rendered directly on top of each other
   const estimateSize = useCallback(
     (index: number) => {
       if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
-      return viewports[index].height + EXTRA_HEIGHT;
+      return viewports[index].height;
     },
     [viewports],
   );
@@ -289,18 +284,6 @@ const Reader = ({
   }, [viewports, scale, viewportsReady]);
 
   // scale changes >> recalc viewports >> viewports ready >> zoom
-
-  // useEffect(() => {
-  //   // calculate target zoom offset before viewports have be
-  //   if (
-  //     (!viewportsReady && zoomState.nextScale !== null) ||
-  //     zoomState.currentScale !== null
-  //   ) {
-  //   }
-  //   if (zoomState.nextScale === null && zoomState.currentScale === null) {
-  //     return;
-  //   }
-  // }, [zoomState, viewportsReady]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
