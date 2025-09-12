@@ -199,7 +199,7 @@ function App() {
       </div>
       <div
         style={{
-          width: "700px",
+          width: "900px",
           height: "800px",
           borderColor: "gray",
           borderWidth: "1px",
