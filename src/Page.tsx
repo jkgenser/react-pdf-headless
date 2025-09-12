@@ -69,6 +69,7 @@ const Page = ({
       >
         {shouldRender && (
           <div
+            id="page-wrapper"
             style={{
               position: "relative",
               height: "fit-content",

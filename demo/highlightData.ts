@@ -1,3 +1,6 @@
+// highlightData is rendered as percentages
+// top, left are percentages transalted from top left as origin of the page
+// height and width are also percentages
 export const highlightData = [
   {
     top: 42.9255,

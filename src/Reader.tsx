@@ -303,6 +303,7 @@ const Reader = ({
         rotateCounterClockwise,
         scale,
         rotation,
+        getVirtualItemAndOffsetAt,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports, scale, viewportsReady]);
