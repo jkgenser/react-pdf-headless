@@ -14,7 +14,11 @@ import usePageObserver from "./usePageObserver";
 import useRotation from "./useRotation";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
 import useZoom from "./useZoom";
-import { easeOutQuint, getOffsetForHighlight } from "./util";
+import {
+  easeOutQuint,
+  getOffsetForHighlight,
+  getOffsetForIndexAndPercentage,
+} from "./util";
 
 export const VIRTUAL_ITEM_GAP = 10;
 export const RESERVE_WIDTH = 50;
@@ -55,6 +59,10 @@ const Reader = ({
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [defaultRotations, setDefaultRotations] = useState<number[] | null>();
 
+  const [scrollAnchor, setScrollAnchor] = useState<{
+    index: number;
+    percentageOffsetY: number;
+  } | null>(null);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
   const [_, setTargetScrollIndex] = useState<number | null>(null);
@@ -139,7 +147,11 @@ const Reader = ({
     numPages,
   });
 
-  const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
+  const {
+    increaseZoom: baseIncreaseZoom,
+    decreaseZoom: baseDecreaseZoom,
+    zoomFitWidth,
+  } = useZoom({
     scale,
     defaultScale,
     setScale,
@@ -178,6 +190,22 @@ const Reader = ({
     },
     [virtualizer],
   );
+
+  const increaseZoom = () => {
+    const anchor = getVirtualItemAndOffsetAt();
+    if (anchor) {
+      setScrollAnchor(anchor);
+    }
+    baseIncreaseZoom();
+  };
+
+  const decreaseZoom = () => {
+    const anchor = getVirtualItemAndOffsetAt();
+    if (anchor) {
+      setScrollAnchor(anchor);
+    }
+    baseDecreaseZoom();
+  };
 
   useEffect(() => {
     const calculateViewports = async () => {
@@ -244,6 +272,28 @@ const Reader = ({
     if (scale === undefined) return;
     virtualizer.measure();
     onViewportsMeasured && onViewportsMeasured();
+
+    if (scrollAnchor) {
+      const startOffset = virtualizer.getOffsetForIndex(
+        scrollAnchor.index,
+        "start",
+      )?.[0];
+
+      if (startOffset != null) {
+        const itemHeight = estimateSize(scrollAnchor.index);
+        const offset = getOffsetForIndexAndPercentage({
+          itemHeight: itemHeight,
+          percentage: scrollAnchor.percentageOffsetY,
+          startOffset: startOffset,
+        });
+
+        virtualizer.scrollToOffset(offset, {
+          align: "center",
+          behavior: "auto",
+        });
+      }
+      setScrollAnchor(null);
+    }
 
     const jumpToPage = (
       pageIndex: number,

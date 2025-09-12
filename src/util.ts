@@ -99,6 +99,19 @@ export const getOffsetForHighlight = ({
   return startOffset + extraOffset;
 };
 
+export const getOffsetForIndexAndPercentage = ({
+  itemHeight,
+  percentage,
+  startOffset,
+}: {
+  itemHeight: number;
+  percentage: number;
+  startOffset: number;
+}) => {
+  const extraOffset = (itemHeight * percentage) / 100;
+  return startOffset + extraOffset;
+};
+
 export const easeInOutQuint = (t: number) => {
   return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
 };
