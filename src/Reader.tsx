@@ -309,10 +309,15 @@ const Reader = ({
     onViewportsMeasured && onViewportsMeasured();
 
     if (scrollAnchor) {
-      const startOffset = virtualizer.getOffsetForIndex(
-        scrollAnchor.index,
-        "start",
-      )?.[0];
+      // const startOffset = virtualizer.getOffsetForIndex(
+      //   scrollAnchor.index,
+      //   "start",
+      // )?.[0];
+      let offset = virtualizer.options.paddingStart;
+      for (let i = 0; i < scrollAnchor.index; i++) {
+        offset += estimateSize(i) + virtualizer.options.gap;
+      }
+      const startOffset = offset;
 
       console.log({ ...scrollAnchor });
       if (startOffset != null) {
@@ -324,7 +329,8 @@ const Reader = ({
         });
         const offsetExtra = itemHeight * scrollAnchor.percentageOffsetY * 0.01;
         console.log({
-          startOffset,
+          wantPageIndex: scrollAnchor.index,
+          startOffsetForPage: startOffset,
           itemHeight,
           percentage: scrollAnchor.percentageOffsetY,
           offsetExtra,
