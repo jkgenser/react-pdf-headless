@@ -7,7 +7,6 @@ export const EXTRA_WIDTH = 5;
 const Page = ({
   virtualItem,
   viewports,
-  scale = 1,
   rotation,
   pageObserver,
   shouldRender,
@@ -22,13 +21,7 @@ const Page = ({
   }, [pageObserver]);
 
   const defaultPageRenderer: RenderPage = (props: RenderPageProps) => {
-    return (
-      <ReactPdfPage
-        pageIndex={props.pageIndex}
-        scale={props.scale}
-        rotate={props.rotate}
-      />
-    );
+    return <ReactPdfPage pageIndex={props.pageIndex} rotate={props.rotate} />;
   };
 
   const renderPageLayer = renderPage || defaultPageRenderer;
@@ -79,7 +72,6 @@ const Page = ({
           >
             {renderPageLayer({
               pageIndex: virtualItem.index,
-              scale,
               rotate: rotation,
               rotationAdjustment,
             })}
