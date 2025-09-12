@@ -108,7 +108,7 @@ function App() {
     };
 
     if (zoomMode === "zoom-in") {
-      readerAPI.increaseZoom(1, point);
+      readerAPI.increaseZoom(2, point);
     } else if (zoomMode === "zoom-out") {
       readerAPI.decreaseZoom(1, point);
     }
