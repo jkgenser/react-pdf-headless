@@ -48,8 +48,8 @@ export interface ReaderAPI {
   ) => void;
   jumpToHighlightArea: (area: HighlightArea) => void;
   jumpToOffset: (offset: number) => void;
-  increaseZoom: () => void;
-  decreaseZoom: () => void;
+  increaseZoom: (levels?: number) => void;
+  decreaseZoom: (levels?: number) => void;
   zoomFitWidth: () => void;
   rotateClockwise: () => void;
   rotateCounterClockwise: () => void;

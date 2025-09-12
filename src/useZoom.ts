@@ -15,11 +15,13 @@ const useZoom = ({
   setScale: (newScale: number) => void;
   setZoomState: (zoomState: ZoomState) => void;
 }) => {
-  const increaseZoom = () => {
+  const increaseZoom = (levels = 1) => {
     if (!scale) return;
     const currentIndex = ZOOM_LEVELS.findIndex((level) => level >= scale);
     const nextIndex =
-      currentIndex + 1 < ZOOM_LEVELS.length ? currentIndex + 1 : currentIndex;
+      currentIndex + levels < ZOOM_LEVELS.length
+        ? currentIndex + levels
+        : ZOOM_LEVELS.length - 1;
     const nextScale = ZOOM_LEVELS[nextIndex];
 
     setScale(nextScale);
@@ -29,10 +31,10 @@ const useZoom = ({
     });
   };
 
-  const decreaseZoom = () => {
+  const decreaseZoom = (levels = 1) => {
     if (!scale) return;
     const currentIndex = ZOOM_LEVELS.findIndex((level) => level >= scale);
-    const prevIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : 0;
+    const prevIndex = currentIndex - levels >= 0 ? currentIndex - levels : 0;
     const nextScale = ZOOM_LEVELS[prevIndex];
     setScale(nextScale);
     setZoomState({

@@ -212,20 +212,20 @@ const Reader = ({
     [virtualizer, viewports],
   );
 
-  const increaseZoom = () => {
+  const increaseZoom = (levels?: number) => {
     const anchor = getVirtualItemAndOffsetAt();
     if (anchor) {
       setScrollAnchor(anchor);
     }
-    baseIncreaseZoom();
+    baseIncreaseZoom(levels);
   };
 
-  const decreaseZoom = () => {
+  const decreaseZoom = (levels?: number) => {
     const anchor = getVirtualItemAndOffsetAt();
     if (anchor) {
       setScrollAnchor(anchor);
     }
-    baseDecreaseZoom();
+    baseDecreaseZoom(levels);
   };
 
   const zoomFitWidth = () => {
