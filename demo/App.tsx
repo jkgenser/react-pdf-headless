@@ -15,6 +15,8 @@ import {
 import TestHighlightsLayer from "./TestHighlights";
 import { highlightData } from "./highlightData";
 
+type ZoomMode = "default" | "zoom-in" | "zoom-out";
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const LoadingComponent = () => {
@@ -22,6 +24,7 @@ const LoadingComponent = () => {
 };
 
 function App() {
+  const [zoomMode, setZoomMode] = useState<ZoomMode>("default");
   const [pageNum, setPageNum] = useState<number | null>(null);
   const [scale, setScale] = useState<number | null>(0.75);
   const [file, setFile] = useState<string>("pdf-open-parameters.pdf");
@@ -85,6 +88,41 @@ function App() {
 
     // console.log("pdf ready");
     // debugger;
+  };
+
+  const toggleZoomMode = () => {
+    setZoomMode((prevMode) => {
+      if (prevMode === "default") return "zoom-in";
+      if (prevMode === "zoom-in") return "zoom-out";
+      return "default";
+    });
+  };
+
+  const handleReaderClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (zoomMode === "default" || !readerAPI) return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const point = {
+      top: event.clientY - rect.top,
+      left: event.clientX - rect.left,
+    };
+
+    if (zoomMode === "zoom-in") {
+      readerAPI.increaseZoom(1, point);
+    } else if (zoomMode === "zoom-out") {
+      readerAPI.decreaseZoom(1, point);
+    }
+  };
+
+  const getCursorForZoomMode = (mode: ZoomMode) => {
+    switch (mode) {
+      case "zoom-in":
+        return "zoom-in";
+      case "zoom-out":
+        return "zoom-out";
+      default:
+        return "auto";
+    }
   };
 
   useEffect(() => {
@@ -203,6 +241,9 @@ function App() {
             zoom default
           </button>
           <div>{readerAPI?.scale?.toString().substring(0, 3)}</div>
+          <button onClick={toggleZoomMode} style={{ marginLeft: "10px" }}>
+            Zoom Mode: {zoomMode}
+          </button>
         </div>
         <div style={{ display: "flex" }}>
           <button
@@ -229,7 +270,9 @@ function App() {
           borderColor: "gray",
           borderWidth: "1px",
           borderStyle: "solid",
+          cursor: getCursorForZoomMode(zoomMode),
         }}
+        onClick={handleReaderClick}
       >
         <Reader
           file={file}
