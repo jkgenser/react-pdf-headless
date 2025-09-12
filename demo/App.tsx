@@ -6,7 +6,12 @@ import "react-pdf/dist/Page/TextLayer.css";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Page, pdfjs } from "react-pdf";
 import { Reader } from "../src/index";
-import { PageChangeEvent, ReaderAPI, RenderPageProps } from "../src/types";
+import {
+  PageChangeEvent,
+  ReaderAPI,
+  RenderPageProps,
+  VirtualItemAndOffset,
+} from "../src/types";
 import TestHighlightsLayer from "./TestHighlights";
 import { highlightData } from "./highlightData";
 
@@ -23,6 +28,8 @@ function App() {
   const [wantPage, setWantPage] = useState<number | null>(null);
   const [readerAPI, setReaderAPI] = useState<ReaderAPI | null>(null);
   const [offset, setOffset] = useState<number | null>(null);
+  const [virtualItemAndOffset, setVirtualItemAndOffset] =
+    useState<VirtualItemAndOffset | null>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const initialHighlight = useRef(false);
 
@@ -155,6 +162,24 @@ function App() {
         >
           jump to highlight
         </button>
+        <div style={{ display: "flex" }}>
+          <button
+            onClick={() => {
+              const res = readerAPI?.getVirtualItemAndOffsetAt();
+              setVirtualItemAndOffset(res ?? null);
+            }}
+          >
+            get item and offset
+          </button>
+          {virtualItemAndOffset && (
+            <div>
+              <div>Index: {virtualItemAndOffset.index}</div>
+              <div>
+                Offset: {virtualItemAndOffset.percentageOffset.toPrecision(4)}
+              </div>
+            </div>
+          )}
+        </div>
         <div style={{ display: "flex" }}>
           <button
             onClick={() => {

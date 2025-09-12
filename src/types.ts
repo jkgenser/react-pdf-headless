@@ -15,6 +15,11 @@ export interface Classes {
   pageWrapper?: string;
 }
 
+export type VirtualItemAndOffset = {
+  index: number;
+  percentageOffset: number;
+};
+
 export interface VirtualizerOptions {
   overscan?: number;
 }
@@ -50,10 +55,9 @@ export interface ReaderAPI {
   rotateCounterClockwise: () => void;
   scale: number | undefined;
   rotation: number;
-  getVirtualItemAndOffsetAt: (viewportY?: number) => {
-    index: number;
-    percentageOffset: number;
-  } | null;
+  getVirtualItemAndOffsetAt: (
+    viewportY?: number,
+  ) => VirtualItemAndOffset | null;
 }
 
 // height, left, top, width are 0-100% values
