@@ -15,6 +15,11 @@ export interface Classes {
   pageWrapper?: string;
 }
 
+export type VirtualItemAndOffset = {
+  index: number;
+  percentageOffsetY: number;
+};
+
 export interface VirtualizerOptions {
   overscan?: number;
 }
@@ -43,13 +48,23 @@ export interface ReaderAPI {
   ) => void;
   jumpToHighlightArea: (area: HighlightArea) => void;
   jumpToOffset: (offset: number) => void;
-  increaseZoom: () => void;
-  decreaseZoom: () => void;
+  increaseZoom: (
+    levels?: number,
+    point?: { top?: number; left?: number },
+  ) => void;
+  decreaseZoom: (
+    levels?: number,
+    point?: { top?: number; left?: number },
+  ) => void;
   zoomFitWidth: () => void;
   rotateClockwise: () => void;
   rotateCounterClockwise: () => void;
   scale: number | undefined;
   rotation: number;
+  getVirtualItemAndOffsetAt: (point?: {
+    top?: number;
+    left?: number;
+  }) => VirtualItemAndOffset | null;
 }
 
 // height, left, top, width are 0-100% values

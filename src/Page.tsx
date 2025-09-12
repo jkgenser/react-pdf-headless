@@ -1,9 +1,8 @@
 import { Page as ReactPdfPage } from "react-pdf";
 import { useEffect, useRef } from "react";
 import { ReaderPageProps, RenderPage, RenderPageProps } from "./types";
-import { EXTRA_HEIGHT } from "./Reader";
 
-const EXTRA_WIDTH = 5;
+export const EXTRA_WIDTH = 5;
 
 const Page = ({
   virtualItem,
@@ -60,16 +59,17 @@ const Page = ({
           boxShadow: "2px 2px 8px 0 rgba(0, 0, 0, 0.1)",
           width: `${innerBoxWidth}px`,
           padding: "0px",
-          margin: "5px",
+          margin: "0px",
           backgroundColor: "white",
           display: "flex",
           justifyContent: "center",
-          height: `${`${virtualItem.size - EXTRA_HEIGHT}px`}`,
+          height: `${virtualItem.size}px`,
         }}
         className={classes?.pageInnerBox}
       >
         {shouldRender && (
           <div
+            id="page-wrapper"
             style={{
               position: "relative",
               height: "fit-content",

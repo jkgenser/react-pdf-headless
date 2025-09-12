@@ -6,9 +6,16 @@ import "react-pdf/dist/Page/TextLayer.css";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Page, pdfjs } from "react-pdf";
 import { Reader } from "../src/index";
-import { PageChangeEvent, ReaderAPI, RenderPageProps } from "../src/types";
+import {
+  PageChangeEvent,
+  ReaderAPI,
+  RenderPageProps,
+  VirtualItemAndOffset,
+} from "../src/types";
 import TestHighlightsLayer from "./TestHighlights";
 import { highlightData } from "./highlightData";
+
+type ZoomMode = "default" | "zoom-in" | "zoom-out";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -17,12 +24,15 @@ const LoadingComponent = () => {
 };
 
 function App() {
+  const [zoomMode, setZoomMode] = useState<ZoomMode>("default");
   const [pageNum, setPageNum] = useState<number | null>(null);
   const [scale, setScale] = useState<number | null>(0.75);
   const [file, setFile] = useState<string>("pdf-open-parameters.pdf");
   const [wantPage, setWantPage] = useState<number | null>(null);
   const [readerAPI, setReaderAPI] = useState<ReaderAPI | null>(null);
   const [offset, setOffset] = useState<number | null>(null);
+  const [virtualItemAndOffset, setVirtualItemAndOffset] =
+    useState<VirtualItemAndOffset | null>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const initialHighlight = useRef(false);
 
@@ -78,6 +88,41 @@ function App() {
 
     // console.log("pdf ready");
     // debugger;
+  };
+
+  const toggleZoomMode = () => {
+    setZoomMode((prevMode) => {
+      if (prevMode === "default") return "zoom-in";
+      if (prevMode === "zoom-in") return "zoom-out";
+      return "default";
+    });
+  };
+
+  const handleReaderClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (zoomMode === "default" || !readerAPI) return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const point = {
+      top: event.clientY - rect.top,
+      left: event.clientX - rect.left,
+    };
+
+    if (zoomMode === "zoom-in") {
+      readerAPI.increaseZoom(2, point);
+    } else if (zoomMode === "zoom-out") {
+      readerAPI.decreaseZoom(1, point);
+    }
+  };
+
+  const getCursorForZoomMode = (mode: ZoomMode) => {
+    switch (mode) {
+      case "zoom-in":
+        return "zoom-in";
+      case "zoom-out":
+        return "zoom-out";
+      default:
+        return "auto";
+    }
   };
 
   useEffect(() => {
@@ -158,6 +203,24 @@ function App() {
         <div style={{ display: "flex" }}>
           <button
             onClick={() => {
+              const res = readerAPI?.getVirtualItemAndOffsetAt();
+              setVirtualItemAndOffset(res ?? null);
+            }}
+          >
+            get item and offset
+          </button>
+          {virtualItemAndOffset && (
+            <div>
+              <div>Index: {virtualItemAndOffset.index}</div>
+              <div>
+                Offset: {virtualItemAndOffset.percentageOffsetY.toPrecision(4)}
+              </div>
+            </div>
+          )}
+        </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <button
+            onClick={() => {
               readerAPI?.decreaseZoom();
             }}
           >
@@ -178,6 +241,9 @@ function App() {
             zoom default
           </button>
           <div>{readerAPI?.scale?.toString().substring(0, 3)}</div>
+          <button onClick={toggleZoomMode} style={{ marginLeft: "10px" }}>
+            Zoom Mode: {zoomMode}
+          </button>
         </div>
         <div style={{ display: "flex" }}>
           <button
@@ -199,12 +265,14 @@ function App() {
       </div>
       <div
         style={{
-          width: "700px",
+          width: "900px",
           height: "800px",
           borderColor: "gray",
           borderWidth: "1px",
           borderStyle: "solid",
+          cursor: getCursorForZoomMode(zoomMode),
         }}
+        onClick={handleReaderClick}
       >
         <Reader
           file={file}

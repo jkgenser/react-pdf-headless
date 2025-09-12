@@ -9,15 +9,18 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Document } from "react-pdf";
 import { HighlightArea, ReaderProps } from "./types";
 
-import Page from "./Page";
+import Page, { EXTRA_WIDTH } from "./Page";
 import usePageObserver from "./usePageObserver";
 import useRotation from "./useRotation";
 import useVirtualizerVelocity from "./useVirtualizerVelocity";
 import useZoom from "./useZoom";
-import { easeOutQuint, getOffsetForHighlight } from "./util";
+import {
+  easeOutQuint,
+  getOffsetForHighlight,
+  getOffsetForIndexAndPercentage,
+} from "./util";
 
 export const VIRTUAL_ITEM_GAP = 10;
-export const EXTRA_HEIGHT = 0;
 export const RESERVE_WIDTH = 50;
 export const DEFAULT_HEIGHT = 600;
 
@@ -56,6 +59,11 @@ const Reader = ({
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [defaultRotations, setDefaultRotations] = useState<number[] | null>();
 
+  const [scrollAnchor, setScrollAnchor] = useState<{
+    index: number;
+    percentageOffsetY: number;
+    percentageOffsetX: number;
+  } | null>(null);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [viewportsReady, setViewportsReady] = useState<boolean>(false);
   const [_, setTargetScrollIndex] = useState<number | null>(null);
@@ -63,7 +71,6 @@ const Reader = ({
     currentScale: null,
     nextScale: null,
   });
-  // const [scrollOffset, setTargetScrollOffset] = useState<number | null>(null);
 
   const scrollToFn: VirtualizerOptions<any, any>["scrollToFn"] = useCallback(
     (offset, canSmooth, instance) => {
@@ -118,13 +125,10 @@ const Reader = ({
     [defaultRotations],
   );
 
-  // EXTRA_HEIGHT is passed to the virtualizer to get the height of every element
-  // we add some additional extra height to every element so that the pages
-  // are not rendered directly on top of each other
   const estimateSize = useCallback(
     (index: number) => {
       if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
-      return viewports[index].height + EXTRA_HEIGHT;
+      return viewports[index].height;
     },
     [viewports],
   );
@@ -136,6 +140,7 @@ const Reader = ({
     overscan: virtualizerOptions?.overscan ?? 0,
     scrollToFn,
     gap: VIRTUAL_ITEM_GAP,
+    paddingStart: 10,
   });
 
   const { pageObserver } = usePageObserver({
@@ -144,7 +149,11 @@ const Reader = ({
     numPages,
   });
 
-  const { increaseZoom, decreaseZoom, zoomFitWidth } = useZoom({
+  const {
+    increaseZoom: baseIncreaseZoom,
+    decreaseZoom: baseDecreaseZoom,
+    zoomFitWidth: baseZoomFitWidth,
+  } = useZoom({
     scale,
     defaultScale,
     setScale,
@@ -157,6 +166,81 @@ const Reader = ({
     setTargetScrollIndex,
     currentPage,
   });
+
+  // viewportTop is the pixel offset from the top of the VISIBLE part of the reader
+  // if we pass 0 then it is saying "which page is at the very top of what I can currently see on my screen"
+  const getVirtualItemAndOffsetAt = useCallback(
+    (point?: { top?: number; left?: number }) => {
+      if (!parentRef.current || !viewports) {
+        return null;
+      }
+
+      // Default to the center of the viewport if no specific point is provided
+      const viewportTop = point?.top ?? parentRef.current.clientHeight / 2;
+      const scrollOffset = parentRef.current.scrollTop + viewportTop;
+
+      const virtualItem = virtualizer.getVirtualItemForOffset(scrollOffset);
+
+      if (!virtualItem) {
+        return null;
+      }
+
+      const offsetInItem = scrollOffset - virtualItem.start;
+      const percentageOffsetY = (offsetInItem / virtualItem.size) * 100;
+
+      const viewportLeft = point?.left ?? parentRef.current.clientWidth / 2;
+      const pageViewport = viewports[virtualItem.index];
+
+      if (!pageViewport) {
+        return null;
+      }
+
+      const pageInnerBoxWidth = pageViewport.width + EXTRA_WIDTH;
+      const containerWidth = parentRef.current.clientWidth;
+
+      const pageLeftOffsetInContainer =
+        (containerWidth - pageInnerBoxWidth) / 2;
+
+      const absoluteX = parentRef.current.scrollLeft + viewportLeft;
+
+      const offsetX = absoluteX - pageLeftOffsetInContainer;
+
+      const percentageOffsetX = (offsetX / pageInnerBoxWidth) * 100;
+
+      return { index: virtualItem.index, percentageOffsetY, percentageOffsetX };
+    },
+    [virtualizer, viewports],
+  );
+
+  const increaseZoom = (
+    levels?: number,
+    point?: { top?: number; left?: number },
+  ) => {
+    const anchor = getVirtualItemAndOffsetAt(point);
+    if (anchor) {
+      setScrollAnchor(anchor);
+    }
+    baseIncreaseZoom(levels);
+  };
+
+  const decreaseZoom = (
+    levels?: number,
+    point?: { top?: number; left?: number },
+  ) => {
+    const anchor = getVirtualItemAndOffsetAt(point);
+    if (anchor) {
+      setScrollAnchor(anchor);
+    }
+    baseDecreaseZoom(levels);
+  };
+
+  const zoomFitWidth = () => {
+    const anchor = getVirtualItemAndOffsetAt();
+    if (anchor) {
+      setScrollAnchor(anchor);
+    }
+    baseZoomFitWidth();
+  };
 
   useEffect(() => {
     const calculateViewports = async () => {
@@ -224,6 +308,48 @@ const Reader = ({
     virtualizer.measure();
     onViewportsMeasured && onViewportsMeasured();
 
+    if (scrollAnchor) {
+      const startOffset = virtualizer.getOffsetForIndex(
+        scrollAnchor.index,
+        "start",
+      )?.[0];
+
+      if (startOffset != null) {
+        const itemHeight = estimateSize(scrollAnchor.index);
+        const offset = getOffsetForIndexAndPercentage({
+          itemHeight: itemHeight,
+          percentage: scrollAnchor.percentageOffsetY,
+          startOffset: startOffset,
+        });
+
+        virtualizer.scrollToOffset(offset, {
+          align: "center",
+          behavior: "auto",
+        });
+
+        if (parentRef.current) {
+          const pageViewport = viewports[scrollAnchor.index];
+          if (pageViewport) {
+            const pageInnerBoxWidth = pageViewport.width + EXTRA_WIDTH;
+            const containerWidth = parentRef.current.clientWidth;
+
+            const offsetX =
+              pageInnerBoxWidth * (scrollAnchor.percentageOffsetX / 100);
+
+            const pageLeftOffsetInContainer =
+              (containerWidth - pageInnerBoxWidth) / 2;
+
+            const targetAbsoluteX = pageLeftOffsetInContainer + offsetX;
+
+            const newScrollLeft = targetAbsoluteX - containerWidth / 2;
+
+            parentRef.current.scrollLeft = newScrollLeft;
+          }
+        }
+      }
+      setScrollAnchor(null);
+    }
+
     const jumpToPage = (
       pageIndex: number,
       options?: {
@@ -284,23 +410,12 @@ const Reader = ({
         rotateCounterClockwise,
         scale,
         rotation,
+        getVirtualItemAndOffsetAt,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports, scale, viewportsReady]);
 
   // scale changes >> recalc viewports >> viewports ready >> zoom
-
-  // useEffect(() => {
-  //   // calculate target zoom offset before viewports have be
-  //   if (
-  //     (!viewportsReady && zoomState.nextScale !== null) ||
-  //     zoomState.currentScale !== null
-  //   ) {
-  //   }
-  //   if (zoomState.nextScale === null && zoomState.currentScale === null) {
-  //     return;
-  //   }
-  // }, [zoomState, viewportsReady]);
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
@@ -308,7 +423,7 @@ const Reader = ({
   });
 
   const isScrollingFast = Math.abs(normalizedVelocity) > 1;
-  const shouldRender = !isScrollingFast;
+  const shouldRender = !isScrollingFast || !viewportsReady;
 
   return (
     <div
