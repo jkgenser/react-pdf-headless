@@ -218,7 +218,7 @@ function App() {
             </div>
           )}
         </div>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <button
             onClick={() => {
               readerAPI?.decreaseZoom();
