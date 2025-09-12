@@ -322,32 +322,19 @@ const Reader = ({
     onViewportsMeasured && onViewportsMeasured();
 
     if (scrollAnchor) {
-      // const startOffset = virtualizer.getOffsetForIndex(
-      //   scrollAnchor.index,
-      //   "start",
-      // )?.[0];
+      // manually calculate offset here in case it was cached from an earlier render
       const startOffset = getOffsetForIndexEager(
         scrollAnchor.index,
         virtualizer,
         estimateSize,
       );
 
-      console.log({ ...scrollAnchor });
       if (startOffset != null) {
         const itemHeight = estimateSize(scrollAnchor.index);
         const offset = getOffsetForIndexAndPercentage({
           itemHeight: itemHeight,
           percentage: scrollAnchor.percentageOffsetY,
           startOffset: startOffset,
-        });
-        const offsetExtra = itemHeight * scrollAnchor.percentageOffsetY * 0.01;
-        console.log({
-          wantPageIndex: scrollAnchor.index,
-          startOffsetForPage: startOffset,
-          itemHeight,
-          percentage: scrollAnchor.percentageOffsetY,
-          offsetExtra,
-          offsetFinal: offset,
         });
 
         virtualizer.scrollToOffset(offset, {
