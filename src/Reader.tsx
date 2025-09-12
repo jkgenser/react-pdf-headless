@@ -151,7 +151,7 @@ const Reader = ({
   const {
     increaseZoom: baseIncreaseZoom,
     decreaseZoom: baseDecreaseZoom,
-    zoomFitWidth,
+    zoomFitWidth: baseZoomFitWidth,
   } = useZoom({
     scale,
     defaultScale,
@@ -206,6 +206,14 @@ const Reader = ({
       setScrollAnchor(anchor);
     }
     baseDecreaseZoom();
+  };
+
+  const zoomFitWidth = () => {
+    const anchor = getVirtualItemAndOffsetAt();
+    if (anchor) {
+      setScrollAnchor(anchor);
+    }
+    baseZoomFitWidth();
   };
 
   useEffect(() => {
