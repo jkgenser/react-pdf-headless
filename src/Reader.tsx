@@ -439,6 +439,7 @@ const Reader = ({
         {...reactPDFDocumentProps}
         file={file}
         onLoadSuccess={onDocumentLoadSuccess}
+        scale={scale}
       >
         <div
           id="pages-container"
@@ -457,7 +458,6 @@ const Reader = ({
                   key={virtualItem.key}
                   virtualItem={virtualItem}
                   viewports={viewports}
-                  scale={scale}
                   rotationAdjustment={getRotationAdjustment(virtualItem.index)}
                   rotation={rotation + getRotationAdjustment(virtualItem.index)}
                   pageObserver={pageObserver}

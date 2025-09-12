@@ -78,7 +78,6 @@ export interface HighlightArea {
 
 export interface RenderPageProps {
   pageIndex: number;
-  scale: number;
   rotate: number;
   rotationAdjustment: number;
 }
@@ -88,7 +87,6 @@ export type RenderPage = (props: RenderPageProps) => React.ReactNode;
 export interface ReaderPageProps {
   virtualItem: VirtualItem;
   viewports: Array<PageViewport> | null;
-  scale: number | undefined;
   rotation: number;
   pageObserver: IntersectionObserver | undefined;
   shouldRender: boolean;
