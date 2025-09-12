@@ -139,6 +139,7 @@ const Reader = ({
     overscan: virtualizerOptions?.overscan ?? 0,
     scrollToFn,
     gap: VIRTUAL_ITEM_GAP,
+    paddingStart: 10,
   });
 
   const { pageObserver } = usePageObserver({
@@ -368,7 +369,7 @@ const Reader = ({
   });
 
   const isScrollingFast = Math.abs(normalizedVelocity) > 1;
-  const shouldRender = !isScrollingFast;
+  const shouldRender = !isScrollingFast || !viewportsReady;
 
   return (
     <div
