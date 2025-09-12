@@ -17,7 +17,7 @@ export interface Classes {
 
 export type VirtualItemAndOffset = {
   index: number;
-  percentageOffset: number;
+  percentageOffsetY: number;
 };
 
 export interface VirtualizerOptions {

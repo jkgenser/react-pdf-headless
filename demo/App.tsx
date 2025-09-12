@@ -175,7 +175,7 @@ function App() {
             <div>
               <div>Index: {virtualItemAndOffset.index}</div>
               <div>
-                Offset: {virtualItemAndOffset.percentageOffset.toPrecision(4)}
+                Offset: {virtualItemAndOffset.percentageOffsetY.toPrecision(4)}
               </div>
             </div>
           )}
