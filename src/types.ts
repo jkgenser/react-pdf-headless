@@ -55,9 +55,10 @@ export interface ReaderAPI {
   rotateCounterClockwise: () => void;
   scale: number | undefined;
   rotation: number;
-  getVirtualItemAndOffsetAt: (
-    viewportY?: number,
-  ) => VirtualItemAndOffset | null;
+  getVirtualItemAndOffsetAt: (point?: {
+    top?: number;
+    left?: number;
+  }) => VirtualItemAndOffset | null;
 }
 
 // height, left, top, width are 0-100% values
