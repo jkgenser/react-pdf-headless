@@ -454,6 +454,7 @@ const Reader = ({
         {...reactPDFDocumentProps}
         file={file}
         onLoadSuccess={onDocumentLoadSuccess}
+        // react-pdf 10.x allows scale to be passed to the document
         // scale={scale}
       >
         <div
