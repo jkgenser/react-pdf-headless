@@ -454,7 +454,7 @@ const Reader = ({
         {...reactPDFDocumentProps}
         file={file}
         onLoadSuccess={onDocumentLoadSuccess}
-        scale={scale}
+        // scale={scale}
       >
         <div
           id="pages-container"
@@ -470,6 +470,7 @@ const Reader = ({
               .getVirtualItems()
               .map((virtualItem) => (
                 <Page
+                  scale={scale}
                   key={virtualItem.key}
                   virtualItem={virtualItem}
                   viewports={viewports}
