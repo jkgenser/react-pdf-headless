@@ -6,7 +6,13 @@ import {
 } from "@tanstack/react-virtual";
 import { PageViewport } from "pdfjs-dist//types/src/display/display_utils";
 import { PDFDocumentProxy } from "pdfjs-dist/types/src/display/api";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { Document } from "react-pdf";
 import { HighlightArea, ReaderProps } from "./types";
 
@@ -143,7 +149,7 @@ const Reader = ({
       if (!viewports || !viewports[index]) return DEFAULT_HEIGHT;
       return viewports[index].height;
     },
-    [viewports],
+    [viewports, scale],
   );
 
   const virtualizer = useVirtualizer({
@@ -255,7 +261,7 @@ const Reader = ({
     baseZoomFitWidth();
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const calculateViewports = async () => {
       if (!pdf || scale === undefined) return;
 
@@ -315,7 +321,7 @@ const Reader = ({
     onPageChange && pdf && onPageChange({ currentPage, doc: pdf });
   }, [currentPage]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!viewports || !viewportsReady) return;
     if (scale === undefined) return;
     virtualizer.measure();
@@ -429,8 +435,6 @@ const Reader = ({
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports, scale, viewportsReady]);
-
-  // scale changes >> recalc viewports >> viewports ready >> zoom
 
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
