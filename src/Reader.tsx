@@ -77,6 +77,9 @@ const Reader = ({
   const [defaultScale, setDefaultScale] = useState<number | null>(null);
   const [rotation, setRotation] = useState<number>(initialRotation);
   const [defaultRotations, setDefaultRotations] = useState<number[] | null>();
+  const [renderScale, setRenderScale] = useState<number | undefined>(
+    initialScale,
+  );
 
   const [scrollAnchor, setScrollAnchor] = useState<{
     index: number;
@@ -287,6 +290,7 @@ const Reader = ({
       );
       setDefaultRotations(rotations);
       setPageViewports(viewports);
+      setRenderScale(scale);
       setViewportsReady(true);
     };
 
@@ -326,50 +330,6 @@ const Reader = ({
     if (scale === undefined) return;
     virtualizer.measure();
     onViewportsMeasured && onViewportsMeasured();
-
-    if (scrollAnchor) {
-      // manually calculate offset here in case it was cached from an earlier render
-      const startOffset = getOffsetForIndexEager(
-        scrollAnchor.index,
-        virtualizer,
-        estimateSize,
-      );
-
-      if (startOffset != null) {
-        const itemHeight = estimateSize(scrollAnchor.index);
-        const offset = getOffsetForIndexAndPercentage({
-          itemHeight: itemHeight,
-          percentage: scrollAnchor.percentageOffsetY,
-          startOffset: startOffset,
-        });
-
-        virtualizer.scrollToOffset(offset, {
-          align: "center",
-          behavior: "auto",
-        });
-
-        if (parentRef.current) {
-          const pageViewport = viewports[scrollAnchor.index];
-          if (pageViewport) {
-            const pageInnerBoxWidth = pageViewport.width + EXTRA_WIDTH;
-            const containerWidth = parentRef.current.clientWidth;
-
-            const offsetX =
-              pageInnerBoxWidth * (scrollAnchor.percentageOffsetX / 100);
-
-            const pageLeftOffsetInContainer =
-              (containerWidth - pageInnerBoxWidth) / 2;
-
-            const targetAbsoluteX = pageLeftOffsetInContainer + offsetX;
-
-            const newScrollLeft = targetAbsoluteX - containerWidth / 2;
-
-            parentRef.current.scrollLeft = newScrollLeft;
-          }
-        }
-      }
-      setScrollAnchor(null);
-    }
 
     const jumpToPage = (
       pageIndex: number,
@@ -436,6 +396,61 @@ const Reader = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewports, scale, viewportsReady]);
 
+  useEffect(() => {
+    if (!viewports || !viewportsReady) return;
+    if (scale === undefined) return;
+    if (!scrollAnchor) return;
+
+    const startOffset = getOffsetForIndexEager(
+      scrollAnchor.index,
+      virtualizer,
+      estimateSize,
+    );
+
+    if (startOffset != null) {
+      const itemHeight = estimateSize(scrollAnchor.index);
+      const offset = getOffsetForIndexAndPercentage({
+        itemHeight: itemHeight,
+        percentage: scrollAnchor.percentageOffsetY,
+        startOffset: startOffset,
+      });
+
+      virtualizer.scrollToOffset(offset, {
+        align: "center",
+        behavior: "auto",
+      });
+
+      if (parentRef.current) {
+        const pageViewport = viewports[scrollAnchor.index];
+        if (pageViewport) {
+          const pageInnerBoxWidth = pageViewport.width + EXTRA_WIDTH;
+          const containerWidth = parentRef.current.clientWidth;
+
+          const offsetX =
+            pageInnerBoxWidth * (scrollAnchor.percentageOffsetX / 100);
+
+          const pageLeftOffsetInContainer =
+            (containerWidth - pageInnerBoxWidth) / 2;
+
+          const targetAbsoluteX = pageLeftOffsetInContainer + offsetX;
+
+          const newScrollLeft = targetAbsoluteX - containerWidth / 2;
+
+          parentRef.current.scrollLeft = newScrollLeft;
+        }
+      }
+    }
+
+    setScrollAnchor(null);
+  }, [
+    estimateSize,
+    scrollAnchor,
+    virtualizer,
+    viewports,
+    viewportsReady,
+    scale,
+  ]);
+
   const { normalizedVelocity } = useVirtualizerVelocity({
     virtualizer,
     estimateSize,
@@ -475,7 +490,7 @@ const Reader = ({
               .getVirtualItems()
               .map((virtualItem) => (
                 <Page
-                  scale={scale}
+                  scale={renderScale}
                   key={virtualItem.key}
                   virtualItem={virtualItem}
                   viewports={viewports}
